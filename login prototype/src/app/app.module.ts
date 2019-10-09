@@ -16,7 +16,7 @@ import { RegistrationComponent } from './registration/registration.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatabaseComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

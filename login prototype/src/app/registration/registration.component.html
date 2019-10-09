@@ -1,1 +1,9 @@
-<p>registration works!</p>
+<div style="text-align:center;outline: 2px dashed;width: 30%;">
+    <h2>Registration</h2>
+    <input [(ngModel)]="customer.name" placeholder="Username"><br>
+    <input [(ngModel)]="customer.password" placeholder="Password"><br>
+    <input [(ngModel)]="customer.password_verify" placeholder="Password"><br><br>
+    <button (click)="register(customer.name, customer.password, customer.password_verify)">
+        Add</button>
+    <p>{{ error }}</p>
+</div>
