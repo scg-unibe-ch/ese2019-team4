@@ -1,1 +1,15 @@
-<p>database works!</p>
+<div>
+    <h2>Database Mock</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Password</th>
+  </tr>
+  <tr *ngFor="let name of names;let i=index">
+    <td>{{i}}</td>
+    <td>{{name}}</td>
+    <td>{{passwords[i]}}</td>
+  </tr>
+</table>
+</div>
