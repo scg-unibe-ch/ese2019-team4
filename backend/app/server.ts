@@ -7,6 +7,8 @@ import {Sequelize} from 'sequelize-typescript';
 import {TodoList} from './models/todolist.model';
 import {TodoItem} from './models/todoitem.model';
 import {WelcomeController} from './controllers/welcome.controller';
+import {Account} from './models/account.model';
+import {AccountController} from './controllers/account.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -15,14 +17,14 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([TodoList, TodoItem]);
+sequelize.addModels([TodoList, TodoItem, Account]);
 
 // create a new express application instance
 const app: express.Application = express();
 app.use(express.json());
 
 // define the port the express app will listen on
-var port: number = 3000;
+var port: number = 3001;
 if (process.env.PORT !== undefined) {
   port = parseInt(process.env.PORT);
 }
@@ -37,6 +39,7 @@ app.use(function (req, res, next) {
 app.use('/todolist', TodoListController);
 app.use('/todoitem', TodoItemController);
 app.use('/welcome', WelcomeController);
+app.use('/account', AccountController);
 
 
 sequelize.sync().then(() => {

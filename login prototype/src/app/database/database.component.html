@@ -1,15 +1,11 @@
-<div>
+<div style="text-align: left;">
     <h2>Database Mock</h2><br>
 <table>
   <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Password</th>
+    <th *ngFor="let column of table['columns']">{{column}}</th>
   </tr>
-  <tr *ngFor="let name of names;let i=index">
-    <td>{{i}}</td>
-    <td>{{name}}</td>
-    <td>{{passwords[i]}}</td>
+  <tr *ngFor="let values of table['values']">
+    <td *ngFor="let column of table['columns']">{{values[column]}}</td>
   </tr>
 </table>
 

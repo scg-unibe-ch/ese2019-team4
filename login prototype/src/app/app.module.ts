@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DatabaseComponent } from './database/database.component';
 import { RegistrationComponent } from './registration/registration.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { RegistrationComponent } from './registration/registration.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [DatabaseComponent],
   bootstrap: [AppComponent]
