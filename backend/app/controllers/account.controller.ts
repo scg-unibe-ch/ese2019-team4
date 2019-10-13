@@ -15,7 +15,7 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];
-  if (Account.valid_register(username, password)) {
+  if (await Account.valid_register(username, password)) {
       const instance = new Account();
       instance.fromSimplification(req.body);
       await instance.save();

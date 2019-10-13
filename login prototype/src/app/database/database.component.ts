@@ -1,7 +1,5 @@
-/** Mock class for databases
-* Provides functionality to store usernames and passwords
-*/
-import { Component, OnInit } from '@angular/core';
+/** Displays database tables from the backend */
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -12,29 +10,15 @@ import { HttpClient } from "@angular/common/http";
 
 
 export class DatabaseComponent implements OnInit {
-  server = "http://localhost:3001"
+  @Input() url: string;
   table: Object;
 
-  customer_exists(name: string) {
-      return false;
-  }
-
   update() {
-      this.http.get(this.server + "/" + this.table_name).subscribe(data => this.table = data);
+      //updates the database table from the url
+      this.http.get(this.url).subscribe(data => this.table = data);
   }
 
-  /* Adds customer to database
-  * @Precondition: name and password are not null and the name does not exist yet.
-  */
-  add_customer(name: string, password: string) {
-      if (name == null || password == null)
-        console.log("Error");
-      else {
-        this.http.post(this.server+"/account/", {"password": password, "username": name}).subscribe(data => console.log(data));
-      }
-  }
-
-  constructor(private http: HttpClient, private table_name: String) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }

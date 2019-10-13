@@ -23,25 +23,25 @@ export class Account extends Model<Account> {
     };
   }
 
-  static user_exists(name: String): boolean {
-    // TODO: how to get out of here?
-    Account.findOne({ where: { username: String(name)} }).then(user => {return (user != null)});
-    return false; // mock value
+  static async user_exists(name: String): Promise<Boolean> {
+    // checks if user already exists in database
+    return await Account.findOne({ where: { username: String(name)} }).then(user => {return (user != null)});
   }
 
   static valid_username(username: String): boolean {
-      return (username != null && username != "" && !Account.user_exists(username))
+      return (username != null && username != "")
   }
 
   static valid_password(password: String): boolean {
       return (password != null && password != "")
   }
 
-  static valid_register(username: String, password: String): boolean {
-      return (Account.valid_password(password) && Account.valid_username(username));
+  static async valid_register(username: String, password: String): Promise<Boolean> {
+      return (Account.valid_password(password) && Account.valid_username(username) && !await Account.user_exists(username));
   }
 
   fromSimplification(simplification: any): void {
+    console.log("body: "+simplification)
     this.username = simplification['username'];
     this.password = simplification['password'];
   }
