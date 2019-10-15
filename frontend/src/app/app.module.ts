@@ -12,12 +12,19 @@ import { AppComponent } from './app.component';
 
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-list/todo-item/todo-item.component';
+import {LoginComponent} from './login/login.component';
+import {SideMenuComponent} from './side-menu/side-menu.component';
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    LoginComponent,
+    SideMenuComponent,
+    SideMenuComponent,
+    RegisterComponent
   ],
   entryComponents: [],
   imports: [
