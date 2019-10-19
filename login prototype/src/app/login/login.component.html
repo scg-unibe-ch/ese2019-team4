@@ -1,0 +1,8 @@
+<div style="text-align:center;outline: 2px dashed;width: 30%;">
+  <h2>Login</h2>
+  <input [(ngModel)]="customer.name" placeholder="Username"><br>
+  <input [(ngModel)]="customer.password" placeholder="Password"><br>
+  <button (click)="login(customer.name, customer.password, customer.password_verify)">
+    Login</button>
+  <p>{{ error }}</p>
+</div>

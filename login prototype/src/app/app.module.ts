@@ -7,12 +7,14 @@ import { DatabaseComponent } from './database/database.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DatabaseComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
