@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {TodoList} from './todo-list';
 import {HttpClient} from '@angular/common/http';
+import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +27,16 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
   }
+
+  /* Trying to route some stuff in the frontend - dominik
+  @NgModule({
+        RouterModule.forRoot([
+          { path: '', component: LoginComponent },
+          { path: 'register', component: RegisterComponent },
+        ])
+    ,
+  })
+   */
 
   initializeApp() {
     this.platform.ready().then(() => {
