@@ -10,17 +10,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoItemComponent } from './todo-list/todo-item/todo-item.component';
 import {LoginComponent} from './login/login.component';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {RegisterComponent} from './register/register.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent,
-    TodoItemComponent,
     LoginComponent,
     SideMenuComponent,
     SideMenuComponent,
@@ -31,12 +28,17 @@ import {RegisterComponent} from './register/register.component';
     BrowserModule,
     IonicModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+  ],
+  exports: [
+    RegisterComponent,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
