@@ -40,6 +40,13 @@ export class Account extends Model<Account> {
       return (Account.valid_password(password) && Account.valid_username(username) && !await Account.user_exists(username));
   }
 
+  static async login(username: String, password: String): Promise<Boolean> {
+    var user = await Account.findOne({ where: { username: String(username)} });
+    if (user !== null && user.password==password)
+      return true
+    return false
+  }
+
   fromSimplification(simplification: any): void {
     console.log("body: "+simplification)
     this.username = simplification['username'];

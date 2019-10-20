@@ -13,6 +13,13 @@ export class DatabaseService {
         return true;
     }
 
+    /* posts an object to the desired path
+    * @return response of the object
+    */
+    post(location: string, tuple: object, func: any): void {
+      this.http.post(this.url+location, tuple).subscribe(data => func(data))
+    }
+
    /**
     * checks if the user exists
     * @param name: name of the user that should be found

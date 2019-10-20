@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   repeatPassword: string;
   error = null;
-  databaseUrl = 'http://localhost:4200/account/';
+  databaseUrl = 'http://localhost:3001/account/';
   database = new DatabaseService(this.http, this.databaseUrl);
 
   register(name: string, password: string, repeatPassword: string) {

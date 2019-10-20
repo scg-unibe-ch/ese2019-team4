@@ -26,18 +26,17 @@ router.post('/', async (req: Request, res: Response) => {
       res.send(false);
   }
 });
-router.get('/:id', async (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
-  const instance = await Account.findById(id);
-  if (instance == null) {
-    res.statusCode = 404;
-    res.json({
-      'message': 'not found'
-    });
-    return;
+
+router.post('/login/', async (req: Request, res: Response) => {
+  const username = req.body["username"];
+  const password = req.body["password"];
+  console.log(username+password)
+  if (await Account.login(username, password)) {
+      res.send(true);
+  } else {
+      res.send(false);
   }
-  res.statusCode = 200;
-  res.send(instance.toSimplification());
 });
+
 
 export const AccountController: Router = router;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {DatabaseService} from '../database/database.service';
+import { DatabaseService } from '../database/database.service';
+import { DatabaseComponent } from "../database/database.component";
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,11 @@ export class LoginComponent implements OnInit {
   name: string;
   password: string;
   error = null;
-  databaseUrl = 'http://localhost:4200/account/';
+  databaseUrl = 'http://localhost:3001/account/';
   database = new DatabaseService(this.http, this.databaseUrl);
 
-  login(name: string, password: string,) {
-    if (!this.database.userExists(name))
-      this.error = 'User doesn\'t exist';
-    if (!this.database.passwordMatches(password))
-      this.error = 'Password is not correct';
-    else {
-      this.error = 'Login successful';
-    }
+  login2() {
+    console.log("login");
   }
 
   constructor(private http: HttpClient) {
