@@ -15,9 +15,12 @@ import { HttpClient } from "@angular/common/http";
 export class LoginComponent implements OnInit {
   error = null;
   customer = {};
-  database_url = "http://localhost:3001/account/";
+  database_url = "http://localhost:3001/customer/";
   database = new DatabaseService(this.http, this.database_url);
 
+  /* checks if username and password match
+  *
+  */
   login(name: string, password: string,) {
     var func = function(success) {
       if (success)

@@ -2,13 +2,10 @@
 import express from 'express';
 
 // import all the controllers. If you add a new controller, make sure to import it here as well.
-import {TodoListController, TodoItemController} from './controllers';
 import {Sequelize} from 'sequelize-typescript';
-import {TodoList} from './models/todolist.model';
-import {TodoItem} from './models/todoitem.model';
-import {WelcomeController} from './controllers/welcome.controller';
-import {Account} from './models/account.model';
-import {AccountController} from './controllers/account.controller';
+
+import {Customer} from './models/customer.model';
+import {CustomerController} from './controllers/customer.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -17,7 +14,7 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([TodoList, TodoItem, Account]);
+sequelize.addModels([Customer]);
 
 // create a new express application instance
 const app: express.Application = express();
@@ -36,10 +33,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/todolist', TodoListController);
-app.use('/todoitem', TodoItemController);
-app.use('/welcome', WelcomeController);
-app.use('/account', AccountController);
+app.use('/customer', CustomerController);
 
 
 sequelize.sync().then(() => {

@@ -15,7 +15,7 @@ import { HttpClient } from "@angular/common/http";
 export class RegistrationComponent implements OnInit {
   error = null;
   customer = {};
-  database_url = "http://localhost:3001/account/";
+  database_url = "http://localhost:3001/customer/";
   database = new DatabaseService(this.http, this.database_url);
 
   register(name: string, password: string, password_verify: string) {
@@ -24,8 +24,13 @@ export class RegistrationComponent implements OnInit {
       else if (password != password_verify)
         this.error = "Passwords are not the same!"
       else {
-        this.database.add({"username": name, "password": password});
-        this.error = null;
+        var func = function(success) {
+          if (success)
+            this.error = "Register successful"
+          else
+            this.error = "User already exists"
+        }.bind(this)
+        this.database.add({"username": name, "password": password}, func);
       }
     }
 
