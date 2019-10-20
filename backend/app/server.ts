@@ -6,6 +6,8 @@ import {Sequelize} from 'sequelize-typescript';
 
 import {Customer} from './models/customer.model';
 import {CustomerController} from './controllers/customer.controller';
+import {Provider} from './models/provider.model';
+import {ProviderController} from './controllers/provider.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -14,7 +16,7 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([Customer]);
+sequelize.addModels([Customer, Provider]);
 
 // create a new express application instance
 const app: express.Application = express();
@@ -34,6 +36,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/customer', CustomerController);
+app.use('/provider', ProviderController);
 
 
 sequelize.sync().then(() => {

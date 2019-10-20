@@ -13,10 +13,16 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  @Input() title: string;
+  @Input()
+  set url(str: string) {
+    this.database = new DatabaseService(this.http, str);
+    this.database_url = str;
+  }
+  database_url: string;
+  database = null;
   error = null;
   customer = {};
-  database_url = "http://localhost:3001/customer/";
-  database = new DatabaseService(this.http, this.database_url);
 
   register(name: string, password: string, password_verify: string) {
       if (name == null || password == null)

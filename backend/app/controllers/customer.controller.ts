@@ -1,5 +1,6 @@
 import {Router, Request, Response} from 'express';
 import {Customer} from '../models/customer.model';
+import {Provider} from '../models/provider.model';
 
 const router: Router = Router();
 
@@ -15,7 +16,8 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];
-  if (await Customer.valid_register(username, password)) {
+  console.log("here")
+  if (await Customer.valid_register(username, password) && await Provider.valid_register(username, password)) {
       const instance = new Customer();
       instance.fromSimplification(req.body);
       await instance.save();
@@ -33,7 +35,11 @@ router.post('/login/', async (req: Request, res: Response) => {
   console.log(username+password)
   if (await Customer.login(username, password)) {
       res.send(true);
-  } else {
+  }
+  else if (await Provider.login(username, password)) {
+      res.send(true);
+  }
+  else {
       res.send(false);
   }
 });
