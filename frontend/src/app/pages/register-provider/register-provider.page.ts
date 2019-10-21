@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {DatabaseService} from '../database/database.service';
+import {DatabaseService} from '../../database/database.service';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-register-provider',
+  templateUrl: './register-provider.page.html',
+  styleUrls: ['./register-provider.page.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterProviderPage implements OnInit {
   name: string;
   password: string;
   repeatPassword: string;
@@ -21,14 +21,14 @@ export class RegisterComponent implements OnInit {
       // tslint:disable-next-line:triple-equals
     } else if (password != repeatPassword) {
       this.error = 'Passwords are not the same!';
- } else {
+    } else {
       this.database.add({username: name, password});
       this.error = null;
     }
   }
-
   constructor(private http: HttpClient) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

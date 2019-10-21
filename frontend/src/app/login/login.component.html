@@ -1,36 +1,36 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-        <ion-card-header>
-          <ion-card-title>Login</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-row>
-            <ion-input placeholder="Username" [(ngModel)]="name"></ion-input>
-          </ion-row>
-          <ion-row>
-            <ion-input placeholder="Password" [(ngModel)]="password"></ion-input>
-          </ion-row>
-          <ion-row>
-            <ion-button><ion-icon name="return-right"></ion-icon>enter</ion-button>
-          </ion-row>
-        </ion-card-content>
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-input placeholder="Username" [(ngModel)]="name"></ion-input>
+        </ion-row>
+        <ion-row>
+          <ion-input placeholder="Password" [(ngModel)]="password"></ion-input>
+        </ion-row>
+        <ion-row>
+          <ion-button><ion-icon name="return-right"></ion-icon>enter</ion-button>
+        </ion-row>
+      </ion-card-content>
     </ion-col>
 
     <ion-col>
-        <ion-card-header>
-          <ion-card-title>Register</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <p>Do you want to sell your services to others?</p>
-            <p>
-              <ion-button size="small" fill="outline">Register as a producer</ion-button>
-            </p>
-            <p>Or do you want to organize your own events?</p>
-            <p>
-              <ion-button size="small" fill="outline">Register as a customer</ion-button>
-            </p>
-        </ion-card-content>
+      <ion-card-header>
+        <ion-card-title>Register</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Do you want to sell your services to others?</p>
+        <p>
+          <ion-button size="small" fill="outline" routerLink="/register-provider">Register as a producer</ion-button>
+        </p>
+        <p>Or do you want to organize your own events?</p>
+        <p>
+          <ion-button size="small" fill="outline" routerLink="/register-consumer">Register as a consumer</ion-button>
+        </p>
+      </ion-card-content>
     </ion-col>
   </ion-row>
 </ion-grid>

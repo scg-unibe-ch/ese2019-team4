@@ -10,19 +10,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 
-import {LoginComponent} from './login/login.component';
 import {SideMenuComponent} from './side-menu/side-menu.component';
-import {RegisterComponent} from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DatabaseComponent } from "./database/database.component";
+import { DatabaseComponent } from './database/database.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     SideMenuComponent,
     SideMenuComponent,
-    RegisterComponent,
     DatabaseComponent
   ],
   entryComponents: [],
@@ -39,8 +35,6 @@ import { DatabaseComponent } from "./database/database.component";
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   exports: [
-    RegisterComponent,
-    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
