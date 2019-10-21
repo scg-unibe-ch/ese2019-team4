@@ -1,6 +1,6 @@
 /** Displays database tables from the backend */
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-database',
@@ -14,9 +14,9 @@ export class DatabaseComponent implements OnInit {
   table: Object;
 
   update() {
-      //updates the database table from the url
+      // updates the database table from the url
       this.http.get(this.url).subscribe(data => this.table = data);
-      console.log("updated table");
+      console.log('updated table');
   }
 
   constructor(private http: HttpClient) { }

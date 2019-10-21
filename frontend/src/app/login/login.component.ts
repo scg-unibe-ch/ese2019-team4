@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../database/database.service';
-import { DatabaseComponent } from "../database/database.component";
+import { DatabaseComponent } from '../database/database.component';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   database = new DatabaseService(this.http, this.databaseUrl);
 
   login2() {
-    console.log("login");
+    console.log('login');
   }
 
   constructor(private http: HttpClient) {

@@ -5,8 +5,6 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {HttpClient} from '@angular/common/http';
-import {RegisterComponent} from './register/register.component';
-import {LoginComponent} from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +33,7 @@ export class AppComponent implements OnInit {
    */
 
 
-  url = "http://localhost:3001/account/";
+  url = 'http://localhost:4200/account/';
 
   initializeApp() {
     this.platform.ready().then(() => {
