@@ -1,11 +1,24 @@
 <ion-row>
-  <ion-input placeholder="Username" [(ngModel)]="name"></ion-input>
+  <ion-item><ion-input
+    placeholder="Username"
+    [(ngModel)]="name">
+  </ion-input></ion-item>
 </ion-row>
 <ion-row>
-  <ion-input placeholder="Password" [(ngModel)]="password"></ion-input>
+  <ion-item><ion-input
+    placeholder="Password"
+    [(ngModel)]="password"
+    required minlength="6"
+    type="password">
+  </ion-input></ion-item>
 </ion-row>
 <ion-row>
-  <ion-input placeholder="Repeat-Your-Password" [(ngModel)]="repeatPassword"></ion-input>
+  <ion-item><ion-input
+    placeholder="ConfirmPassword"
+    type="password"
+    required minlength="6"
+    [(ngModel)]="repeatPassword">
+  </ion-input></ion-item>
 </ion-row>
 <ion-row>
   <ion-button><ion-icon name="return-right"></ion-icon>Register</ion-button>

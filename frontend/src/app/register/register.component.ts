@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   name: string;
   password: string;
   repeatPassword: string;
+  same: boolean;
   error = null;
   databaseUrl = 'http://localhost:3001/account/';
   database = new DatabaseService(this.http, this.databaseUrl);
@@ -24,6 +25,13 @@ export class RegisterComponent implements OnInit {
  } else {
       this.database.add({username: name, password});
       this.error = null;
+    }
+  }
+
+  comparePasswords(repeatPassword: string) {
+    this.same = false;
+    if (this.password === repeatPassword) {
+      this.same = true;
     }
   }
 
