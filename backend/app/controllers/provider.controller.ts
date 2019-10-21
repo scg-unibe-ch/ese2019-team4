@@ -1,13 +1,14 @@
 import {Router, Request, Response} from 'express';
-import {Account} from '../models/account.model';
+import {Provider} from '../models/provider.model';
+import {Customer} from '../models/customer.model';
 
 const router: Router = Router();
 
 //returns the table
 router.get('/', async (req: Request, res: Response) => {
-  const instances = await Account.findAll();
+  const instances = await Provider.findAll();
   res.statusCode = 200;
-  res.send({"columns": Object.keys(Account.rawAttributes), "values": instances.map(e => e.toSimplification())});
+  res.send({"columns": Object.keys(Provider.rawAttributes), "values": instances.map(e => e.toSimplification())});
 });
 
 // accepts user information in form of {"username": $username, "password": $password}
@@ -15,8 +16,8 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];
-  if (await Account.valid_register(username, password)) {
-      const instance = new Account();
+  if (await Provider.valid_register(username, password) && await Customer.valid_register(username, password)) {
+      const instance = new Provider();
       instance.fromSimplification(req.body);
       await instance.save();
       res.statusCode = 201;
@@ -27,16 +28,5 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-router.post('/login/', async (req: Request, res: Response) => {
-  const username = req.body["username"];
-  const password = req.body["password"];
-  console.log(username+password)
-  if (await Account.login(username, password)) {
-      res.send(true);
-  } else {
-      res.send(false);
-  }
-});
 
-
-export const AccountController: Router = router;
+export const ProviderController: Router = router;

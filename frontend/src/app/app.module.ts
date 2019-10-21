@@ -14,6 +14,7 @@ import {LoginComponent} from './login/login.component';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import {RegisterComponent} from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DatabaseComponent } from "./database/database.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     SideMenuComponent,
     SideMenuComponent,
-    RegisterComponent
+    RegisterComponent,
+    DatabaseComponent
   ],
   entryComponents: [],
   imports: [

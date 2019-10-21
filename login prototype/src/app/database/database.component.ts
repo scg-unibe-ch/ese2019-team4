@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
 
 export class DatabaseComponent implements OnInit {
   @Input() url: string;
-  table: Object;
+  table: object = {"columns": [], "values": []};
 
   update() {
       //updates the database table from the url

@@ -25,7 +25,7 @@ export class Account extends Model<Account> {
 
   static async user_exists(name: String): Promise<Boolean> {
     // checks if user already exists in database
-    return await Account.findOne({ where: { username: String(name)} }).then(user => {return (user != null)});
+    return await this.findOne({ where: { username: String(name)} }).then(user => {return (user != null)});
   }
 
   static valid_username(username: String): boolean {
@@ -37,7 +37,14 @@ export class Account extends Model<Account> {
   }
 
   static async valid_register(username: String, password: String): Promise<Boolean> {
-      return (Account.valid_password(password) && Account.valid_username(username) && !await Account.user_exists(username));
+      return (this.valid_password(password) && this.valid_username(username) && !await this.user_exists(username));
+  }
+
+  static async login(username: String, password: String): Promise<Boolean> {
+    var user = await this.findOne({ where: { username: String(username)} });
+    if (user !== null && user.password==password)
+      return true
+    return false
   }
 
   fromSimplification(simplification: any): void {

@@ -16,6 +16,7 @@ export class DatabaseComponent implements OnInit {
   update() {
       //updates the database table from the url
       this.http.get(this.url).subscribe(data => this.table = data);
+      console.log("updated table");
   }
 
   constructor(private http: HttpClient) { }

@@ -15,7 +15,6 @@ import {LoginComponent} from './login/login.component';
 })
 
 export class AppComponent implements OnInit {
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -34,6 +33,9 @@ export class AppComponent implements OnInit {
     ,
   })
    */
+
+
+  url = "http://localhost:3001/account/";
 
   initializeApp() {
     this.platform.ready().then(() => {
