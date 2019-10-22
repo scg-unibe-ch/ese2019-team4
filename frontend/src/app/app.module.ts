@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import {SideMenuComponent} from './side-menu/side-menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DatabaseComponent } from './database/database.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DatabaseComponent } from './database/database.component';
   providers: [
     StatusBar,
     SplashScreen,
+    RegisterComponent,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   exports: [

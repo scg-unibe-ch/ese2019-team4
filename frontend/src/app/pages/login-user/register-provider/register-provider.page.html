@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Register as a provider</ion-title>
+    <ion-title>Register as a Provider</ion-title>
     <ion-button [routerLink]="['/login-user']" slot="start">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
@@ -13,31 +13,7 @@
       <ion-card-title>Please enter:</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-row>
-        <ion-item><ion-input
-          placeholder="Username"
-          [(ngModel)]="name">
-        </ion-input></ion-item>
-      </ion-row>
-      <ion-row>
-        <ion-item><ion-input
-          placeholder="Password"
-          [(ngModel)]="password"
-          required minlength="6"
-          type="password">
-        </ion-input></ion-item>
-      </ion-row>
-      <ion-row>
-        <ion-item><ion-input
-          placeholder="ConfirmPassword"
-          type="password"
-          required minlength="6"
-          [(ngModel)]="repeatPassword">
-        </ion-input></ion-item>
-      </ion-row>
-      <ion-row>
-        <ion-button><ion-icon name="return-right"></ion-icon>Register</ion-button>
-      </ion-row>
+      <app-register url="http://localhost:3001/provider/"></app-register>
     </ion-card-content>
   </ion-card>
 </ion-content>

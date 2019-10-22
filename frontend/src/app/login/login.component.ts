@@ -9,18 +9,25 @@ import { DatabaseComponent } from '../database/database.component';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  name: string;
-  password: string;
   error = null;
-  databaseUrl = 'http://localhost:3001/account/';
-  database = new DatabaseService(this.http, this.databaseUrl);
+  customer = {};
+  database_url = "http://localhost:3001/customer/";
+  database = new DatabaseService(this.http, this.database_url);
 
-  login2() {
-    console.log('login');
+  /* checks if username and password match
+  *
+  */
+  login(name: string, password: string,) {
+    var func = function(success) {
+      if (success)
+        this.error = "Login successful"
+      else
+        this.error = "Invalid username or password"
+    }.bind(this)
+    this.database.post("login", {"username": name, "password": password}, func)
   }
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }

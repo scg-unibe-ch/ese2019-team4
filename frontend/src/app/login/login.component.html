@@ -6,13 +6,17 @@
       </ion-card-header>
       <ion-card-content>
         <ion-row>
-          <ion-input placeholder="Username" [(ngModel)]="name"></ion-input>
+          <ion-input placeholder="Username" [(ngModel)]="customer.name"></ion-input>
         </ion-row>
         <ion-row>
-          <ion-input placeholder="Password" [(ngModel)]="password"></ion-input>
+          <ion-input placeholder="Password" [(ngModel)]="customer.password"></ion-input>
         </ion-row>
         <ion-row>
-          <ion-button><ion-icon name="return-right"></ion-icon>enter</ion-button>
+          {{error}}
+        </ion-row>
+        <ion-row>
+          <ion-button (click)="login(customer.name, customer.password)">
+            <ion-icon name="return-right"></ion-icon>enter</ion-button>
         </ion-row>
       </ion-card-content>
     </ion-col>

@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { RegisterProviderPage } from './register-provider.page';
 
+import { RegisterComponent } from "../../../register/register.component"
+
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RegisterProviderPage]
+  declarations: [RegisterProviderPage, RegisterComponent]
 })
 export class RegisterProviderPageModule {}

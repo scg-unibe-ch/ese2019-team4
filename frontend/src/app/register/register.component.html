@@ -1,25 +1,29 @@
 <ion-row>
   <ion-item><ion-input
     placeholder="Username"
-    [(ngModel)]="name">
+    [(ngModel)]="customer.name">
   </ion-input></ion-item>
 </ion-row>
 <ion-row>
   <ion-item><ion-input
     placeholder="Password"
-    [(ngModel)]="password"
+    [(ngModel)]="customer.password"
     required minlength="6"
     type="password">
   </ion-input></ion-item>
 </ion-row>
 <ion-row>
   <ion-item><ion-input
-    placeholder="ConfirmPassword"
+    placeholder="Confirm Password"
     type="password"
     required minlength="6"
-    [(ngModel)]="repeatPassword">
+    [(ngModel)]="customer.password_verify">
   </ion-input></ion-item>
 </ion-row>
 <ion-row>
-  <ion-button><ion-icon name="return-right"></ion-icon>Register</ion-button>
+  {{error}}
+</ion-row>
+<ion-row>
+  <ion-button (click)="register(customer.name, customer.password, customer.password_verify)">
+    <ion-icon name="return-right"></ion-icon>Register</ion-button>
 </ion-row>
