@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { RegisterProviderPage } from './register-provider.page';
 
-import { RegisterComponent } from "../../../register/register.component"
+import { RegisterModule } from "../../../register/register.module"
 
 const routes: Routes = [
   {
@@ -21,8 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    RegisterModule
   ],
-  declarations: [RegisterProviderPage, RegisterComponent]
+  declarations: [RegisterProviderPage]
 })
 export class RegisterProviderPageModule {}
