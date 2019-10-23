@@ -1,5 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {MenuController} from '@ionic/angular';
+import {SideMenuComponent} from './side-menu/side-menu.component';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -13,12 +15,14 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit {
+  navigate: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private httpClient: HttpClient
   ) {
+    this.sideMenu();
     this.initializeApp();
   }
 
@@ -40,6 +44,27 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+  //array of pages for sidemenu, would like to move it to the sidemenu component
+  sideMenu() {
+    this.navigate =
+      [
+        {
+          title : 'Home',
+          url   : '/home',
+          icon  : 'home'
+        },
+        {
+          title : 'Login',
+          url   : 'login-user',
+          icon  : 'log-in'
+        },
+        {
+          title : 'Register',
+          url   : 'login-user/register-consumer',
+          icon  : 'person-add'
+        },
+      ];
   }
 
   ngOnInit() {
