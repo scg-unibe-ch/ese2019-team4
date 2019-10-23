@@ -32,4 +32,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  nextSetPassword(Password) {
+    Password.setFocus();
+  }
 }

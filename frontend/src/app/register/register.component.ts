@@ -40,4 +40,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  nextField(Field) {
+    Field.setFocus();
+  }
 }

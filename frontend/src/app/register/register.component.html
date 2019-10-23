@@ -1,24 +1,29 @@
 <ion-row>
   <ion-item><ion-input
     placeholder="Username"
-    [(ngModel)]="customer.name">
-  </ion-input></ion-item>
+    (keyup.enter)="nextField(Field1)"
+    [(ngModel)]="customer.name"
+  ></ion-input></ion-item>
 </ion-row>
 <ion-row>
   <ion-item><ion-input
     placeholder="Password"
+    required minlength="4"
+    type="password"
+    #Field1
+    (keyup.enter)="nextField(Field2)"
     [(ngModel)]="customer.password"
-    required minlength="6"
-    type="password">
-  </ion-input></ion-item>
+  ></ion-input></ion-item>
 </ion-row>
 <ion-row>
   <ion-item><ion-input
     placeholder="Confirm Password"
     type="password"
-    required minlength="6"
-    [(ngModel)]="customer.password_verify">
-  </ion-input></ion-item>
+    required minlength="4"
+    #Field2
+    [(ngModel)]="customer.password_verify"
+    (keyup.enter)="register(customer.name, customer.password, customer.password_verify)"
+  ></ion-input></ion-item>
 </ion-row>
 <ion-row>
   {{error}}

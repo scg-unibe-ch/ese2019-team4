@@ -6,10 +6,20 @@
       </ion-card-header>
       <ion-card-content>
         <ion-row>
-          <ion-input placeholder="Username" [(ngModel)]="customer.name"></ion-input>
+          <ion-input
+            placeholder="Username"
+            [(ngModel)]="customer.name"
+            (keyup.enter)="nextSetPassword(Password)"
+          ></ion-input>
         </ion-row>
         <ion-row>
-          <ion-input placeholder="Password" [(ngModel)]="customer.password"></ion-input>
+          <ion-input
+            placeholder="Password"
+            type="password"
+            #Password
+            [(ngModel)]="customer.password"
+            (keyup.enter)="login(customer.name, customer.password)"
+          ></ion-input>
         </ion-row>
         <ion-row>
           {{error}}
