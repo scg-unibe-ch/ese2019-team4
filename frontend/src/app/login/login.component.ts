@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../database/database.service';
 import { DatabaseComponent } from '../database/database.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,15 +20,18 @@ export class LoginComponent implements OnInit {
   */
   login(name: string, password: string,) {
     var func = function(success) {
-      if (success)
+      if (success) {
         this.error = "Login successful"
+        this.router.navigate(['/home']);
+      }
       else
         this.error = "Invalid username or password"
     }.bind(this)
     this.database.post("login", {"username": name, "password": password}, func)
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   ngOnInit() {
   }
