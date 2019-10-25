@@ -1,34 +1,45 @@
-<ion-row>
-  <ion-item><ion-input
-    placeholder="Username"
-    (keyup.enter)="nextField(Field1)"
-    [(ngModel)]="customer.name"
-  ></ion-input></ion-item>
-</ion-row>
-<ion-row>
-  <ion-item><ion-input
-    placeholder="Password"
-    required minlength="4"
-    type="password"
-    #Field1
-    (keyup.enter)="nextField(Field2)"
-    [(ngModel)]="customer.password"
-  ></ion-input></ion-item>
-</ion-row>
-<ion-row>
-  <ion-item><ion-input
-    placeholder="Confirm Password"
-    type="password"
-    required minlength="4"
-    #Field2
-    [(ngModel)]="customer.password_verify"
-    (keyup.enter)="register(customer.name, customer.password, customer.password_verify)"
-  ></ion-input></ion-item>
-</ion-row>
-<ion-row>
-  {{error}}
-</ion-row>
-<ion-row>
-  <ion-button (click)="register(customer.name, customer.password, customer.password_verify)">
-    <ion-icon name="return-right"></ion-icon>Register</ion-button>
-</ion-row>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item><ion-input
+        placeholder="Username"
+        [(ngModel)]="customer.name">
+      </ion-input></ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item><ion-input
+        placeholder="Password"
+        [(ngModel)]="customer.password"
+        required minlength="6"
+        type="password">
+      </ion-input></ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item><ion-input
+        placeholder="Confirm Password"
+        type="password"
+        minlength ="6"
+        [(ngModel)]="customer.password_verify">
+      </ion-input></ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>{{error}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-checkbox margin-horizontal="5"></ion-checkbox> I would like to register as a provider.
+    </ion-col>
+  </ion-row>
+  <ion-row margin-bottom="12">
+    <ion-col>
+      <ion-button (click)="register(customer.name, customer.password, customer.password_verify)">
+        <ion-icon name="return-right"></ion-icon>Register</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
