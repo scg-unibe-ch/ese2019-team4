@@ -10,4 +10,18 @@
 
 <ion-content>
   <h1>Coming soon</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="3">
+        <ion-list>
+          <ion-item *ngFor="let post of posts" [routerLink]= "post.id">
+            <ion-card>
+              <ion-card-header>{{post.title}}</ion-card-header>
+              <ion-card-content>{{post.body}}</ion-card-content>
+            </ion-card>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

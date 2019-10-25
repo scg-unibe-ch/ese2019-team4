@@ -15,7 +15,8 @@ const routes: Routes = [
         path: 'register-consumer', loadChildren: './pages/login-user/register-consumer/register-consumer.module#RegisterConsumerPageModule'
       }
     ]
-  },  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  },
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'user-profile', loadChildren: './user-profile/user-profile.module#UserProfilePageModule' }
 
 ];
