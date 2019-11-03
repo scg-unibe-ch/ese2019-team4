@@ -1,6 +1,11 @@
 import {Router, Request, Response} from 'express';
 import {Customer} from '../models/customer.model';
 import {Provider} from '../models/provider.model';
+const bodyParser = require('body-parser');
+import * as jwt from 'jsonwebtoken';
+import * as fs from "fs";
+
+const RSA_PRIVATE_KEY = fs.readFileSync('./app/services/private.key');
 
 const router: Router = Router();
 
@@ -33,11 +38,15 @@ router.post('/login/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];
   console.log(username+password)
-  if (await Customer.login(username, password)) {
-      res.send(true);
-  }
-  else if (await Provider.login(username, password)) {
-      res.send(true);
+  const expiration_time = 120; //time in minutes
+  if (await Customer.login(username, password) || await Provider.login(username, password)) {
+      const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
+              algorithm: 'RS256',
+              expiresIn: expiration_time, //expiration in minutes
+              subject: username});
+      res.send({
+        idToken: jwtBearerToken,
+        expiresIn: expiration_time});
   }
   else {
       res.send(false);
