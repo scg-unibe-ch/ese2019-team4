@@ -1,6 +1,6 @@
 // import everything from express and assign it to the express variable
 import express from 'express';
-
+import * as fs from "fs";
 // import all the controllers. If you add a new controller, make sure to import it here as well.
 import {Sequelize} from 'sequelize-typescript';
 
@@ -34,6 +34,12 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+const expressJwt = require('express-jwt');
+
+const RSA_PUBLIC_KEY = fs.readFileSync('./app/services/public.key');
+
+const checkIfAuthenticated = expressJwt({secret: RSA_PUBLIC_KEY});
 
 app.use('/customer', CustomerController);
 app.use('/provider', ProviderController);
