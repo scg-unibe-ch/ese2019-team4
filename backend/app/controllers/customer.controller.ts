@@ -40,15 +40,21 @@ router.post('/login/', async (req: Request, res: Response) => {
   console.log(username+password)
   const expiration_time = 120; //time in minutes
   if (await Customer.login(username, password) || await Provider.login(username, password)) {
+      //set the type of the logged in profile
+      var type = "customer";
+      if (await Provider.login(username, password)) type="provider";
+      //create a rsa jwt
       const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
               algorithm: 'RS256',
               expiresIn: expiration_time, //expiration in minutes
               subject: username});
       res.send({
         idToken: jwtBearerToken,
-        expiresIn: expiration_time});
+        expiresIn: expiration_time,
+        type: type});
   }
   else {
+      // the login failed, either password is wrong or user does not exist
       res.send(false);
   }
 });
