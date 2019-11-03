@@ -26,12 +26,14 @@ export class LoginService {
 
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('type', authResult.type);
+        localStorage.setItem('username', authResult.username);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
     }
 
     logout() {
         localStorage.removeItem("id_token");
         localStorage.removeItem('type');
+        localStorage.removeItem('username');
         localStorage.removeItem("expires_at");
     }
 

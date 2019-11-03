@@ -51,7 +51,8 @@ router.post('/login/', async (req: Request, res: Response) => {
       res.send({
         idToken: jwtBearerToken,
         expiresIn: expiration_time,
-        type: type});
+        type: type,
+        username: username});
   }
   else {
       // the login failed, either password is wrong or user does not exist
