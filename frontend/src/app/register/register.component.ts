@@ -66,4 +66,8 @@ export class RegisterComponent implements OnInit {
     }
     return true;
   }
+
+  nextSetFocus(password) {
+    password.setFocus();
+  }
 }

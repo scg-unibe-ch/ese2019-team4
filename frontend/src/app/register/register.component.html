@@ -3,7 +3,8 @@
     <ion-col>
       <ion-item><ion-input
         placeholder="Username"
-        [(ngModel)]="customer.name">
+        [(ngModel)]="customer.name"
+      (keyup.enter)="nextSetFocus(password)">
       </ion-input></ion-item>
     </ion-col>
   </ion-row>
@@ -13,7 +14,9 @@
         placeholder="Password"
         [(ngModel)]="customer.password"
         required minlength="6"
-        type="password">
+        type="password"
+        #password
+        (keyup.enter)="nextSetFocus(confirmpassword)">
       </ion-input></ion-item>
     </ion-col>
   </ion-row>
@@ -23,7 +26,9 @@
         placeholder="Confirm Password"
         type="password"
         minlength ="6"
-        [(ngModel)]="customer.password_verify">
+        #confirmpassword
+        [(ngModel)]="customer.password_verify"
+      (keyup.enter)="register(customer.name, customer.password, customer.password_verify)">
       </ion-input></ion-item>
     </ion-col>
   </ion-row>

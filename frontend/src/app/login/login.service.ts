@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { DatabaseService } from '../database/database.service';
-import * as moment from "moment";
+//import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class LoginService {
         localStorage.removeItem("id_token");
         localStorage.removeItem('type');
         localStorage.removeItem('username');
-        localStorage.removeItem("expires_at");
+        //localStorage.removeItem("expires_at");
     }
 
     public isLoggedIn() {
