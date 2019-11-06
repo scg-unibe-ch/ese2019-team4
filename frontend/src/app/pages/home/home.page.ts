@@ -10,11 +10,13 @@ export class HomePage implements OnInit {
   private posts: Post[] = [
     {
       id: '1',
+      src: '',
       title: 'Birthday Clown',
       body: 'Will definitely not frighten your children',
     },
     {
       id: '2',
+      src: '',
       title: 'Catering',
       body: 'special discounts for weddings, available in the greater Bern area',
     }

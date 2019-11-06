@@ -9,18 +9,17 @@
 </ion-header>
 
 <ion-content>
-  <h1>Coming soon; Logged in as {{username}} a {{type}}</h1>
+  <h1>Logged in as {{username}} a {{type}}</h1>
   <ion-grid>
     <ion-row>
       <ion-col sizeMd="3">
-        <ion-list>
-          <ion-item *ngFor="let post of posts" [routerLink]= "post.id">
-            <ion-card>
+            <ion-card *ngFor="let post of posts" [routerLink]= "post.id">
               <ion-card-header>{{post.title}}</ion-card-header>
-              <ion-card-content>{{post.body}}</ion-card-content>
+              <ion-card-content>
+                {{post.body}}
+                <ion-img [src]="post.src"></ion-img>
+              </ion-card-content>
             </ion-card>
-          </ion-item>
-        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
