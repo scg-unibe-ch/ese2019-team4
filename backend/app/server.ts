@@ -8,6 +8,8 @@ import {Customer} from './models/customer.model';
 import {CustomerController} from './controllers/customer.controller';
 import {Provider} from './models/provider.model';
 import {ProviderController} from './controllers/provider.controller';
+import {Post} from './models/post.model';
+import {PostController} from './controllers/post.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -16,7 +18,7 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([Customer, Provider]);
+sequelize.addModels([Customer, Provider, Post]);
 
 // create a new express application instance
 const app: express.Application = express();
@@ -43,6 +45,7 @@ const checkIfAuthenticated = expressJwt({secret: RSA_PUBLIC_KEY});
 
 app.use('/customer', CustomerController);
 app.use('/provider', ProviderController);
+app.use('/post', PostController);
 
 
 sequelize.sync().then(() => {

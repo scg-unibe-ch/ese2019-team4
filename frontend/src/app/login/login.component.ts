@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   error = null;
   customer = {};
-  database_url = "http://localhost:3001/customer/";
+  database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
   authentication = new LoginService(this.http, this.database)
 
