@@ -13,19 +13,32 @@ router.get('/posts/',  (req: Request, res: Response) => {
 
 // accepts user information in form of {"username": $username, "password": $password}
 // return true if the value has been added to the data base
-router.post('/posts', async (req: Request, res: Response) => {
-  /*const username = req.body["username"];
-  const password = req.body["password"];
-  if (await Account.valid_register(username, password)) {*/
+router.post('/', async (req: Request, res: Response) => {
     const instance = new Post();
     instance.fromSimplification(req.body);
-    await instance.save();
+    await instance.save().catch(error => {
+      res.send(false);
+    });
     res.statusCode = 201;
     res.send(true);
- /* } else {
-    res.statusCode = 201;
-    res.send(false);
-  }*/
+});
+router.delete('/:id', async (req, res) =>{
+  await Post.destroy({
+    where: {id: req.params.id}
+  }).then(() => {res.json(`Post with id ${req.params.id} deleted`)})
+    .catch(error => {
+    res.json('Could not delete');
+  })
+
+});
+router.delete('/', async (req, res) =>{
+  await Post.destroy({
+    where: {Author: req.body.author}
+  }).then(() => {res.json(`All of ${req.body.author}'s posts deleted`)})
+    .catch(error => {
+      res.json('Could not delete');
+    })
+
 });
 /*
 router.post('/login/', async (req: Request, res: Response) => {

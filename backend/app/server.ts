@@ -9,7 +9,7 @@ import {CustomerController} from './controllers/customer.controller';
 import {Provider} from './models/provider.model';
 import {ProviderController} from './controllers/provider.controller';
 import {Post} from './models/post.model';
-import {PostController} from './controllers/post.controller';
+import { PostController } from './controllers/post.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -23,6 +23,9 @@ sequelize.addModels([Customer, Provider, Post]);
 // create a new express application instance
 const app: express.Application = express();
 app.use(express.json());
+app.use('/customer', CustomerController);
+app.use('/provider', ProviderController);
+app.use('/posts', PostController);
 
 // define the port the express app will listen on
 var port: number = 3001;
@@ -42,11 +45,6 @@ const expressJwt = require('express-jwt');
 const RSA_PUBLIC_KEY = fs.readFileSync('./app/services/public.key');
 
 const checkIfAuthenticated = expressJwt({secret: RSA_PUBLIC_KEY});
-
-app.use('/customer', CustomerController);
-app.use('/provider', ProviderController);
-app.use('/post', PostController);
-
 
 sequelize.sync().then(() => {
 // start serving the application on the given port
