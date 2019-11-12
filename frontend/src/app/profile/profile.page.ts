@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../login/login.service';
+import { DatabaseService } from '../database/database.service';
+import { DatabaseComponent } from '../database/database.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +11,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  error = null;
+  customer = {};
+  database_url = 'http://localhost:3001/customer/';
+  database = new DatabaseService(this.http, this.database_url);
+  authentication = new LoginService(this.http, this.database)
 
-  constructor() { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
+
+  username = localStorage.getItem("username");
+  type = localStorage.getItem("type");
+
+  logout() {
+    this.authentication.logout();
+  }
 
   ngOnInit() {
   }
-
 }

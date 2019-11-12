@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
       }.bind(this)
       this.database.post("login", {"username": name, "password": password}, func)
   }
+  logout() {
+    this.authentication.logout();
+  }
 
   constructor(private http: HttpClient,
               private router: Router) { }

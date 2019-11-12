@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Post} from '../../../post.model';
 
 @Component({
@@ -6,7 +6,7 @@ import {Post} from '../../../post.model';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnChanges {
   private posts: Post[] = [
     {
       id: '1',
@@ -27,8 +27,12 @@ export class HomePage implements OnInit {
 
   constructor() {
   }
-
-  ngOnInit() {
+  updateUser() {
+    this.username = localStorage.getItem("username");
+    this.type = localStorage.getItem("type");
+    this.loginButtonVisibility();
+  }
+  loginButtonVisibility() {
     if (this.username != null) {
       document.getElementById("log").style.display = "none";
       document.getElementById("acc").style.display = "block";
@@ -36,5 +40,12 @@ export class HomePage implements OnInit {
       document.getElementById("log").style.display = "block";
       document.getElementById("acc").style.display = "none";
     }
+  }
+  ngOnInit() {
+    this.loginButtonVisibility();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateUser();
   }
 }
