@@ -3,15 +3,22 @@
     <ion-button [routerLink]="['/home']" slot="start">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
+    <ion-button size="fill" (click)="updateUser()" slot="end">
+      <ion-icon name="refresh"></ion-icon>
+    </ion-button>
     <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Information:</h1>
-  <p>{{username}}</p>
-  <p>{{type}}</p>
-<ion-button color="danger" (click)="logout()" routerLink="/home">
-  Logout
-</ion-button>
+  <ion-list>
+    <ion-item>Username: {{username}}</ion-item>
+    <ion-item>Type of User: {{type}}</ion-item>
+    <ion-item id="offer">
+      <ion-button size="fill">Provide a service</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -26,7 +26,19 @@ export class ProfilePage implements OnInit {
   logout() {
     this.authentication.logout();
   }
-
+  updateUser() {
+    this.username = localStorage.getItem("username");
+    this.type = localStorage.getItem("type");
+    this.offerButtonVisibility();
+  }
+  offerButtonVisibility() {
+    if (this.type === 'provider') {
+      document.getElementById("offer").style.display = "block";
+    } else {
+      document.getElementById("offer").style.display = "none";
+    }
+  }
   ngOnInit() {
+    this.offerButtonVisibility();
   }
 }

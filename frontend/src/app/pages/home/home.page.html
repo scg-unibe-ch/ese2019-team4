@@ -2,6 +2,9 @@
   <ion-toolbar color="primary">
     <ion-title>Page Title</ion-title>
     <ion-menu-button autoHide="false" slot="start"></ion-menu-button>
+    <ion-button (click)="updateUser()" slot="end" size="fill">
+      <ion-icon name="refresh"></ion-icon>
+    </ion-button>
     <ion-button routerLink="/login-user" color="danger" slot="end" id="log">
       Login
     </ion-button>
@@ -10,9 +13,10 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <h1 (click)="updateUser()">Logged in as {{username}} a {{type}}</h1>
+  <ion-item>
+    Logged in as {{username}} a {{type}}
+  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col sizeMd="3">
