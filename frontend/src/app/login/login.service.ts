@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { DatabaseService } from '../database/database.service';
-import * as moment from "moment";
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'

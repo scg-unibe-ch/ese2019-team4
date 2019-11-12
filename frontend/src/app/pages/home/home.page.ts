@@ -25,9 +25,16 @@ export class HomePage implements OnInit {
   username = localStorage.getItem("username");
   type = localStorage.getItem("type");
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    if (this.username != null) {
+      document.getElementById("log").style.display = "none";
+      document.getElementById("acc").style.display = "block";
+    } else {
+      document.getElementById("log").style.display = "block";
+      document.getElementById("acc").style.display = "none";
+    }
+  }
 }
