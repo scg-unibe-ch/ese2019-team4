@@ -1,7 +1,6 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {MenuController} from '@ionic/angular';
-import {SideMenuComponent} from './side-menu/side-menu.component';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -66,8 +65,16 @@ export class AppComponent implements OnInit {
         },
       ];
   }
-
-  ngOnInit() {
+  username = localStorage.getItem("username");
+  private updateLinkVisibility() {
+    if (this.username === null) {
+      document.getElementById("ProfileLink").style.display = "none";
+    }
+    else {
+      document.getElementById("ProfileLink").style.display = "block";
+    }
   }
-
+  ngOnInit() {
+    this.updateLinkVisibility();
+  }
 }

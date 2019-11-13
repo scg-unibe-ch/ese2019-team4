@@ -12,13 +12,17 @@ export class HomePage implements OnInit, OnChanges {
   posts = [];
   username = localStorage.getItem("username");
   type = localStorage.getItem("type");
+  status: String;
 
   constructor(private postService: PostService, private http: HttpClient) {
   }
-  updateUser() {
-    this.username = localStorage.getItem("username");
-    this.type = localStorage.getItem("type");
-    this.loginButtonVisibility();
+  loggedInStatus() {
+    if (this.username === null) {
+      this.status = 'Logged out';
+    }
+    else {
+      this.status = 'Logged in as ' + this.username + ' a ' + this.type;
+    }
   }
   loginButtonVisibility() {
     if (this.username != null) {
@@ -39,6 +43,17 @@ export class HomePage implements OnInit, OnChanges {
       .subscribe(data => {
         this.posts = data['instances'];
     });*/
+
+  updateUser() {
+    this.username = localStorage.getItem("username");
+    this.type = localStorage.getItem("type");
+    this.loginButtonVisibility();
+    this.loggedInStatus();
+  }
+  ngOnInit() {
+    this.loginButtonVisibility();
+    this.loggedInStatus();
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {

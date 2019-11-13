@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatabaseComponent } from './database.component';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('DatabaseComponent', () => {
   let component: DatabaseComponent;
@@ -8,7 +9,8 @@ describe('DatabaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatabaseComponent ]
+      declarations: [ DatabaseComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   }));
