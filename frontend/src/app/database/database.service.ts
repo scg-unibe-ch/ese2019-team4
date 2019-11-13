@@ -19,12 +19,6 @@ export class DatabaseService {
     post(location: string, tuple: object, func: any): void {
       this.http.post(this.url+location, tuple).subscribe(data => func(data))
     }
-    // only method in db component, that I deleted
- /* update() {
-    // updates the database table from the url
-    this.http.get(this.url).subscribe(data => this.table = data);
-    console.log('updated table');
-  }*/
 
   constructor(private http: HttpClient, private url: string) { }
 }

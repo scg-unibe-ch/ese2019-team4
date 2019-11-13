@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { LoginService } from './login.service';
-import {DatabaseService} from '../../database/database.service';
+import {DatabaseService} from '../database/database.service';
 import {HttpClientModule} from '@angular/common/http';
 
 /**
