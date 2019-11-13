@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from './login.service';
-import { DatabaseService } from '../database/database.service';
-import { DatabaseComponent } from '../database/database.component';
+import { DatabaseService } from '../../database/database.service';
 import {Router} from '@angular/router';
 
 @Component({

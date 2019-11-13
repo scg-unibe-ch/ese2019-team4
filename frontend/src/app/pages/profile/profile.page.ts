@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginService } from '../../login/login.service';
+import { LoginService } from '../../components/login/login.service';
 import { DatabaseService } from '../../database/database.service';
-import { DatabaseComponent } from '../../database/database.component';
 import {Router} from '@angular/router';
-import {PostService} from '../../post/post.service';
+import {PostService} from '../../database/post/post.service';
 
 @Component({
   selector: 'app-profile',
