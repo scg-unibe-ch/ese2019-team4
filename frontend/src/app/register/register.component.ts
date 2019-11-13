@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
             buttons: [
               {text: 'Okay',
                 handler: () => {
-                  this.router.navigate(['/profile']);
+                  this.router.navigate(['./login-user']);
                 }}
             ]}
           ).then(alertEl => {

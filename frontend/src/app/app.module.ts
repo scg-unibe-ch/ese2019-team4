@@ -10,7 +10,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 
-import {SideMenuComponent} from './side-menu/side-menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DatabaseComponent } from './database/database.component';
 import { RegisterComponent } from './register/register.component';
@@ -18,8 +17,6 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SideMenuComponent,
-    SideMenuComponent,
     DatabaseComponent
   ],
   entryComponents: [],

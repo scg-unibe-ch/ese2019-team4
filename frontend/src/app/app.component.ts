@@ -1,7 +1,6 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {MenuController} from '@ionic/angular';
-import {SideMenuComponent} from './side-menu/side-menu.component';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
