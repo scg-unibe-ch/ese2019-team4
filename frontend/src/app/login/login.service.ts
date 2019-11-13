@@ -15,10 +15,10 @@ export class LoginService {
         console.log("Error: invalid in authentication")
       }
       else {
-        this.setSession(res);
+        this.setSession(res)
       }
     }.bind(this)
-    this.database.post("login", {"username": name, "password": password}, func);
+    this.database.post("login", {"username": name, "password": password}, func)
   }
 
     private setSession(authResult) {

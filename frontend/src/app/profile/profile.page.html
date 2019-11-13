@@ -21,17 +21,4 @@
       <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
     </ion-item>
   </ion-list>
-  <ion-grid>
-    <ion-row>
-      <ion-col sizeMd="3">
-        <ion-card *ngFor="let post of posts" [routerLink]= "post.id">
-          <ion-card-header>{{post.title}}</ion-card-header>
-          <ion-card-content>
-            {{post.body}}
-            <ion-img [src]="post.src"></ion-img>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>

@@ -12,8 +12,5 @@ export class PostService {
     return this.http
       .get(this.REST_API_SERVER);
   }
-  public getUserPosts(USER: string): Observable<Object> {
-    return this.http.get(this.REST_API_SERVER + '/' + USER);
-  }
   constructor(private http: HttpClient) {}
 }

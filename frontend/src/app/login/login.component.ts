@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.authentication.login(name, password);
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/home']);
         }
       }.bind(this)
-      this.database.post("login", {"username": name, "password": password}, func);
+      this.database.post("login", {"username": name, "password": password}, func)
   }
   logout() {
     this.authentication.logout();
