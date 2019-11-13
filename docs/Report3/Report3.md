@@ -21,6 +21,8 @@ It's now possible to log into our application and differentiate between user typ
 <br>
 Session Tokens were the biggest step made by the backend team.
 Now everytime someone logs in a session token gets created and allows the user to stay logged even after exiting our programm.
-Without them the login into our application wouldn't even be possible.
+Without them the login into our application wouldn't even be possible. <br>
+We also started to create a Database for the offers. There are create and delete methods.
 <h3>Problems:</h3>
-We started to test. Unfortunately it's no yet functioning as we expected it to do.
+We started to test. Unfortunately it's no yet functioning as we expected it to do. <br>
+The get-Methods for the Offers-Database don't work as expected. We are currently working on it.
