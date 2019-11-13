@@ -8,13 +8,9 @@ import {Observable} from 'rxjs';
 })
 export class PostService {
   private REST_API_SERVER = 'http://localhost:3001/posts';
-
-  getPosts(): Observable<HttpResponse<Array<Post>>> {
-    return this.httpClient.get<Array<Post>>(
-      this.REST_API_SERVER, {
-        observe: 'response'
-      });
+  public getPosts(): Observable<Object> {
+    return this.http
+      .get(this.REST_API_SERVER);
   }
-
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 }

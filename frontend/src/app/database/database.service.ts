@@ -9,6 +9,7 @@ export class DatabaseService {
     * @return the servers responce
     */
     add(tuple: object, func: any): void {
+        console.log('3');
         this.http.post(this.url, tuple).subscribe(data => func(data));
     }
 

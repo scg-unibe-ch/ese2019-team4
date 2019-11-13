@@ -1,6 +1,7 @@
 import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Post} from '../../post/post.model';
 import { PostService} from '../../post/post.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomePage implements OnInit, OnChanges {
   username = localStorage.getItem("username");
   type = localStorage.getItem("type");
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private http: HttpClient) {
   }
   updateUser() {
     this.username = localStorage.getItem("username");
@@ -28,12 +29,16 @@ export class HomePage implements OnInit, OnChanges {
       document.getElementById("acc").style.display = "none";
     }
   }
-  ngOnInit() {
+
+  ngOnInit(){
+    this.postService.getPosts().subscribe(data => {
+      this.posts = data['instances'];
+    });;
     this.loginButtonVisibility();
-    this.postService.getPosts()
-      .subscribe(resp => {
-        this.posts = resp.body;
-    });
+    /*this.postService.getPosts()
+      .subscribe(data => {
+        this.posts = data['instances'];
+    });*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {

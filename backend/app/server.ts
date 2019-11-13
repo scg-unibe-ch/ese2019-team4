@@ -3,6 +3,7 @@ import express from 'express';
 import * as fs from "fs";
 // import all the controllers. If you add a new controller, make sure to import it here as well.
 import {Sequelize} from 'sequelize-typescript';
+var cors = require('cors')
 
 import {Customer} from './models/customer.model';
 import {CustomerController} from './controllers/customer.controller';
@@ -22,7 +23,10 @@ sequelize.addModels([Customer, Provider, Post]);
 
 // create a new express application instance
 const app: express.Application = express();
+
 app.use(express.json());
+// CORS middleware
+app.use(cors());
 app.use('/customer', CustomerController);
 app.use('/provider', ProviderController);
 app.use('/posts', PostController);
