@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="111d98b1-8842-4b84-a018-cfc6ee64a2c9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/post/post.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/post/post.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/post.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/post.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/pages/home/home.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/pages/home/home.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/post.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/post/post.model.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +26,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1SbSLYXL9Dj6IfH9Grd5bLvzzGB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -56,6 +62,7 @@
       <workItem from="1571830749561" duration="360000" />
       <workItem from="1573170823704" duration="8101000" />
       <workItem from="1573244728042" duration="6715000" />
+      <workItem from="1573607382360" duration="5124000" />
     </task>
     <servers />
   </component>
@@ -74,5 +81,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

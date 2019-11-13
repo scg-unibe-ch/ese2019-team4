@@ -4,14 +4,21 @@ import {Post} from '../models/post.model';
 const router: Router = Router();
 
 //returns the table
-router.get('/posts/',  (req: Request, res: Response) => {
- /* const instances = await Post.findAll();
-  res.statusCode = 200;*/
-  console.log('booo');
-  //res.send({"columns": Object.keys(Post.rawAttributes), "values": instances.map(e => e.toSimplification())});
+router.get('/',  async (req: Request, res: Response) => {
+  const instances = await Post.findAll();
+  res.statusCode = 200;
+  res.send({instances});
 });
 
-// accepts user information in form of {"username": $username, "password": $password}
+router.get('/:id', async (req, res) =>{
+  await Post.findOne({
+    where: {id: req.params.id}
+  }).then(post => {if(post!=null) {
+    res.send(post.toSimplification());
+  }
+  })});
+
+// accepts user information in form of {"title": "title", "body": "body, "author": "author"}
 // return true if the value has been added to the data base
 router.post('/', async (req: Request, res: Response) => {
     const instance = new Post();

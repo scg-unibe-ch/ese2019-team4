@@ -1,5 +1,6 @@
 import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
-import {Post} from '../../../post.model';
+import {Post} from '../../post/post.model';
+import { PostService} from '../../post/post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,25 +8,11 @@ import {Post} from '../../../post.model';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit, OnChanges {
-  private posts: Post[] = [
-    {
-      id: '1',
-      src: '',
-      title: 'Birthday Clown',
-      body: 'Will definitely not frighten your children',
-    },
-    {
-      id: '2',
-      src: '',
-      title: 'Catering',
-      body: 'special discounts for weddings, available in the greater Bern area',
-    }
-  ];
-
+  posts = [];
   username = localStorage.getItem("username");
   type = localStorage.getItem("type");
 
-  constructor() {
+  constructor(private postService: PostService) {
   }
   updateUser() {
     this.username = localStorage.getItem("username");
@@ -43,6 +30,10 @@ export class HomePage implements OnInit, OnChanges {
   }
   ngOnInit() {
     this.loginButtonVisibility();
+    this.postService.getPosts()
+      .subscribe(resp => {
+        this.posts = resp.body;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
