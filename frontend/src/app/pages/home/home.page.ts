@@ -24,13 +24,17 @@ export class HomePage implements OnInit, OnChanges {
 
   username = localStorage.getItem("username");
   type = localStorage.getItem("type");
+  status: String;
 
   constructor() {
   }
-  updateUser() {
-    this.username = localStorage.getItem("username");
-    this.type = localStorage.getItem("type");
-    this.loginButtonVisibility();
+  loggedInStatus() {
+    if (this.username === null) {
+      this.status = 'Logged out';
+    }
+    else{
+      this.status = 'Logged in as ' + this.username + ' a ' + this.type;
+    }
   }
   loginButtonVisibility() {
     if (this.username != null) {
@@ -41,8 +45,15 @@ export class HomePage implements OnInit, OnChanges {
       document.getElementById("acc").style.display = "none";
     }
   }
+  updateUser() {
+    this.username = localStorage.getItem("username");
+    this.type = localStorage.getItem("type");
+    this.loginButtonVisibility();
+    this.loggedInStatus();
+  }
   ngOnInit() {
     this.loginButtonVisibility();
+    this.loggedInStatus();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
