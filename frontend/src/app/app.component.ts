@@ -65,8 +65,16 @@ export class AppComponent implements OnInit {
         },
       ];
   }
-
-  ngOnInit() {
+  username = localStorage.getItem("username");
+  private updateLinkVisibility() {
+    if (this.username === null) {
+      document.getElementById("ProfileLink").style.display = "none";
+    }
+    else {
+      document.getElementById("ProfileLink").style.display = "block";
+    }
   }
-
+  ngOnInit() {
+    this.updateLinkVisibility();
+  }
 }

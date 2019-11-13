@@ -32,7 +32,7 @@ export class HomePage implements OnInit, OnChanges {
     if (this.username === null) {
       this.status = 'Logged out';
     }
-    else{
+    else {
       this.status = 'Logged in as ' + this.username + ' a ' + this.type;
     }
   }
