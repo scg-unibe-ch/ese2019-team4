@@ -34,26 +34,19 @@ export class HomePage implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.postService.getPosts().subscribe(data => {
       this.posts = data['instances'];
-    });;
+    });
     this.loginButtonVisibility();
-    /*this.postService.getPosts()
-      .subscribe(data => {
-        this.posts = data['instances'];
-    });*/
+    this.loggedInStatus();
+    }
 
   updateUser() {
     this.username = localStorage.getItem("username");
     this.type = localStorage.getItem("type");
     this.loginButtonVisibility();
     this.loggedInStatus();
-  }
-  ngOnInit() {
-    this.loginButtonVisibility();
-    this.loggedInStatus();
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
