@@ -3,20 +3,29 @@ import {Post} from '../models/post.model';
 
 const router: Router = Router();
 
-//returns the table
+// returns the table
 router.get('/',  async (req: Request, res: Response) => {
   const instances = await Post.findAll();
   res.statusCode = 200;
   res.send({instances});
 });
 
-router.get('/:id', async (req, res) =>{
+// returns the table for a user
+router.get('/:author',  async (req: Request, res: Response) => {
+  const instances = await Post.findAll({
+    where: {author: req.params.author}
+  });
+  res.statusCode = 200;
+  res.send({instances});
+});
+
+router.get('/:id', async (req, res) => {
   await Post.findOne({
     where: {id: req.params.id}
-  }).then(post => {if(post!=null) {
+  }).then(post => {if (post != null) {
     res.send(post.toSimplification());
-  }
-  })});
+  }});
+});
 
 // accepts user information in form of {"title": "title", "body": "body, "author": "author"}
 // return true if the value has been added to the data base
@@ -29,22 +38,38 @@ router.post('/', async (req: Request, res: Response) => {
     res.statusCode = 201;
     res.send(true);
 });
-router.delete('/:id', async (req, res) =>{
-  await Post.destroy({
+router.delete('/:id', async (req, res) => {
+    const found = await Post.findOne({
     where: {id: req.params.id}
-  }).then(() => {res.json(`Post with id ${req.params.id} deleted`)})
-    .catch(error => {
-    res.json('Could not delete');
-  })
-
+  });
+    if (found) {
+      await Post.destroy({
+        where: {id: req.params.id}
+      }).then(() => {
+        res.json(`Post with id: ${req.params.id} deleted`);
+      })
+        .catch(error => {
+          res.json('Could not delete');
+        });
+    } else {
+      res.json(`Post with id: ${req.params.id} not found`);
+    }
 });
-router.delete('/', async (req, res) =>{
-  await Post.destroy({
-    where: {Author: req.body.author}
-  }).then(() => {res.json(`All of ${req.body.author}'s posts deleted`)})
-    .catch(error => {
-      res.json('Could not delete');
-    })
+
+router.delete('/', async (req, res) => {
+  const found = await Post.findOne({
+    where: {author: req.body.author}
+  });
+  if (found) {
+    await Post.destroy({
+      where: {Author: req.body.author}
+    }).then(() => {res.json(`All of ${req.body.author}'s posts deleted`); })
+      .catch(error => {
+        res.json('Could not delete');
+      });
+  } else {
+    res.json('No such user found');
+  }
 
 });
 /*

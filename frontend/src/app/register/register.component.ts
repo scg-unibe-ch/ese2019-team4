@@ -3,6 +3,7 @@ import {DatabaseService} from '../database/database.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
             buttons: [
               {text: 'Okay',
                 handler: () => {
-                  this.router.navigate(['./login-user']);
+                  this.router.navigate(['./home']);
                 }}
             ]}
           ).then(alertEl => {
@@ -40,14 +41,15 @@ export class RegisterComponent implements OnInit {
           this.error = "User already exists"
       }.bind(this)
       this.database.add({"username": name, "password": password}, func);
+      this.loginService.login(name, password);
     }
 
   }
 
 
   constructor(private http: HttpClient,
-              private router: Router,
-              private alertController: AlertController) { }
+              private alertController: AlertController,
+              private loginService: LoginService) { }
 
   ngOnInit() {
   }
@@ -59,8 +61,7 @@ export class RegisterComponent implements OnInit {
     if (name == null || password == null || name == "" || password == "") {
       this.error = "No whitespaces allowed!"
       return false;
-    }
-    else if (password !== password_verify) {
+    } else if (password !== password_verify) {
       this.error = "Passwords are not the same!"
       return false;
     }
