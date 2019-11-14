@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../../services/login.service';
 import { DatabaseService } from '../../services/database/database.service';
 import {Router} from '@angular/router';
+import {PostService} from '../../services/post/post.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +15,12 @@ export class ProfilePage implements OnInit {
   customer = {};
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
-  authentication = new LoginService(this.http, this.database)
+  authentication = new LoginService(this.http, this.database);
+  posts = [];
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router,
+              private postService: PostService) { }
 
   username = localStorage.getItem("username");
   type = localStorage.getItem("type");
@@ -38,6 +41,9 @@ export class ProfilePage implements OnInit {
     }
   }
   ngOnInit() {
+    this.postService.getUserPosts(this.username).subscribe(data => {
+      this.posts = data['instances'];
+    });
     this.offerButtonVisibility();
   }
 }
