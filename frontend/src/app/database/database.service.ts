@@ -12,6 +12,12 @@ export class DatabaseService {
         console.log('3');
         this.http.post(this.url, tuple).subscribe(data => func(data));
     }
+    // method in database.service
+  /*update() {
+    // updates the database table from the url
+    this.http.get(this.url).subscribe(data => this.table = data);
+    console.log('updated table');
+  }*/
 
     /* posts an object to the desired path
     * @return response of the object

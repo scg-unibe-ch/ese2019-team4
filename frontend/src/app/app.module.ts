@@ -11,13 +11,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { DatabaseComponent } from './database/database.component';
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DatabaseComponent
+    AppComponent
   ],
   entryComponents: [],
   imports: [
