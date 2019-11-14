@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       [
         {
           title : 'Home',
-          url   : '/home',
+          url   : 'home',
           icon  : 'home'
         },
         {
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
         },
         {
           title : 'Register',
-          url   : 'login-user/register-consumer',
+          url   : 'register',
           icon  : 'person-add'
         },
       ];

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,6 @@ export class DatabaseService {
     * @return the servers responce
     */
     add(tuple: object, func: any): void {
-        console.log('3');
         this.http.post(this.url, tuple).subscribe(data => func(data));
     }
     // method in database.service
@@ -23,7 +22,7 @@ export class DatabaseService {
     * @return response of the object
     */
     post(location: string, tuple: object, func: any): void {
-      this.http.post(this.url+location, tuple).subscribe(data => func(data))
+      this.http.post(this.url + location, tuple).subscribe(data => func(data))
     }
 
   constructor(private http: HttpClient, private url: string) { }

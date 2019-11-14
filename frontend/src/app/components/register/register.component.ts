@@ -11,21 +11,19 @@ import {AlertController} from '@ionic/angular';
 })
 export class RegisterComponent implements OnInit {
   @Input()
-  set url(str: string) {
-    this.database = new DatabaseService(this.http, str);
-    this.database_url = str;
-  }
-  database_url: string;
+  isProvider = false;
+  URL = 'http://localhost:3001/costumer';
+  DATABASE_URL: string;
   database = null;
   error = null;
   customer = {};
-//created a subfunction for input validation, added redirect
-  register(name: string, password: string, password_verify: string) {
-    if (this.dataCheck(name, password, password_verify)) {
+// created a subfunction for input validation, added redirect
+  register(name: string, password: string, PASSWORD_VERIFY: string) {
+    if (this.dataCheck(name, password, PASSWORD_VERIFY)) {
       var func = function(success) {
         if (success) {
-          this.error = "Registration successful!";
-          this.alertController.create({header:'Registration successful!',
+          this.error = 'Registration successful!';
+          this.alertController.create({header: 'Registration successful!',
             buttons: [
               {text: 'Okay',
                 handler: () => {
@@ -37,11 +35,21 @@ export class RegisterComponent implements OnInit {
           });
         }
         else
-          this.error = "User already exists"
+          this.error = 'User already exists';
       }.bind(this)
       this.database.add({"username": name, "password": password}, func);
     }
 
+  }
+  url() {
+    if (this.isProvider) {
+      this.URL = 'http://localhost:3001/provider';
+    } else {
+      this.URL = 'http://localhost:3001/customer';
+    }
+    this.database = new DatabaseService(this.http, this.URL);
+    this.DATABASE_URL = this.URL;
+    console.log(this.URL);
   }
 
 
@@ -55,13 +63,12 @@ export class RegisterComponent implements OnInit {
   nextField(Field) {
     Field.setFocus();
   }
-  dataCheck(name: string, password: string, password_verify: string) {
-    if (name == null || password == null || name == "" || password == "") {
-      this.error = "No whitespaces allowed!"
+  dataCheck(name: string, password: string, PASSWORD_VERIFY: string) {
+    if (name == null || password == null || name === '' || password === '') {
+      this.error = 'No whitespaces allowed!';
       return false;
-    }
-    else if (password !== password_verify) {
-      this.error = "Passwords are not the same!"
+    } else if (password !== PASSWORD_VERIFY) {
+      this.error = 'Passwords are not the same!';
       return false;
     }
     return true;

@@ -37,12 +37,12 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-checkbox margin-horizontal="5"></ion-checkbox> I would like to register as a provider.
+      <ion-checkbox margin-horizontal="5" [(ngModel)]="isProvider" (ionChange)="url()"></ion-checkbox> I would like to register as a provider.
     </ion-col>
   </ion-row>
   <ion-row margin-bottom="12">
     <ion-col>
-      <ion-button (click)="register(customer.name, customer.password, customer.password_verify)">
+      <ion-button (click)="url(); register(customer.name, customer.password, customer.password_verify)">
         <ion-icon name="return-right"></ion-icon>Register</ion-button>
     </ion-col>
   </ion-row>

@@ -6,6 +6,7 @@
   "description": "A todo list backend with express and node",
   "main": "build/server.js",
   "scripts": {
+    "dev": "nodemon build/server.js",
     "tsc": "tsc"
   },
   "keywords": [],
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/express-jwt": "0.0.42",
     "@types/jsonwebtoken": "^8.3.5",
+    "nodemon": "^1.19.4",
     "tslint": "^5.20.0"
   },
   "repository": {
