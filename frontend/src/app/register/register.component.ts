@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {DatabaseService} from '../database/database.service';
+import {DatabaseService} from '../services/database/database.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
