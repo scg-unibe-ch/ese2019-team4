@@ -2,9 +2,6 @@
   <ion-toolbar color="primary">
     <ion-title>Page Title</ion-title>
     <ion-menu-button autoHide="false" slot="start"></ion-menu-button>
-    <ion-button (click)="updateUser()" slot="end" size="fill">
-      <ion-icon name="refresh"></ion-icon>
-    </ion-button>
     <ion-button *ngIf="session.isLoggedIn()" routerLink="/login-user" color="danger" slot="end" id="log">
       Login
     </ion-button>
