@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { DatabaseService } from '../../services/database/database.service';
 import {Router} from '@angular/router';
 import {PostService} from '../../services/post/post.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,33 +16,31 @@ export class ProfilePage implements OnInit {
   customer = {};
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
-  authentication = new LoginService(this.http, this.database);
+  authentication = new LoginService(this.http, this.database, this.session);
   posts = [];
 
   constructor(private http: HttpClient,
               private router: Router,
-              private postService: PostService) { }
+              private postService: PostService,
+              private session:SessionService) { }
 
-  username = localStorage.getItem("username");
-  type = localStorage.getItem("type");
+  info = this.session.info;
 
   logout() {
     this.authentication.logout();
   }
   updateUser() {
-    this.username = localStorage.getItem("username");
-    this.type = localStorage.getItem("type");
     this.offerButtonVisibility();
   }
   offerButtonVisibility() {
-    if (this.type === 'provider') {
+    if (this.info.type == 'provider') {
       document.getElementById("offer").style.display = "block";
     } else {
       document.getElementById("offer").style.display = "none";
     }
   }
   ngOnInit() {
-    this.postService.getUserPosts(this.username).subscribe(data => {
+    this.postService.getUserPosts(this.info.username).subscribe(data => {
       this.posts = data['instances'];
     });
     this.offerButtonVisibility();

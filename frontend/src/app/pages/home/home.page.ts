@@ -2,6 +2,8 @@ import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Post} from '../../services/post/post.model';
 import { PostService} from '../../services/post/post.service';
 import {HttpClient} from '@angular/common/http';
+import { SessionService } from '../../services/session.service';
+
 
 @Component({
   selector: 'app-home',
@@ -10,11 +12,12 @@ import {HttpClient} from '@angular/common/http';
 })
 export class HomePage implements OnInit, OnChanges {
   posts = [];
-  username = localStorage.getItem("username");
-  type = localStorage.getItem("type");
+  username = this.session.info.username;
+  type = this.session.info.type;
+  info = this.session.info;
   status: String;
 
-  constructor(private postService: PostService, private http: HttpClient) {
+  constructor(private postService: PostService, private http: HttpClient, public session:SessionService) {
   }
   loggedInStatus() {
     if (this.username === null) {
@@ -24,28 +27,17 @@ export class HomePage implements OnInit, OnChanges {
       this.status = 'Logged in as ' + this.username + ' a ' + this.type;
     }
   }
-  loginButtonVisibility() {
-    if (this.username != null) {
-      document.getElementById("log").style.display = "none";
-      document.getElementById("acc").style.display = "block";
-    } else {
-      document.getElementById("log").style.display = "block";
-      document.getElementById("acc").style.display = "none";
-    }
-  }
 
   ngOnInit() {
     this.postService.getPosts().subscribe(data => {
       this.posts = data['instances'];
     });
-    this.loginButtonVisibility();
     this.loggedInStatus();
     }
 
   updateUser() {
-    this.username = localStorage.getItem("username");
-    this.type = localStorage.getItem("type");
-    this.loginButtonVisibility();
+    this.username = this.session.info.username;
+    this.type = this.session.info.type;
     this.loggedInStatus();
   }
 

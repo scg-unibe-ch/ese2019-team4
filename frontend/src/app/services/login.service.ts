@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { DatabaseService } from './database/database.service';
 import * as moment from 'moment';
+import { SessionService } from './session.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  constructor(private http: HttpClient, private database: DatabaseService) {}
+  constructor(private http: HttpClient, private database: DatabaseService, public session:SessionService) {}
 
   login(name: string, password: string) {
     var func = function(res) {
@@ -28,6 +30,7 @@ export class LoginService {
         localStorage.setItem('type', authResult.type);
         localStorage.setItem('username', authResult.username);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+        this.session.update()
     }
 
     logout() {
@@ -35,6 +38,7 @@ export class LoginService {
         localStorage.removeItem('type');
         localStorage.removeItem('username');
         //localStorage.removeItem("expires_at");
+        this.session.update()
     }
 
     public isLoggedIn() {

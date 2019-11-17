@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../../services/login.service';
 import { DatabaseService } from '../../services/database/database.service';
+import { SessionService } from '../../services/session.service';
+
 import {Router} from '@angular/router';
 
 @Component({
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   customer = {};
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
-  authentication = new LoginService(this.http, this.database)
+  authentication = new LoginService(this.http, this.database, this.session)
 
   /* checks if username and password match
   *
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router, private session:SessionService) { }
 
   ngOnInit() {
   }

@@ -5,17 +5,22 @@
     <ion-button (click)="updateUser()" slot="end" size="fill">
       <ion-icon name="refresh"></ion-icon>
     </ion-button>
-    <ion-button routerLink="/login-user" color="danger" slot="end" id="log">
+    <ion-button *ngIf="session.isLoggedIn()" routerLink="/login-user" color="danger" slot="end" id="log">
       Login
     </ion-button>
-    <ion-button routerLink="/profile" slot="end" id="acc" color="primary">
+    <ion-button *ngIf="!session.isLoggedIn()" routerLink="/profile" slot="end" id="acc" color="primary">
       <ion-icon name="contact"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-item>
-    {{status}}
+    <div *ngIf="session.isLoggedIn()">
+      Please login.
+    </div>
+    <div *ngIf="!session.isLoggedIn()">
+      Logged in as {{this.session.username}} a {{this.session.type}}
+    </div>
   </ion-item>
   <ion-grid>
     <ion-row>
