@@ -28,4 +28,19 @@ describe('ProfilePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('Provide Service button should be hidden for customers', () => {
+    component.type = 'customer';
+    component.offerButtonVisibility();
+    expect(document.getElementById('offer').style.display).toBe('none');
+  });
+  it('Provide Service button should be visible for providers', () => {
+    component.type = 'provider';
+    component.offerButtonVisibility();
+    expect(document.getElementById('offer').style.display).toBe('block');
+  });
+  it('updateUser should call offerButtonVisibility', () => {
+    spyOn(component, 'offerButtonVisibility');
+    component.updateUser()
+    expect(component.offerButtonVisibility).toHaveBeenCalled();
+  });
 });

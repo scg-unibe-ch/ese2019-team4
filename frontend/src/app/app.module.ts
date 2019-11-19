@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register/register.component';
+import { SessionService } from './services/session.service'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegisterComponent } from './components/register/register.component';
     StatusBar,
     SplashScreen,
     RegisterComponent,
+    SessionService,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   exports: [

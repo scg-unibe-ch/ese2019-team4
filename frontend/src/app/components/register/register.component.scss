@@ -1,0 +1,19 @@
+.item-interactive.ion-invalid {
+  --highlight-background: none;
+}
+
+.item-interactive.ion-valid {
+  --highlight-background: none;
+}
+
+
+#username{
+  --border-color: var(--name-color);
+}
+#password{
+  --border-color: var(--password-color);
+}
+#confirmPassword{
+  --border-color: var(--confirmPassword-color);
+}
+

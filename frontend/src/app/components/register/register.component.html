@@ -1,34 +1,36 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <ion-item><ion-input
+      <ion-item id="username"><ion-input
         placeholder="Username"
         [(ngModel)]="customer.name"
-      (keyup.enter)="nextSetFocus(password)">
+        (keyup.enter)="nextSetFocus(password)">
       </ion-input></ion-item>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-item><ion-input
+      <ion-item id="password"><ion-input
+        clearOnEdit="false"
         placeholder="Password"
         [(ngModel)]="customer.password"
         required minlength="6"
-        type="password"
+        type={{entryField}}
         #password
-        (keyup.enter)="nextSetFocus(confirmpassword)">
+        (keyup.enter)="nextSetFocus(confirmPassword)">
       </ion-input></ion-item>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-item><ion-input
+      <ion-item id="confirmPassword"><ion-input
+        clearOnEdit="false"
         placeholder="Confirm Password"
-        type="password"
+        type={{entryField}}
         minlength ="6"
-        #confirmpassword
+        #confirmPassword
         [(ngModel)]="customer.password_verify"
-      (keyup.enter)="register(customer.name, customer.password, customer.password_verify)">
+        (keyup.enter)="url(); register(customer.name, customer.password, customer.password_verify)">
       </ion-input></ion-item>
     </ion-col>
   </ion-row>
@@ -46,5 +48,8 @@
         <ion-icon name="return-right"></ion-icon>Register</ion-button>
     </ion-col>
   </ion-row>
+  <ion-item>
+    View Password<ion-toggle (ionChange)="entryFieldChange()"></ion-toggle>
+  </ion-item>
 </ion-grid>
 

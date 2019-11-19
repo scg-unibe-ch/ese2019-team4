@@ -14,8 +14,8 @@ import {HttpClient} from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit {
-  navigate: any;
   constructor(
+    public menuCtrl: MenuController,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     this.sideMenu();
     this.initializeApp();
   }
+  navigate: any;
 
   /* Trying to route some stuff in the frontend - dominik
   @NgModule({
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
 
 
   url = 'http://localhost:4200/account/';
+  username = localStorage.getItem('username');
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -44,7 +46,7 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
     });
   }
-  //array of pages for sidemenu, would like to move it to the sidemenu component
+  // array of pages for sidemenu, would like to move it to the sidemenu component
   sideMenu() {
     this.navigate =
       [
@@ -65,16 +67,22 @@ export class AppComponent implements OnInit {
         },
       ];
   }
-  username = localStorage.getItem("username");
+  // makes profile link visible or not depending on whether logged in
   private updateLinkVisibility() {
-    if (this.username === null) {
-      document.getElementById("ProfileLink").style.display = "none";
-    }
-    else {
-      document.getElementById("ProfileLink").style.display = "block";
+    if (this.username != null) {
+      document.getElementById('ProfileLink').style.display = 'block';
+    } else {
+      document.getElementById('ProfileLink').style.display = 'none';
     }
   }
   ngOnInit() {
     this.updateLinkVisibility();
+  }
+  // toggles the dark tag on the body
+  toggleDark() {
+    document.body.classList.toggle('dark');
+  }
+  toggleMenu() {
+      this.menuCtrl.toggle();
   }
 }
