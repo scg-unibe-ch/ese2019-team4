@@ -3,13 +3,36 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'home',
+    children: [
+      {
+        path: '',
+        loadChildren: './pages/home/home.module#HomePageModule',
+      },
+      {
+        path: ':postId',
+        loadChildren: './pages/post-detail/post-detail.module#PostDetailPageModule'
+      }
+      ]
+     },
   {
     path: 'login-user', loadChildren: './pages/login-user/login-user.module#LoginUserPageModule'},
   { path: 'register', loadChildren: './pages/register-consumer/register-consumer.module#RegisterConsumerPageModule'},
-  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' }
+  { path: 'profile',
+    children: [
+      {
+        path: '',
+        loadChildren: './pages/profile/profile.module#ProfilePageModule'
+      },
+      {
+        path: ':postId',
+        loadChildren: './pages/post-detail/post-detail.module#PostDetailPageModule'
+      }
+    ]
+  },
+  ];
 
-];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

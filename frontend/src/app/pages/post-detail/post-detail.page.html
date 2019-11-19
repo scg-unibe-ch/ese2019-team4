@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{loadedPost?.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start"><ion-back-button defaultHref="home"></ion-back-button></ion-button>
+    <ion-title>{{ loadedPost?.title }}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row><ion-col><h1 text-center>{{ loadedPost?.title }}</h1></ion-col></ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            {{ loadedPost?.body }}
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

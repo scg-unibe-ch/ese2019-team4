@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { DatabaseService } from '../../services/database/database.service';
 import {Router} from '@angular/router';
 import {PostService} from '../../services/post/post.service';
+import {Post} from '../../services/post/post.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfilePage implements OnInit {
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
   authentication = new LoginService(this.http, this.database);
-  posts = [];
+  posts;
 
   constructor(private http: HttpClient,
               private router: Router,
