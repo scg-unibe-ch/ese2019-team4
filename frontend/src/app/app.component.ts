@@ -15,6 +15,7 @@ import {HttpClient} from '@angular/common/http';
 
 export class AppComponent implements OnInit {
   constructor(
+    public menuCtrl: MenuController,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -66,7 +67,7 @@ export class AppComponent implements OnInit {
         },
       ];
   }
-  // makes profile link visible or not
+  // makes profile link visible or not depending on whether logged in
   private updateLinkVisibility() {
     if (this.username != null) {
       document.getElementById('ProfileLink').style.display = 'block';
@@ -80,5 +81,8 @@ export class AppComponent implements OnInit {
   // toggles the dark tag on the body
   toggleDark() {
     document.body.classList.toggle('dark');
+  }
+  toggleMenu() {
+      this.menuCtrl.toggle();
   }
 }

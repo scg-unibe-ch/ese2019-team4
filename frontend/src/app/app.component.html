@@ -2,19 +2,19 @@
   <ion-menu side="start" menuId="first">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-menu-button autoHide="false" slot="start"></ion-menu-button>
+        <ion-menu-button slot="start"></ion-menu-button>
         <ion-title>Start Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list *ngFor="let pages of navigate">
-        <ion-item [routerLink]="pages.url" routerDirection="forward">
+        <ion-item [routerLink]="pages.url" routerDirection="forward" (click)="toggleMenu()">
           <ion-icon [name]="pages.icon" slot="start"></ion-icon>
           {{pages.title}}
         </ion-item>
       </ion-list>
       <ion-list>
-        <ion-item routerLink="/profile" id="ProfileLink">
+        <ion-item routerLink="/profile" id="ProfileLink" (click)="toggleMenu()">
           <ion-icon name="contact" slot="start"></ion-icon>
           Profile Page
         </ion-item>
