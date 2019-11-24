@@ -27,9 +27,8 @@ export class Post extends Model<Post> {
       'body': this.body
     };
   }
-  
+
   fromSimplification(simplification: any): void {
-    console.log("body: "+simplification)
     this.title = simplification['title'];
     this.body = simplification['body'];
     this.author = simplification['author']; // should be read from jwt token

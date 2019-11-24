@@ -10,7 +10,7 @@ import {CustomerController} from './controllers/customer.controller';
 import {Provider} from './models/provider.model';
 import {ProviderController} from './controllers/provider.controller';
 import {Post} from './models/post.model';
-import { PostController } from './controllers/post.controller';
+import {PostController} from './controllers/post.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',

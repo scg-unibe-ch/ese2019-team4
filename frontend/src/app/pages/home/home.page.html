@@ -16,17 +16,18 @@
       Please login.
     </div>
     <div *ngIf="!session.isLoggedIn()">
-      Logged in as {{session.info.username}} a {{session.info.type}}
+      Logged in as {{session.username}} a {{session.type}}
     </div>
   </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col sizeMd="3">
             <ion-card *ngFor="let post of posts" [routerLink]= "post.id">
-              <ion-card-header>{{post.title}}</ion-card-header>
+              <ion-card-header><h2><b>{{post.title}}</b></h2></ion-card-header>
               <ion-card-content>
                 {{post.body}}
                 <ion-img [src]="post.src"></ion-img>
+                <i>{{post.author}}</i>
               </ion-card-content>
             </ion-card>
       </ion-col>

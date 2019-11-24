@@ -27,7 +27,7 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
   res.send({instances});
 });
 
-// accepts user information in form of {"title": "title", "body": "body, "author": "author"}
+// accepts user information in form of {"title": title, "body": body, "author": author}
 // return true if the value has been added to the data base
 router.post('/', async (req: Request, res: Response) => {
     const instance = new Post();
@@ -37,6 +37,7 @@ router.post('/', async (req: Request, res: Response) => {
     });
     res.statusCode = 201;
     res.send(true);
+    console.log("body: "+req.body)
 });
 router.delete('/:id', async (req, res) => {
   const found = await Post.findOne({
