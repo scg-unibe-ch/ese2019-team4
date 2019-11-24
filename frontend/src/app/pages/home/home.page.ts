@@ -12,7 +12,6 @@ import { SessionService } from '../../services/session.service';
 })
 export class HomePage implements OnInit {
   posts = [];
-  info = this.session.info;
 
   constructor(private postService: PostService, private http: HttpClient, public session:SessionService) {
   }

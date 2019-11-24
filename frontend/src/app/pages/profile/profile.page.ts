@@ -27,25 +27,19 @@ export class ProfilePage implements OnInit {
               private postService: PostService,
               private session:SessionService) { }
 
-  info = this.session.info;
 
   logout() {
     this.authentication.logout();
   }
   updateUser() {
-    this.offerButtonVisibility();
+    //this.offerButtonVisibility();
+    console.log(this.session)
   }
-  offerButtonVisibility() {
-    if (this.info.type == 'provider') {
-      document.getElementById("offer").style.display = "block";
-    } else {
-      document.getElementById("offer").style.display = "none";
-    }
-  }
+
   ngOnInit() {
-    this.postService.getUserPosts(this.info.username).subscribe(data => {
+    this.postService.getUserPosts(this.session.info.username).subscribe(data => {
       this.posts = data['instances'];
     });
-    this.offerButtonVisibility();
+    //this.offerButtonVisibility();
   }
 }

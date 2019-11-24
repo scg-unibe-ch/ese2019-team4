@@ -16,7 +16,7 @@
       Please login.
     </div>
     <div *ngIf="!session.isLoggedIn()">
-      Logged in as {{this.info.username}} a {{this.info.type}}
+      Logged in as {{session.info.username}} a {{session.info.type}}
     </div>
   </ion-item>
   <ion-grid>

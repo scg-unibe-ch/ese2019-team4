@@ -14,7 +14,7 @@
   <ion-list>
     <ion-item>Username: {{session.info.username}}</ion-item>
     <ion-item>Type of User: {{session.info.type}}</ion-item>
-    <ion-item id="offer">
+    <ion-item id="offer" *ngIf="session.isProvider()">
       <ion-button size="fill">Provide a service</ion-button>
     </ion-item>
     <ion-grid>

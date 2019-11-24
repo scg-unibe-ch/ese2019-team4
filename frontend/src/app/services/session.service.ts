@@ -21,5 +21,9 @@ export class SessionService {
     return (localStorage.getItem("username") === null);
   }
 
+  public isProvider() {
+    return (localStorage.getItem("type") == "provider");
+  }
+
   constructor() { }
 }
