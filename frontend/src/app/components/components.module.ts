@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PostCardComponent } from './post-card/post-card.component';
+import { RegisterComponent } from "./register/register.component";
+import { LoginComponent } from "./login/login.component";
+
 
 
 /* provides all custom components
@@ -15,7 +18,14 @@ import { PostCardComponent } from './post-card/post-card.component';
     FormsModule,
     IonicModule
   ],
-  declarations: [PostCardComponent],
-  exports: [PostCardComponent]
+  declarations: [
+    PostCardComponent,
+    RegisterComponent,
+    LoginComponent
+  ],
+  exports: [PostCardComponent,
+    RegisterComponent,
+    LoginComponent
+  ]
 })
 export class ComponentsModule{}

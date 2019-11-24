@@ -1,11 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterConsumerPage } from './register-consumer.page';
+import { RegisterPage } from './register-consumer.page';
 
-describe('RegisterConsumerPage', () => {
-  let component: RegisterConsumerPage;
-  let fixture: ComponentFixture<RegisterConsumerPage>;
+describe('RegisterPage', () => {
+  let component: RegisterPage;
+  let fixture: ComponentFixture<RegisterPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,7 +16,7 @@ describe('RegisterConsumerPage', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterConsumerPage);
+    fixture = TestBed.createComponent(RegisterPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
