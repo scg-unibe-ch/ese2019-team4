@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+
 
 import { PostCardComponent } from './post-card/post-card.component';
 import { RegisterComponent } from "./register/register.component";
@@ -16,7 +18,8 @@ import { LoginComponent } from "./login/login.component";
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    RouterModule
   ],
   declarations: [
     PostCardComponent,
