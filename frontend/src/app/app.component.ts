@@ -1,6 +1,8 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {MenuController} from '@ionic/angular';
+import { SessionService } from './services/session.service';
+
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -19,7 +21,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private session: SessionService,
   ) {
     this.sideMenu();
     this.initializeApp();
@@ -67,16 +70,9 @@ export class AppComponent implements OnInit {
         },
       ];
   }
-  // makes profile link visible or not depending on whether logged in
-  private updateLinkVisibility() {
-    if (this.username != null) {
-      document.getElementById('ProfileLink').style.display = 'block';
-    } else {
-      document.getElementById('ProfileLink').style.display = 'none';
-    }
-  }
+  
   ngOnInit() {
-    this.updateLinkVisibility();
+
   }
   // toggles the dark tag on the body
   toggleDark() {

@@ -54,6 +54,11 @@ export class SessionService {
       this.update()
   }
 
+  getExpiration() {
+      const expiration = localStorage.getItem("expires_at");
+      const expiresAt = JSON.parse(expiration);
+      return moment(expiresAt);
+  }
 
   update() {
     // logs out if the expiration time is exceeded
@@ -72,13 +77,7 @@ export class SessionService {
   public isLoggedIn() {
     // checks if someone is logged in, if a value cannot be found in the local storage, it is set to null
     this.update()
-    return (localStorage.getItem("username") === null);
-  }
-
-  getExpiration() {
-      const expiration = localStorage.getItem("expires_at");
-      const expiresAt = JSON.parse(expiration);
-      return moment(expiresAt);
+    return (localStorage.getItem("username") !== null);
   }
 
   public isProvider() {
