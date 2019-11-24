@@ -70,13 +70,13 @@ export class AppComponent implements OnInit {
         },
       ];
   }
-  
+
   ngOnInit() {
 
   }
   // toggles the dark tag on the body
   toggleDark() {
-    document.body.classList.toggle('dark');
+    this.session.toggleDark();
   }
   toggleMenu() {
       this.menuCtrl.toggle();

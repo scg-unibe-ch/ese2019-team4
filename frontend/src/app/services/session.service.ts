@@ -23,6 +23,17 @@ export class SessionService {
   token = this.info.token;
   expires_at = this.info.expires_at;
 
+  toggleDark(){
+    if (localStorage.getItem("theme") === null) {
+      document.body.classList.add('dark');
+      localStorage.setItem('theme', "dark");
+    }
+    else {
+      document.body.classList.remove('dark');
+      localStorage.removeItem('theme');
+    }
+  }
+
   // communicates with the backend and logs a user in
   login(name: string, password: string) {
     var func = function(res) {
@@ -84,5 +95,11 @@ export class SessionService {
     return (localStorage.getItem("type") == "provider");
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    //set theme
+    if (localStorage.getItem("theme") == "dark") {
+
+        document.body.classList.add('dark');
+    }
+  }
 }
