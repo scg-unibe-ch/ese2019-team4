@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginService } from '../../services/login.service';
 import { DatabaseService } from '../../services/database/database.service';
 import {Router} from '@angular/router';
 import {PostService} from '../../services/post/post.service';
@@ -19,8 +18,6 @@ export class ProfilePage implements OnInit {
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
   post = {};
-
-  authentication = new LoginService(this.http, this.database, this.session);
   posts;
 
 
@@ -31,7 +28,7 @@ export class ProfilePage implements OnInit {
 
 
   logout() {
-    this.authentication.logout();
+    this.session.logout();
   }
 
 

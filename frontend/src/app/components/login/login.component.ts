@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginService } from '../../services/login.service';
 import { DatabaseService } from '../../services/database/database.service';
 import { SessionService } from '../../services/session.service';
 
@@ -16,7 +15,6 @@ export class LoginComponent implements OnInit {
   customer = {};
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
-  authentication = new LoginService(this.http, this.database, this.session)
 
   /* checks if username and password match
   *
@@ -27,14 +25,15 @@ export class LoginComponent implements OnInit {
           this.error = "Invalid username or password";
         }
         else {
-          this.authentication.login(name, password);
+          this.session.login(name, password);
           this.router.navigate(['/profile']);
         }
       }.bind(this)
       this.database.post("login", {"username": name, "password": password}, func)
   }
+
   logout() {
-    this.authentication.logout();
+    this.session.logout();
   }
 
   constructor(private http: HttpClient,
