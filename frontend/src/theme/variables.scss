@@ -3,6 +3,9 @@
 
 /** Ionic CSS Variables **/
 :root {
+  /** background color **/
+  --ion-background-color: #efefef;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -75,10 +78,28 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  /** lightgrey **/
+  --ion-color-lightgrey: #efefef;
+  --ion-color-lightgrey-rgb: 239,239,239;
+  --ion-color-lightgrey-contrast: #000000;
+  --ion-color-lightgrey-contrast-rgb: 0,0,0;
+  --ion-color-lightgrey-shade: #d2d2d2;
+  --ion-color-lightgrey-tint: #f1f1f1;
+
+  /** green **/
+  --ion-color-green: #00bd5f;
+  --ion-color-green-rgb: 0,189,95;
+  --ion-color-green-contrast: #ffffff;
+  --ion-color-green-contrast-rgb: 255,255,255;
+  --ion-color-green-shade: #00a654;
+  --ion-color-green-tint: #1ac46f;
+
   // needed for registration checking
   --name-color: var(--ion-color-medium);
   --password-color: var(--ion-color-medium);
   --confirmPassword-color: var(--ion-color-medium);
+
+
 }
 
 /*
