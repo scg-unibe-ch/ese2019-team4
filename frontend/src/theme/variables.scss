@@ -7,12 +7,12 @@
   --ion-background-color: #efefef;
 
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #00bd5f;
+  --ion-color-primary-rgb: 0,189,95;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #00a654;
+  --ion-color-primary-tint: #1ac46f;
 
   /** secondary **/
   --ion-color-secondary: #0cd1e8;
@@ -85,14 +85,6 @@
   --ion-color-lightgrey-contrast-rgb: 0,0,0;
   --ion-color-lightgrey-shade: #d2d2d2;
   --ion-color-lightgrey-tint: #f1f1f1;
-
-  /** green **/
-  --ion-color-green: #00bd5f;
-  --ion-color-green-rgb: 0,189,95;
-  --ion-color-green-contrast: #ffffff;
-  --ion-color-green-contrast-rgb: 255,255,255;
-  --ion-color-green-shade: #00a654;
-  --ion-color-green-tint: #1ac46f;
 
   // needed for registration checking
   --name-color: var(--ion-color-medium);
