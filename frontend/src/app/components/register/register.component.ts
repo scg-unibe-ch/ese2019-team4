@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
   database = null;
   error = null;
   customer = {};
-  entryField: String = 'password';
+  entryField: string = 'password';
+  iconType: string = 'eye';
   // created a subfunction for input validation, added redirect
   register(name: string, password: string, PASSWORD_VERIFY: string) {
     if (this.dataCheck(name, password, PASSWORD_VERIFY)) {
@@ -105,9 +106,14 @@ export class RegisterComponent implements OnInit {
     password.setFocus();
   }
 
+  // makes the password visible or not and adapts the icon
   entryFieldChange() {
     if (this.entryField === 'password') {
       this.entryField = '';
-    } else { this.entryField = 'password'; }
+      this.iconType = 'eye-off';
+    } else {
+      this.entryField = 'password';
+      this.iconType = 'eye';
+    }
   }
 }

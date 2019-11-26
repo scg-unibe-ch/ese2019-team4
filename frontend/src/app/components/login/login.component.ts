@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   customer = {};
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
+  inputType: string = 'password';
+  iconType: string = 'eye';
 
   /* checks if username and password match
   *
@@ -32,10 +34,6 @@ export class LoginComponent implements OnInit {
       this.database.post("login", {"username": name, "password": password}, func)
   }
 
-  logout() {
-    this.session.logout();
-  }
-
   constructor(private http: HttpClient,
               private router: Router, private session:SessionService) { }
 
@@ -44,5 +42,16 @@ export class LoginComponent implements OnInit {
 
   nextSetPassword(Password) {
     Password.setFocus();
+  }
+
+  // makes the password visible and changes the icon
+  changeInputType() {
+    if ( this.inputType === 'password') {
+      this.inputType = '';
+      this.iconType = 'eye-off';
+    } else {
+      this.inputType = 'password';
+      this.iconType = 'eye';
+    }
   }
 }

@@ -15,7 +15,7 @@
         <ion-row>
           <ion-input
             placeholder="Password"
-            type="password"
+            type={{inputType}}
             #Password
             [(ngModel)]="customer.password"
             (keyup.enter)="login(customer.name, customer.password)"
@@ -28,6 +28,9 @@
           <ion-button (click)="login(customer.name, customer.password)">
             <ion-icon name="return-right"></ion-icon>enter
           </ion-button>
+          <ion-item lines="none" (click)="changeInputType()">
+              <ion-icon name={{iconType}}></ion-icon>
+          </ion-item>
         </ion-row>
       </ion-card-content>
     </ion-col>
@@ -38,11 +41,9 @@
       </ion-card-header>
       <ion-card-content>
         <p>Would you like to create an account?</p>
-        <p>
-          <ion-button size="small" routerLink="/register">
-            Register
-          </ion-button>
-        </p>
+        <ion-button size="small" routerLink="/register">
+          Register
+        </ion-button>
       </ion-card-content>
     </ion-col>
   </ion-row>
