@@ -28,4 +28,11 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('error should be null initially', () => {
+    expect(component.error).toBeNull();
+  })
+  it('error should be shown after failed login attempt', () => {
+    component.login('qwefwewerewwerweerwfer', 'qwewqefqwefweqfqwfewf');
+    expect(component.error).not.toBeNull();
+  })
 });

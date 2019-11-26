@@ -14,7 +14,7 @@ import { SessionService } from '../../services/session.service';
 export class HomePage implements OnInit {
   posts = [];
 
-  constructor(private postService: PostService, private http: HttpClient, public session:SessionService) {
+  constructor(private postService: PostService, private http: HttpClient, public session: SessionService) {
   }
 
   ngOnInit() {

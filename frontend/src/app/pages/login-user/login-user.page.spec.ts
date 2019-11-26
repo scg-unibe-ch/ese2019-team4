@@ -24,4 +24,13 @@ describe('LoginUserPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('title should be visible', () => {
+    expect(document.getElementsByClassName('ion-title')).not.toBeNull();
+  })
+  it('button should be visible', () => {
+    expect(document.getElementsByClassName('ion-button')).not.toBeNull();
+  })
+  it('login component should be visible', () => {
+    expect(document.getElementsByClassName('app-login')).not.toBeNull();
+  })
 });

@@ -24,7 +24,7 @@ export class ProfilePage implements OnInit {
   constructor(private http: HttpClient,
               private router: Router,
               private postService: PostService,
-              private session:SessionService) { }
+              private session: SessionService) { }
 
 
   logout() {
@@ -45,6 +45,5 @@ export class ProfilePage implements OnInit {
     this.postService.getUserPosts(this.session.username).subscribe(data => {
       this.posts = data['instances'];
     });
-    //this.offerButtonVisibility();
   }
 }

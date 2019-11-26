@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfilePage } from './profile.page';
 import {HttpClientModule} from '@angular/common/http';
-import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {SessionService} from '../../services/session.service';
 
 describe('ProfilePage', () => {
   let component: ProfilePage;
@@ -28,19 +28,13 @@ describe('ProfilePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Provide Service button should be hidden for customers', () => {
-    component.type = 'customer';
-    component.offerButtonVisibility();
-    expect(document.getElementById('offer').style.display).toBe('none');
+  it('Provide Service button should be hidden initially', () => {
+    expect(document.getElementById('offer')).toBeNull();
   });
-  it('Provide Service button should be visible for providers', () => {
-    component.type = 'provider';
-    component.offerButtonVisibility();
-    expect(document.getElementById('offer').style.display).toBe('block');
+  it('Provide Service button should be hidden initially', () => {
+    expect(document.getElementById('offer')).toBeNull();
   });
-  it('updateUser should call offerButtonVisibility', () => {
-    spyOn(component, 'offerButtonVisibility');
-    component.updateUser()
-    expect(component.offerButtonVisibility).toHaveBeenCalled();
-  });
+  it('title should be visible', () => {
+    expect(document.getElementsByClassName('ion-title')).not.toBeNull();
+  })
 });
