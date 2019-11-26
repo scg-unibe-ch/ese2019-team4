@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {PostService} from '../../services/post/post.service';
 import {Post} from '../../services/post/post.model';
 import { SessionService } from '../../services/session.service';
+import {IonInput} from '@ionic/angular';
 
 
 @Component({
@@ -30,20 +31,42 @@ export class ProfilePage implements OnInit {
   logout() {
     this.session.logout();
   }
-
+  dataCheck(title: string, body: string) {
+    function whiteSpaceCheck(anything: string) {
+      if (anything == null || anything === '' ) {
+        return true;
+      } else { return false; }
+    }
+    if (whiteSpaceCheck(title)) {
+      this.error = 'Don\'t leave the Title empty';
+      return false;
+    }
+    if (whiteSpaceCheck(body)) {
+      this.error = 'Don\'t leave the content empty';
+      return false;
+    }
+    return true;
+  }
 
 
   submitPost(title: string, body: string) {
-    var db = new DatabaseService(this.http, "http://localhost:3001/posts/");
-    var func = function(success) {
-      console.log(success);
+    if ( this.dataCheck(title, body) ) {
+      var db = new DatabaseService(this.http, "http://localhost:3001/posts/");
+      var func = function (success) {
+        console.log(success);
+      }
+      db.add({"title": title, "body": body, "author": this.session.username}, func);
+      this.error = 'Post successful';
     }
-    db.add({"title": title, "body": body, "author": this.session.username}, func);
   }
 
   ngOnInit() {
     this.postService.getUserPosts(this.session.username).subscribe(data => {
       this.posts = data['instances'];
     });
+  }
+
+  setNextFocus(content) {
+    content.setFocus();
   }
 }
