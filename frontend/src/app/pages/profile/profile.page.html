@@ -23,11 +23,11 @@
         </ion-row>
         <ion-row>
           <ion-input
-            placeholder="Content"
+            placeholder="Description"
             #content
             (keyup.enter)="submitPost(post.title, post.content)"
-            [(ngModel)]="post.content"
-          ></ion-input>
+            [(ngModel)]="post.content">
+          </ion-input>
         </ion-row>
         <ion-row>
           {{error}}

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-button slot="start"><ion-back-button defaultHref="home"></ion-back-button></ion-button>
-    <ion-title>Post</ion-title>
+    <ion-title>Service</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,12 +12,15 @@
         {{ loadedPost?.title }}
       </ion-card-title>
       <ion-card-subtitle>
-        This Post is provided by {{ loadedPost?.author}}
+        This service is provided by {{ loadedPost?.author }}
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
           <b>Description:</b>
-          {{ loadedPost?.body }}
+          {{ loadedPost?.body }} <br>
+          <b>Provider-Profile:</b> <br>
+          <b>Images:</b>
+
     </ion-card-content>
 
 
