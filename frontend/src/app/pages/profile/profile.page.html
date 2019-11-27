@@ -18,11 +18,14 @@
           <ion-input
             placeholder="Title"
             [(ngModel)]="post.title"
+            (keyup.enter)="setNextFocus(content)"
           ></ion-input>
         </ion-row>
         <ion-row>
           <ion-input
             placeholder="Content"
+            #content
+            (keyup.enter)="submitPost(post.title, post.content)"
             [(ngModel)]="post.content"
           ></ion-input>
         </ion-row>
