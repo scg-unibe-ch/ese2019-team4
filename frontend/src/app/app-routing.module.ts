@@ -29,7 +29,8 @@ const routes: Routes = [
         loadChildren: './pages/post-detail/post-detail.module#PostDetailPageModule'
       }
     ]
-  },
+  },  { path: 'aboutus', loadChildren: './pages/aboutus/aboutus.module#AboutusPageModule' },
+
   ];
 
 
