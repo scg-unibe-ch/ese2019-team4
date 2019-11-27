@@ -19,6 +19,12 @@
           Profile Page
         </ion-item>
       </ion-list>
+      <ion-list>
+        <ion-item routerLink="/postservice" (click)="toggleMenu()" *ngIf="session.isLoggedIn()">
+          <ion-icon name="add" slot="start"></ion-icon>
+          MyServices
+        </ion-item>
+      </ion-list>
     </ion-content>
     <ion-footer no-border>
         <ion-item routerLink="/aboutus" (click)="toggleMenu()" lines="full">

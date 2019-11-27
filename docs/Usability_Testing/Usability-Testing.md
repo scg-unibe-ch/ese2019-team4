@@ -5,7 +5,7 @@ Register as a Provider. <br>
 Task 2: <br>
 Log in. <br>
 Task 3:<br>
-Make a Post. <br>
+Make a Post <br>
 Task 4: <br>
 Find your Post. <br>
 Task 5: <br>

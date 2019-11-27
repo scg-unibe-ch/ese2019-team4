@@ -30,6 +30,7 @@ const routes: Routes = [
       }
     ]
   },  { path: 'aboutus', loadChildren: './pages/aboutus/aboutus.module#AboutusPageModule' },
+  { path: 'postservice', loadChildren: './pages/postservice/postservice.module#PostservicePageModule' },
 
   ];
 
