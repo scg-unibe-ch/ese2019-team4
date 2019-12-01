@@ -1,5 +1,6 @@
 import {Router, Request, Response} from 'express';
 import {Post} from '../models/post.model';
+import {Subscription} from '../models/subscription.model';
 
 const router: Router = Router();
 
@@ -8,15 +9,6 @@ router.get('/',  async (req: Request, res: Response) => {
   const instances = await Post.findAll();
   res.statusCode = 200;
   res.send({instances});
-});
-
-router.get('/:id', async (req, res) =>{
-  await Post.findOne({
-    where: {id: req.params.id}
-  }).then(post => {if (post != null) {
-    res.send(post.toSimplification());
-  }
-  });
 });
 // returns the table for a user
 router.get('/profile/:author',  async (req: Request, res: Response) => {
@@ -39,6 +31,44 @@ router.post('/', async (req: Request, res: Response) => {
     res.send(true);
     console.log("body: "+req.body)
 });
+
+router.post('/subscribe', async (req: Request, res: Response) => {
+  //adds a subscription
+    const instance = new Subscription();
+
+    instance.fromSimplification(req.body);
+    await instance.save();
+    res.statusCode = 201;
+    res.send(true);
+    console.log("body: "+req.body)
+});
+
+router.get("/subsciptions",  async (req: Request, res: Response) => {
+  const instances = await Subscription.findAll();
+  res.statusCode = 200;
+  res.send({"columns": Object.keys(Subscription.rawAttributes), "values": instances.map(e => e.toSimplification())});
+
+})
+
+router.get('/:id', async (req, res) =>{
+  console.log(req.params.id)
+  if (req.params.id == "subscriptions") {
+    console.log("here")
+    const instances = await Subscription.findAll();
+    res.statusCode = 200;
+    res.send({"columns": Object.keys(Subscription.rawAttributes), "values": instances.map(e => e.toSimplification())});
+    return;
+  }
+  await Post.findOne({
+    where: {id: req.params.id}
+  }).then(post => {if (post != null) {
+    res.send(post.toSimplification());
+  }
+});
+});
+
+
+
 router.delete('/:id', async (req, res) => {
   const found = await Post.findOne({
     where: {id: req.params.id}
@@ -70,18 +100,5 @@ router.delete('/', async (req, res) => {
   } else {
     res.json('No such user found');
   }});
-
-  /*
-router.post('/login/', async (req: Request, res: Response) => {
-  const username = req.body["username"];
-  const password = req.body["password"];
-  console.log(username+password)
-  if (await Account.login(username, password)) {
-    res.send(true);
-  } else {
-    res.send(false);
-  }
-});
-*/
 
 export const PostController: Router = router;

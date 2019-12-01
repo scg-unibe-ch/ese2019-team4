@@ -10,6 +10,7 @@ import {CustomerController} from './controllers/customer.controller';
 import {Provider} from './models/provider.model';
 import {ProviderController} from './controllers/provider.controller';
 import {Post} from './models/post.model';
+import {Subscription} from './models/subscription.model';
 import {PostController} from './controllers/post.controller';
 
 const sequelize =  new Sequelize({
@@ -19,7 +20,7 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([Customer, Provider, Post]);
+sequelize.addModels([Customer, Provider, Post, Subscription]);
 
 // create a new express application instance
 const app: express.Application = express();

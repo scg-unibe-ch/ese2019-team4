@@ -48,7 +48,6 @@ export class Account extends Model<Account> {
   }
 
   fromSimplification(simplification: any): void {
-    console.log("body: "+simplification)
     this.username = simplification['username'];
     this.password = simplification['password'];
   }
