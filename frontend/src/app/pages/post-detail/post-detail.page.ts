@@ -33,27 +33,25 @@ export class PostDetailPage implements OnInit {
 
     subscribe() {
         var func = function(success) {
-          return;
-        }
+          this.ngOnInit();
+        }.bind(this)
         this.database.post("subscribe", {"customer": this.session.username, "post": this.postId}, func)
-        this.ngOnInit();
     }
 
     unsubscribe() {
         var func = function(success) {
-          return;
-        }
-        this.database.post("unsubscribe", {"customer": this.session.username, "post": this.postId}, func)
-        this.ngOnInit();
+          this.ngOnInit();
+        }.bind(this)
+        this.database.post("unsubscribe", {"customer": this.session.username, "post": this.postId}, func);
     }
 
     delete() {
       var func = function(success) {
         this.router.navigate(['/profile']);
+        this.session.updatePosts();
       }.bind(this)
       this.database.post("delete", {"customer": this.session.username, "id": this.postId}, func)
       console.log("deleted");
-      this.session.updatePosts();
     }
 
   ngOnInit() {
@@ -65,10 +63,10 @@ export class PostDetailPage implements OnInit {
         const postId = +paramMap.get('postId');
         this.postId = postId;
         this.postService.getPost(postId).subscribe(data => {
-          this.loadedPost = data;
-          this.subscribed = ((data["subscriptions"].indexOf(this.session.username) != -1) && this.session.isLoggedIn());
-          this.canSubscribe = (!this.subscribed && this.session.isLoggedIn() && !this.session.isProvider())
-          this.isOwner = (this.session.username == data["author"])
+        this.loadedPost = data;
+        this.subscribed = ((data["subscriptions"].indexOf(this.session.username) != -1) && this.session.isLoggedIn());
+        this.canSubscribe = (!this.subscribed && this.session.isLoggedIn() && !this.session.isProvider())
+        this.isOwner = (this.session.username == data["author"])
       });
       }
     );

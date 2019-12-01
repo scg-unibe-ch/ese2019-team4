@@ -32,6 +32,7 @@ export class SessionService {
     this.postService.getUserPosts(this.username).subscribe(data => {
       this.myPosts = data['instances'];
     });
+    console.log("updated")
   }
 
   toggleDark(){

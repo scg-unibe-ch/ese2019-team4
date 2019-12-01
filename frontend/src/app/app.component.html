@@ -7,20 +7,26 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list *ngFor="let pages of navigate">
-        <ion-item [routerLink]="pages.url" routerDirection="forward" (click)="toggleMenu()">
-          <ion-icon [name]="pages.icon" slot="start"></ion-icon>
-          {{pages.title}}
-        </ion-item>
-      </ion-list>
       <ion-list>
+        <ion-item routerLink="/home" (click)="toggleMenu()">
+          <ion-icon name="home" slot="start"></ion-icon>
+          Home
+        </ion-item>
+        <ion-item routerLink="/login-user" (click)="toggleMenu()" *ngIf="!session.isLoggedIn()">
+          <ion-icon name="log-in" slot="start"></ion-icon>
+          Login
+        </ion-item>
+        <ion-item routerLink="/register" (click)="toggleMenu()" *ngIf="!session.isLoggedIn()">
+          <ion-icon name="person-add" slot="start"></ion-icon>
+          Register
+        </ion-item>
         <ion-item routerLink="/profile" id="ProfileLink" (click)="toggleMenu()" *ngIf="session.isLoggedIn()">
           <ion-icon name="contact" slot="start"></ion-icon>
           Profile Page
         </ion-item>
       </ion-list>
       <ion-list>
-        <ion-item routerLink="/postservice" (click)="toggleMenu()" *ngIf="session.isLoggedIn()">
+        <ion-item routerLink="/postservice" (click)="toggleMenu()" *ngIf="session.isProvider()">
           <ion-icon name="add" slot="start"></ion-icon>
           MyServices
         </ion-item>

@@ -38,7 +38,7 @@ router.post('/delete', async (req: Request, res: Response) => {
     var id = req.body["id"];
     //validate?
     await Post.destroy({ where: { id: Number(id)}})
-    console.log("deleted")
+    await Subscription.destroy({ where: { post: Number(id)}})
     res.statusCode = 201;
     res.send(true);
 });

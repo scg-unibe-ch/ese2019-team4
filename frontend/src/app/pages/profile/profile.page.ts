@@ -52,11 +52,10 @@ export class ProfilePage implements OnInit {
     if ( this.dataCheck(title, body) ) {
       var db = new DatabaseService(this.http, "http://localhost:3001/posts/");
       var func = function (success) {
-        console.log(success);
-      }
+        this.session.updatePosts();
+      }.bind(this)
       db.add({"title": title, "body": body, "author": this.session.username}, func);
       this.error = 'Post successful';
-      this.session.updatePosts();
     }
   }
 

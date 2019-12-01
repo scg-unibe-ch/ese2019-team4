@@ -26,7 +26,6 @@
           <tr *ngFor="let customer of loadedPost?.subscriptions">
             <td>{{customer}}</td>
           </tr>
-          {{subscribed}}
     </ion-card-content>
     <ion-button size="fill" (click)="subscribe()" *ngIf="canSubscribe">Subscribe</ion-button>
     <ion-button color="danger" size="fill" (click)="unsubscribe()" *ngIf="subscribed">Unsubscribe</ion-button>
