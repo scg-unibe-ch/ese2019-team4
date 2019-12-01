@@ -34,13 +34,31 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.post('/subscribe', async (req: Request, res: Response) => {
   //adds a subscription
+    var customer = req.body["customer"];
+    var post = req.body["post"];
+    //validate?
+    if ((await Subscription.findOne({ where: { post: Number(post), customer: String(customer)}}))!==null){
+      //subscription already exists
+      res.send(false);
+      console.log("false");
+      return;
+    }
     const instance = new Subscription();
-
     instance.fromSimplification(req.body);
     await instance.save();
     res.statusCode = 201;
     res.send(true);
-    console.log("body: "+req.body)
+});
+
+router.post('/unsubscribe', async (req: Request, res: Response) => {
+  //adds a subscription
+    var customer = req.body["customer"];
+    var post = req.body["post"];
+    //validate?
+    await Subscription.destroy({ where: { post: Number(post), customer: String(customer)}})
+    console.log("deleted")
+    res.statusCode = 201;
+    res.send(true);
 });
 
 router.get('/:id', async (req, res) =>{

@@ -19,6 +19,8 @@ export class PostDetailPage implements OnInit {
   database_url = 'http://localhost:3001/posts/';
   database = new DatabaseService(this.http, this.database_url);
   postId;
+  subscribed: boolean;
+  canSubscribe: boolean;
 
   constructor(
     private http: HttpClient,
@@ -30,15 +32,18 @@ export class PostDetailPage implements OnInit {
 
     subscribe() {
         var func = function(success) {
-          if (success == false) {
-            console.log("sub failed")
-          }
-          else {
-            console.log("subbed")
-          }
-        }.bind(this)
-        console.log("sending: "+this.session.username+this.postId)
+          return;
+        }
         this.database.post("subscribe", {"customer": this.session.username, "post": this.postId}, func)
+        this.ngOnInit();
+    }
+
+    unsubscribe() {
+        var func = function(success) {
+          return;
+        }
+        this.database.post("unsubscribe", {"customer": this.session.username, "post": this.postId}, func)
+        this.ngOnInit();
     }
 
   ngOnInit() {
@@ -50,25 +55,12 @@ export class PostDetailPage implements OnInit {
         const postId = +paramMap.get('postId');
         this.postId = postId;
         this.postService.getPost(postId).subscribe(data => {
-        this.loadedPost = data;
-        console.log(this.loadedPost);
+          this.loadedPost = data;
+          this.subscribed = ((data["subscriptions"].indexOf(this.session.username) != -1) && this.session.isLoggedIn());
+          this.canSubscribe = (!this.subscribed && this.session.isLoggedIn() && !this.session.isProvider())
       });
       }
     );
   }
-  /*onDeletePost() {
-    this.alertCtrl.create({header:'Are you sure?', message: 'Do you really want to delete this recipe?',
-      buttons:[
-        {text: 'Cancel', role: 'cancel'},
-        {text: 'Delete',
-          handler: () => {
-            this.recipesService.deleteRecipe(this.loadedRecipe.id);
-            this.router.navigate(['/recipes']);
-          }}
-      ]}
-    ).then(alertEl => {
-      alertEl.present();
-    });
-  }*/
 
 }
