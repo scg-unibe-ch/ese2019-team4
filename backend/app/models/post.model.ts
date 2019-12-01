@@ -1,6 +1,6 @@
 // model for post data base
 import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
-import { Provider } from './provider.model';
+import { Subscription } from './subscription.model';
 
 @Table
 export class Post extends Model<Post> {
@@ -19,12 +19,14 @@ export class Post extends Model<Post> {
   @Column
   body!: string;
 
-  toSimplification(): any {
+  async toSimplification(): Promise<Object> {
+    console.log(await Subscription.get_customers(this.id));
     return {
       'id': this.id,
       'title': this.title,
       'author': this.author,
-      'body': this.body
+      'body': this.body,
+      'subscriptions': await Subscription.get_customers(this.id)
     };
   }
 

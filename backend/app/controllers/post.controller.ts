@@ -43,13 +43,6 @@ router.post('/subscribe', async (req: Request, res: Response) => {
     console.log("body: "+req.body)
 });
 
-router.get("/subsciptions",  async (req: Request, res: Response) => {
-  const instances = await Subscription.findAll();
-  res.statusCode = 200;
-  res.send({"columns": Object.keys(Subscription.rawAttributes), "values": instances.map(e => e.toSimplification())});
-
-})
-
 router.get('/:id', async (req, res) =>{
   console.log(req.params.id)
   if (req.params.id == "subscriptions") {
@@ -61,8 +54,8 @@ router.get('/:id', async (req, res) =>{
   }
   await Post.findOne({
     where: {id: req.params.id}
-  }).then(post => {if (post != null) {
-    res.send(post.toSimplification());
+  }).then(async post => {if (post != null) {
+    res.send(await post.toSimplification());
   }
 });
 });

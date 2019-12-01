@@ -29,8 +29,8 @@ export class Subscription extends Model<Subscription> {
   }
 
   static async get_customers(service: number): Promise<Object> {
-    // returns all customers that have subscribed to a service
-    return await this.findAll({ where: { post: Number(service)}})
+    // returns all customers that have subscribed to a service in an array
+    return (await this.findAll({ where: { post: Number(service)}, attributes: ["customer"], raw: true})).map((event) => event.customer);
   }
   /*
   static async user_exists(name: String): Promise<Boolean> {
