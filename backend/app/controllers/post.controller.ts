@@ -6,14 +6,15 @@ const router: Router = Router();
 
 // returns the table
 router.get('/',  async (req: Request, res: Response) => {
-  const instances = await Post.findAll();
+  const instances = await Post.findAll({ order: [['id', 'DESC']]});
   res.statusCode = 200;
   res.send({instances});
 });
 // returns the table for a user
 router.get('/profile/:author',  async (req: Request, res: Response) => {
   const instances = await Post.findAll({
-    where: {author: req.params.author}
+    where: {author: req.params.author},
+    order: [['id', 'DESC']]
   });
   res.statusCode = 200;
   res.send({instances});
@@ -30,6 +31,16 @@ router.post('/', async (req: Request, res: Response) => {
     res.statusCode = 201;
     res.send(true);
     console.log("body: "+req.body)
+});
+
+router.post('/delete', async (req: Request, res: Response) => {
+  //adds a subscription
+    var id = req.body["id"];
+    //validate?
+    await Post.destroy({ where: { id: Number(id)}})
+    console.log("deleted")
+    res.statusCode = 201;
+    res.send(true);
 });
 
 router.post('/subscribe', async (req: Request, res: Response) => {
@@ -51,7 +62,7 @@ router.post('/subscribe', async (req: Request, res: Response) => {
 });
 
 router.post('/unsubscribe', async (req: Request, res: Response) => {
-  //adds a subscription
+  //removes a subscription
     var customer = req.body["customer"];
     var post = req.body["post"];
     //validate?

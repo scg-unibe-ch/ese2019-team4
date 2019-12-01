@@ -19,7 +19,6 @@ export class ProfilePage implements OnInit {
   database_url = 'http://localhost:3001/customer/';
   database = new DatabaseService(this.http, this.database_url);
   post = {};
-  posts;
 
 
   constructor(private http: HttpClient,
@@ -57,13 +56,12 @@ export class ProfilePage implements OnInit {
       }
       db.add({"title": title, "body": body, "author": this.session.username}, func);
       this.error = 'Post successful';
+      this.session.updatePosts();
     }
   }
 
   ngOnInit() {
-    this.postService.getUserPosts(this.session.username).subscribe(data => {
-      this.posts = data['instances'];
-    });
+    this.session.updatePosts()
   }
 
   setNextFocus(content) {

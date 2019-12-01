@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DatabaseService } from './database/database.service'
 import { HttpClient } from '@angular/common/http';
-import * as moment from 'moment';
+import {PostService} from './post/post.service';
 
 
 
@@ -22,6 +22,17 @@ export class SessionService {
   type = this.info.type;
   token = this.info.token;
   expires_at = this.info.expires_at;
+  posts: Array<any>; //all posts
+  myPosts: Array<any>; //posts of the current user
+
+  updatePosts(){
+    this.postService.getPosts().subscribe(data => {
+      this.posts = data['instances'];
+    });
+    this.postService.getUserPosts(this.username).subscribe(data => {
+      this.myPosts = data['instances'];
+    });
+  }
 
   toggleDark(){
     if (localStorage.getItem("theme") === null) {
@@ -48,27 +59,20 @@ export class SessionService {
   }
 
   private setSession(authResult) {
-      const expiresAt = moment().add(authResult.expiresIn,'second');
 
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('type', authResult.type);
       localStorage.setItem('username', authResult.username);
-      localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
       this.update()
+      this.updatePosts();
   }
 
   logout() {
       localStorage.removeItem("id_token");
       localStorage.removeItem('type');
       localStorage.removeItem('username');
-      localStorage.removeItem("expires_at");
       this.update()
-  }
-
-  getExpiration() {
-      const expiration = localStorage.getItem("expires_at");
-      const expiresAt = JSON.parse(expiration);
-      return moment(expiresAt);
+      this.updatePosts();
   }
 
   update() {
@@ -82,7 +86,6 @@ export class SessionService {
     this.username = this.info.username;
     this.type = this.info.type;
     this.token = this.info.token;
-    this.expires_at = this.info.expires_at;
   }
 
   public isLoggedIn() {
@@ -95,7 +98,8 @@ export class SessionService {
     return (localStorage.getItem("type") == "provider");
   }
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient, private postService: PostService) {
     //set theme
     if (localStorage.getItem("theme") == "dark") {
 

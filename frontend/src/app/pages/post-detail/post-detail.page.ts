@@ -21,6 +21,7 @@ export class PostDetailPage implements OnInit {
   postId;
   subscribed: boolean;
   canSubscribe: boolean;
+  isOwner: boolean;
 
   constructor(
     private http: HttpClient,
@@ -46,6 +47,15 @@ export class PostDetailPage implements OnInit {
         this.ngOnInit();
     }
 
+    delete() {
+      var func = function(success) {
+        this.router.navigate(['/profile']);
+      }.bind(this)
+      this.database.post("delete", {"customer": this.session.username, "id": this.postId}, func)
+      console.log("deleted");
+      this.session.updatePosts();
+    }
+
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
         if (!paramMap.has('postId')) {
@@ -58,6 +68,7 @@ export class PostDetailPage implements OnInit {
           this.loadedPost = data;
           this.subscribed = ((data["subscriptions"].indexOf(this.session.username) != -1) && this.session.isLoggedIn());
           this.canSubscribe = (!this.subscribed && this.session.isLoggedIn() && !this.session.isProvider())
+          this.isOwner = (this.session.username == data["author"])
       });
       }
     );

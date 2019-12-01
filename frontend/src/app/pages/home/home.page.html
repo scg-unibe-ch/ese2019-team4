@@ -35,7 +35,7 @@
   <ion-grid>
     <ion-row>
       <ion-col sizeMd="3">
-            <ion-card *ngFor="let post of posts" [routerLink]= "post.id">
+            <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id">
               <app-post-card [post]="post"></app-post-card>
             </ion-card>
       </ion-col>
