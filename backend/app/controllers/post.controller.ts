@@ -1,6 +1,7 @@
 import {Router, Request, Response} from 'express';
 import {Post} from '../models/post.model';
 import {Subscription} from '../models/subscription.model';
+import {isVerified} from '../services/session'
 
 const router: Router = Router();
 
@@ -20,9 +21,11 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
   res.send({instances});
 });
 
-// accepts user information in form of {"title": title, "body": body, "author": author}
+// accepts user information in form of {"title": title, "body": body, "author": author, "token": token}
 // return true if the value has been added to the data base
 router.post('/', async (req: Request, res: Response) => {
+    isVerified(req.body["username"], req.body["token"])
+
     const instance = new Post();
     instance.fromSimplification(req.body);
     await instance.save().catch(error => {

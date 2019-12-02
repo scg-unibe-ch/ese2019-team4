@@ -46,7 +46,7 @@ router.post('/login/', async (req: Request, res: Response) => {
       //create a rsa jwt
       const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
               algorithm: 'RS256',
-              expiresIn: expiration_time, //expiration in minutes
+              expiresIn: expiration_time, //expiration in seconds
               subject: username});
       res.send({
         idToken: jwtBearerToken,

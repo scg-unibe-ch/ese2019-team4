@@ -54,7 +54,7 @@ export class ProfilePage implements OnInit {
       var func = function (success) {
         this.session.updatePosts();
       }.bind(this)
-      db.add({"title": title, "body": body, "author": this.session.username}, func);
+      db.add({"title": title, "body": body, "author": this.session.username, "token": this.session.token}, func);
       this.error = 'Post successful';
     }
   }
