@@ -21,7 +21,7 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
   res.send({instances});
 });
 
-// accepts user information in form of {"title": title, "body": body, "author": author, "token": token}
+// accepts user information in form of {"title": title, "body": body, "username": username, "token": token}
 // return true if the value has been added to the data base
 router.post('/', async (req: Request, res: Response) => {
     if (verify(req.body)){

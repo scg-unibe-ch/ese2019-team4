@@ -56,7 +56,7 @@ export class ProfilePage implements OnInit {
         console.log(success);
         this.session.updatePosts();
       }.bind(this)
-      con.post({"title": title, "body": body, "author": this.session.username, "token": this.session.token}, func);
+      con.post_authenticated({"title": title, "body": body}, func);
       this.error = 'Post successful';
     }
   }

@@ -33,7 +33,7 @@ export class Post extends Model<Post> {
   fromSimplification(simplification: any): void {
     this.title = simplification['title'];
     this.body = simplification['body'];
-    this.author = simplification['author']; // should be read from jwt token
+    this.author = simplification['username']; // should be read from jwt token
   }
 
 }

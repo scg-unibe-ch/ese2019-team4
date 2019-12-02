@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SessionService } from '../session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +19,13 @@ class Connection {
   * @param func: the function is executed with the connections return as parameter
   */
   post(tuple: object, func = function(success){console.log(success)}, path = ""): void {
+    this.http.post(this.url+path, tuple).subscribe(data => func(data));
+  }
+
+  //adds authentication to post
+  post_authenticated(tuple: object, func = function(success){console.log(success)}, path = ""): void {
+    tuple["username"] = localStorage.getItem("username");
+    tuple["token"] = localStorage.getItem("id_token");
     this.http.post(this.url+path, tuple).subscribe(data => func(data));
   }
 }
