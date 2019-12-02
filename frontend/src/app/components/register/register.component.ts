@@ -13,7 +13,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private alertController: AlertController) { }
+              private alertController: AlertController,
+              private db: DatabaseService) { }
   @Input()
   isProvider = false;
   URL = 'http://localhost:3001/costumer';
@@ -45,7 +46,7 @@ export class RegisterComponent implements OnInit {
           this.error = 'User already exists';
         }
       }.bind(this)
-      this.database.add({"username": name, "password": password}, func);
+      this.database.post({"username": name, "password": password}, func);
     }
 
   }
@@ -55,7 +56,7 @@ export class RegisterComponent implements OnInit {
     } else {
       this.URL = 'http://localhost:3001/customer';
     }
-    this.database = new DatabaseService(this.http, this.URL);
+    this.database = this.db.connect(this.URL);
     this.DATABASE_URL = this.URL;
   }
 

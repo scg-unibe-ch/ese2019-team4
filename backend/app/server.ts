@@ -45,12 +45,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-const expressJwt = require('express-jwt');
-
-const RSA_PUBLIC_KEY = fs.readFileSync('./app/services/public.key');
-
-const checkIfAuthenticated = expressJwt({secret: RSA_PUBLIC_KEY});
-
 sequelize.sync().then(() => {
 // start serving the application on the given port
   app.listen(port, () => {

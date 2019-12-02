@@ -15,7 +15,7 @@ import {PostService} from './post/post.service';
 export class SessionService {
   backend_url = 'http://localhost:3001/'; // has to be configured here! (the url to the backend server)
 
-  database = new DatabaseService(this.http, this.backend_url+"customer/");
+  database = this.db.connect(this.backend_url+"customer/");
   info = {"username": localStorage.getItem("username"), "type": localStorage.getItem("type"),
           "token": localStorage.getItem("id_token"), "expires_at": localStorage.getItem("expires_at")}
   username = this.info.username;
@@ -56,7 +56,7 @@ export class SessionService {
         this.setSession(res)
       }
     }.bind(this)
-    this.database.post("login", {"username": name, "password": password}, func)
+    this.database.post({"username": name, "password": password}, func, "login")
   }
 
   private setSession(authResult) {
@@ -100,7 +100,8 @@ export class SessionService {
   }
 
 
-  constructor(private http: HttpClient, private postService: PostService) {
+  constructor(private http: HttpClient, private postService: PostService,
+  private db:DatabaseService) {
     //set theme
     if (localStorage.getItem("theme") == "dark") {
 

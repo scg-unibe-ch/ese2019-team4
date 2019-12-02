@@ -17,14 +17,15 @@ export class ProfilePage implements OnInit {
   error = null;
   customer = {};
   database_url = 'http://localhost:3001/customer/';
-  database = new DatabaseService(this.http, this.database_url);
+  database = this.db.connect(this.database_url);
   post = {};
 
 
   constructor(private http: HttpClient,
               private router: Router,
               private postService: PostService,
-              private session: SessionService) { }
+              private session: SessionService,
+              private db:DatabaseService) { }
 
 
   logout() {
@@ -50,11 +51,12 @@ export class ProfilePage implements OnInit {
 
   submitPost(title: string, body: string) {
     if ( this.dataCheck(title, body) ) {
-      var db = new DatabaseService(this.http, "http://localhost:3001/posts/");
+      var con = this.db.connect("http://localhost:3001/posts/");
       var func = function (success) {
+        console.log(success);
         this.session.updatePosts();
       }.bind(this)
-      db.add({"title": title, "body": body, "author": this.session.username, "token": this.session.token}, func);
+      con.post({"title": title, "body": body, "author": this.session.username, "token": this.session.token}, func);
       this.error = 'Post successful';
     }
   }

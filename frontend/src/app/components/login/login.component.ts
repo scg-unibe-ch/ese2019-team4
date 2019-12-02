@@ -13,8 +13,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   error = null;
   customer = {};
-  database_url = 'http://localhost:3001/customer/';
-  database = new DatabaseService(this.http, this.database_url);
+  database_url = 'http://localhost:3001/customer/login';
+  database = this.db.connect(this.database_url);
   inputType: string = 'password';
   iconType: string = 'eye';
 
@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/profile']);
         }
       }.bind(this)
-      this.database.post("login", {"username": name, "password": password}, func)
+      this.database.post({"username": name, "password": password}, func)
   }
 
   constructor(private http: HttpClient,
-              private router: Router, private session:SessionService) { }
+              private router: Router, private session:SessionService, private db:DatabaseService) { }
 
   ngOnInit() {
   }

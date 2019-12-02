@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SessionService } from '../session.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
-    /* sends an object to the specified url
-    * @return the servers responce
-    */
-    add(tuple: object, func: any): void {
-        this.http.post(this.url, tuple).subscribe(data => func(data));
-    }
-    // method in database.service
-  /*update() {
-    // updates the database table from the url
-    this.http.get(this.url).subscribe(data => this.table = data);
-    console.log('updated table');
-  }*/
-
-    /* posts an object to the desired path
-    * @return response of the object
-    */
-    post(location: string, tuple: object, func: any): void {
-      this.http.post(this.url + location, tuple).subscribe(data => func(data))
+    connect(url: string){
+      return new Connection(this.http, url);
     }
 
+  constructor(private http: HttpClient) { }
+}
+
+class Connection {
   constructor(private http: HttpClient, private url: string) { }
+
+  /* posts an object to the connected url
+  * @param func: the function is executed with the connections return as parameter
+  */
+  post(tuple: object, func = function(success){console.log(success)}, path = ""): void {
+    this.http.post(this.url+path, tuple).subscribe(data => func(data));
+  }
 }

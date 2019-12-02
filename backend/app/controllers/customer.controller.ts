@@ -1,11 +1,8 @@
 import {Router, Request, Response} from 'express';
 import {Customer} from '../models/customer.model';
 import {Provider} from '../models/provider.model';
+import {sign} from '../services/session'
 const bodyParser = require('body-parser');
-import * as jwt from 'jsonwebtoken';
-import * as fs from "fs";
-
-const RSA_PRIVATE_KEY = fs.readFileSync('./app/services/private.key');
 
 const router: Router = Router();
 
@@ -42,17 +39,9 @@ router.post('/login/', async (req: Request, res: Response) => {
   if (await Customer.login(username, password) || await Provider.login(username, password)) {
       //set the type of the logged in profile
       var type = "customer";
+      //checks if type is provider
       if (await Provider.login(username, password)) type="provider";
-      //create a rsa jwt
-      const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
-              algorithm: 'RS256',
-              expiresIn: expiration_time, //expiration in seconds
-              subject: username});
-      res.send({
-        idToken: jwtBearerToken,
-        expiresIn: expiration_time,
-        type: type,
-        username: username});
+      res.send(sign(username, type));
   }
   else {
       // the login failed, either password is wrong or user does not exist

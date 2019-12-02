@@ -17,7 +17,7 @@ export class PostDetailPage implements OnInit {
 
   loadedPost;
   database_url = 'http://localhost:3001/posts/';
-  database = new DatabaseService(this.http, this.database_url);
+  database = this.db.connect(this.database_url);
   postId;
   subscribed: boolean;
   canSubscribe: boolean;
@@ -29,20 +29,21 @@ export class PostDetailPage implements OnInit {
     private postService: PostService,
     private router: Router,
     private alertCtrl: AlertController,
-    private session: SessionService) { }
+    private session: SessionService,
+    private db:DatabaseService) { }
 
     subscribe() {
         var func = function(success) {
           this.ngOnInit();
         }.bind(this)
-        this.database.post("subscribe", {"customer": this.session.username, "post": this.postId}, func)
+        this.database.post({"customer": this.session.username, "post": this.postId}, func, "subscribe")
     }
 
     unsubscribe() {
         var func = function(success) {
           this.ngOnInit();
         }.bind(this)
-        this.database.post("unsubscribe", {"customer": this.session.username, "post": this.postId}, func);
+        this.database.post({"customer": this.session.username, "post": this.postId}, func, "unsubscribe");
     }
 
     delete() {
@@ -50,7 +51,7 @@ export class PostDetailPage implements OnInit {
         this.router.navigate(['/profile']);
         this.session.updatePosts();
       }.bind(this)
-      this.database.post("delete", {"customer": this.session.username, "id": this.postId}, func)
+      this.database.post({"customer": this.session.username, "id": this.postId}, func, "delete")
       console.log("deleted");
     }
 
