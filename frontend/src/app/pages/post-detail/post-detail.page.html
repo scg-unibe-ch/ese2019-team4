@@ -20,8 +20,8 @@
           {{ loadedPost?.body }} <br>
           <b>Provider-Profile:</b> <br>
           {{loadedPost?.author }} <br>
-          <b>Images:</b> <br>
-          Currently not available. <br>
+          <b>Image:</b> <br>
+          <img src="assets/images/{{loadedPost?.image}}.jpg" style="width: 20%;"> <br>
           <b>Subscribed by:</b> <br>
           <tr *ngFor="let customer of loadedPost?.subscriptions">
             <td>{{customer}}</td>

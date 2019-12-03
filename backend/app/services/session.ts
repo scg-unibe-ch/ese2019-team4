@@ -10,7 +10,7 @@ export const sign = function(username: string, type: string){
   var expiration_time = 120; //expiration time in seconds
   const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
           algorithm: 'RS256',
-          expiresIn: expiration_time,
+          //expiresIn: expiration_time,
           subject: username});
   return {
     idToken: jwtBearerToken,

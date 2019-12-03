@@ -31,7 +31,7 @@ export class ProfilePage implements OnInit {
   logout() {
     this.session.logout();
   }
-  dataCheck(title: string, body: string) {
+  dataCheck(title: string, body: string, image: number) {
     function whiteSpaceCheck(anything: string) {
       if (anything == null || anything === '' ) {
         return true;
@@ -45,12 +45,16 @@ export class ProfilePage implements OnInit {
       this.error = 'Don\'t leave the content empty';
       return false;
     }
+    if (image != 1 && image != 0){
+      this.error = 'Only images are 0 and 1';
+      return false;
+    }
     return true;
   }
 
 
-  submitPost(title: string, body: string) {
-    if ( this.dataCheck(title, body) ) {
+  submitPost(title: string, body: string, image: number) {
+    if ( this.dataCheck(title, body, image) ) {
       var con = this.db.connect("http://localhost:3001/posts/", this.session);
       var func = function (success) {
         if (success) {
@@ -58,7 +62,7 @@ export class ProfilePage implements OnInit {
         this.error = "post successful";
         } else {this.error = 'Your session has expired, please log out.';}
       }.bind(this)
-      con.post({"title": title, "body": body}, func);
+      con.post({"title": title, "body": body, "image": image}, func);
     }
   }
 

@@ -25,15 +25,31 @@
           <ion-input
             placeholder="Description"
             #content
-            (keyup.enter)="submitPost(post.title, post.content)"
             [(ngModel)]="post.content">
+          </ion-input>
+        </ion-row>
+        <ion-row>
+          0
+          <ion-thumbnail>
+                          <img src="assets/images/0.jpg" value="0">
+          </ion-thumbnail>
+          1
+          <ion-thumbnail>
+                          <img src="assets/images/1.jpg" value="1">
+          </ion-thumbnail>
+        </ion-row>
+        <ion-row>
+          <ion-input
+            placeholder="Picture"
+            #content
+            [(ngModel)]="post.image">
           </ion-input>
         </ion-row>
         <ion-row>
           {{error}}
         </ion-row>
         <ion-row>
-          <ion-button size="fill" (click)="submitPost(post.title, post.content)">Post Service</ion-button>
+          <ion-button size="fill" (click)="submitPost(post.title, post.content, post.image)">Post Service</ion-button>
         </ion-row>
       </ion-card-content>
     </ion-item>

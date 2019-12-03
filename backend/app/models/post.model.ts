@@ -19,6 +19,9 @@ export class Post extends Model<Post> {
   @Column
   body!: string;
 
+  @Column
+  image!: number;
+
   async toSimplification(): Promise<Object> {
     console.log(await Subscription.get_customers(this.id));
     return {
@@ -26,6 +29,7 @@ export class Post extends Model<Post> {
       'title': this.title,
       'author': this.author,
       'body': this.body,
+      'image': this.image,
       'subscriptions': await Subscription.get_customers(this.id)
     };
   }
@@ -33,6 +37,7 @@ export class Post extends Model<Post> {
   fromSimplification(simplification: any): void {
     this.title = simplification['title'];
     this.body = simplification['body'];
+    this.image = simplification['image']
     this.author = simplification['username']; // should be read from jwt token
   }
 
