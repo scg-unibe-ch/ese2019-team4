@@ -34,6 +34,10 @@ export class SessionService {
     });
   }
 
+  authenticate(success: any){
+    console.log("authentication: "+success);
+  }
+
   toggleDark(){
     if (localStorage.getItem("theme") === null) {
       document.body.classList.add('dark');

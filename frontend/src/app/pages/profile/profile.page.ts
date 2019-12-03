@@ -51,14 +51,14 @@ export class ProfilePage implements OnInit {
 
   submitPost(title: string, body: string) {
     if ( this.dataCheck(title, body) ) {
-      var con = this.db.connect("http://localhost:3001/posts/");
+      var con = this.db.connect("http://localhost:3001/posts/", this.session);
       var func = function (success) {
         if (success) {
         this.session.updatePosts();
         this.error = "post successful";
         } else {this.error = 'Your session has expired, please log out.';}
       }.bind(this)
-      con.post_authenticated({"title": title, "body": body}, func);
+      con.post({"title": title, "body": body}, func);
     }
   }
 
