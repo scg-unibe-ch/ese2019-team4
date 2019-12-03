@@ -24,14 +24,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-item>
-    <div *ngIf="!session.isLoggedIn()">
-      Please login.
-    </div>
-    <div *ngIf="session.isLoggedIn()">
-      Logged in as {{session.username}} a {{session.type}}
-    </div>
-  </ion-item>
   <ion-grid>
     <ion-row>
       <ion-col sizeMd="3">
