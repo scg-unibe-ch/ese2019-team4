@@ -105,21 +105,9 @@
     --min-height:62px!important;
   }
 
-  // used to hide the scrollbar
-  ::-webkit-scrollbar, *::-webkit-scrollbar {
+  // supposed to hide scrollbar
+  ::-webkit-scrollbar {
     display: none;
-    overflow: hidden;
-  }
-  ion-content {
-    overflow: hidden;
-    --overflow: hidden;
-  }
-  .scroll-content {
-    overflow: hidden;
-  }
-  ion-infinite-scroll.md.infinite-scroll-enabled.hydrated {
-    overflow: scroll!important;
-    height: 100%!important;
   }
 }
 
