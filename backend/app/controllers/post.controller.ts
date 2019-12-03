@@ -11,6 +11,7 @@ router.get('/',  async (req: Request, res: Response) => {
   res.statusCode = 200;
   res.send({instances});
 });
+
 // returns the table for a user
 router.get('/profile/:author',  async (req: Request, res: Response) => {
   const instances = await Post.findAll({
@@ -37,16 +38,17 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.post('/delete', async (req: Request, res: Response) => {
   //adds a subscription
+  if (verify(req.body)){
     var id = req.body["id"];
-    //validate?
     await Post.destroy({ where: { id: Number(id)}})
     await Subscription.destroy({ where: { post: Number(id)}})
     res.statusCode = 201;
-    res.send(true);
+    res.send(true);} else {res.send(false);}
 });
 
 router.post('/subscribe', async (req: Request, res: Response) => {
   //adds a subscription
+  if (verify(req.body)){
     var customer = req.body["customer"];
     var post = req.body["post"];
     //validate?
@@ -60,18 +62,19 @@ router.post('/subscribe', async (req: Request, res: Response) => {
     instance.fromSimplification(req.body);
     await instance.save();
     res.statusCode = 201;
-    res.send(true);
+    res.send(true);} else {res.send(false);}
 });
 
 router.post('/unsubscribe', async (req: Request, res: Response) => {
   //removes a subscription
+  if (verify(req.body)){
     var customer = req.body["customer"];
     var post = req.body["post"];
     //validate?
     await Subscription.destroy({ where: { post: Number(post), customer: String(customer)}})
     console.log("deleted")
     res.statusCode = 201;
-    res.send(true);
+    res.send(true);} else {res.send(false);}
 });
 
 router.get('/:id', async (req, res) =>{

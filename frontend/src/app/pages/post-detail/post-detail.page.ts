@@ -17,7 +17,7 @@ export class PostDetailPage implements OnInit {
 
   loadedPost;
   database_url = 'http://localhost:3001/posts/';
-  database = this.db.connect(this.database_url);
+  database = this.db.connect(this.database_url, this.session);
   postId;
   subscribed: boolean;
   canSubscribe: boolean;
@@ -52,7 +52,6 @@ export class PostDetailPage implements OnInit {
         this.session.updatePosts();
       }.bind(this)
       this.database.post({"customer": this.session.username, "id": this.postId}, func, "delete")
-      console.log("deleted");
     }
 
   ngOnInit() {
