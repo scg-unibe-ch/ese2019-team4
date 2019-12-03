@@ -10,7 +10,7 @@ import { SessionService } from '../../services/session.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  bool: boolean = true;
+  bool = true;
   myInput: any;
 
   constructor(private http: HttpClient, public session: SessionService) {

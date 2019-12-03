@@ -9,49 +9,7 @@
   <ion-list>
     <ion-item>Username: {{session.username}}</ion-item>
     <ion-item>Type of User: {{session.type}}</ion-item>
-    <ion-item id="offer" *ngIf="session.isProvider()">
-
-      <ion-card-content>
-        <ion-row>
-          <ion-input
-            placeholder="Title"
-            [(ngModel)]="post.title"
-            (keyup.enter)="setNextFocus(content)"
-          ></ion-input>
-        </ion-row>
-        <ion-row>
-          <ion-input
-            placeholder="Description"
-            #content
-            [(ngModel)]="post.content">
-          </ion-input>
-        </ion-row>
-        <ion-row>
-          0
-          <ion-thumbnail>
-                          <img src="assets/images/0.jpg" value="0">
-          </ion-thumbnail>
-          1
-          <ion-thumbnail>
-                          <img src="assets/images/1.jpg" value="1">
-          </ion-thumbnail>
-        </ion-row>
-        <ion-row>
-          <ion-input
-            placeholder="Picture"
-            #content
-            [(ngModel)]="post.image">
-          </ion-input>
-        </ion-row>
-        <ion-row>
-          {{error}}
-        </ion-row>
-        <ion-row>
-          <ion-button size="fill" (click)="submitPost(post.title, post.content, post.image)">Post Service</ion-button>
-        </ion-row>
-      </ion-card-content>
-    </ion-item>
-    <ion-grid>
+    <ion-grid *ngIf="session.isProvider()">
       <ion-row>
         <ion-col sizeMd="3">
           <ion-card *ngFor="let post of session.myPosts" [routerLink]= "post.id">
@@ -64,5 +22,4 @@
       <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
     </ion-item>
   </ion-list>
-
 </ion-content>

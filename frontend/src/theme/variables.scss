@@ -91,6 +91,7 @@
   --password-color: var(--ion-color-medium);
   --confirmPassword-color: var(--ion-color-medium);
 
+  // are invisible on ios otherwise
   ion-menu-button{
     color: var(--ion-color-primary-contrast);
     display: inline-block;
@@ -98,8 +99,27 @@
   ion-back-button{
     color: var(--ion-color-primary-contrast);
   }
-  ion-header{
 
+  //makes sure that a toolbar doesn't shrink in ios
+  ion-toolbar{
+    --min-height:62px!important;
+  }
+
+  // used to hide the scrollbar
+  ::-webkit-scrollbar, *::-webkit-scrollbar {
+    display: none;
+    overflow: hidden;
+  }
+  ion-content {
+    overflow: hidden;
+    --overflow: hidden;
+  }
+  .scroll-content {
+    overflow: hidden;
+  }
+  ion-infinite-scroll.md.infinite-scroll-enabled.hydrated {
+    overflow: scroll!important;
+    height: 100%!important;
   }
 }
 

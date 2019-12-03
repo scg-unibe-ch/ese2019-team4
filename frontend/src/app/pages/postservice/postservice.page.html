@@ -1,10 +1,59 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-back-button defaultHref="home" slot="start"></ion-back-button>
-    <ion-title>My Services</ion-title>
+    <ion-title>Share Your Service</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list *ngIf="session.isProvider()">
+    <ion-card>
+      <ion-row>
+        <ion-input placeholder="Title"
+        [(ngModel)]="post.title"
+        (keyup.enter)="setNextFocus(content)"
+        ></ion-input>
+      </ion-row>
+      <ion-row>
+        <ion-input placeholder="Description"
+        #content
+        [(ngModel)]="post.content">
+        </ion-input>
+      </ion-row>
+      <ion-row>
+        <ion-thumbnail *ngFor="let pic of pictures" (click)="setImage(pic.id)"><img src={{pic.img}} /></ion-thumbnail>
+      </ion-row>
+      <ion-row>
+        <ion-input placeholder="Picture"
+        #content
+        [(ngModel)]="post.image">
+        </ion-input>
+      </ion-row>
+      <ion-row>
+        {{error}}
+      </ion-row>
+      <ion-row>
+        <ion-button size="fill" (click)="submitPost(post.title, post.content, post.image)">Post Service</ion-button>
+      </ion-row>
+    </ion-card>
+    <ion-row>
+      <ion-button (click)="changeBool()">Show Preview</ion-button>
+    </ion-row>
+    <ion-card [hidden]=bool>
+      <ion-card-header>
+        <ion-card-title>{{ post.title }}</ion-card-title>
+        <ion-card-subtitle>
+          This service is provided by {{session.username}}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <b>Description:</b> <br>
+          {{ post.content }} <br>
+        <b>Provider-Profile:</b> <br>
+          {{session.username}}<br>
+        <b>Image:</b> <br>
+        <img src="assets/images/{{post.image}}.jpg" style="width: 20%;"> <br>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

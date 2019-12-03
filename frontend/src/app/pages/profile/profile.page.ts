@@ -67,7 +67,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.session.updatePosts()
+    this.session.updatePosts();
   }
 
   setNextFocus(content) {
