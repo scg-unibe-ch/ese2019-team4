@@ -27,6 +27,9 @@ export class PostService implements OnInit {
   public getUserPosts(USER: string): Observable<Object> {
     return this.http.get(this.REST_API_SERVER + 'profile/' + USER);
   }
+  public searchPosts(title: string): Observable<Object> {
+    return this.http.get(this.REST_API_SERVER + title);
+  }
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {

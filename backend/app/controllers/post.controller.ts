@@ -22,6 +22,16 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
   res.send({instances});
 });
 
+// returns search result
+router.get('/:title',  async (req: Request, res: Response) => {
+  const instances = await Post.findAll({
+    where: {title: req.params.title},
+    order: [['id', 'DESC']]
+  });
+  res.statusCode = 200;
+  res.send({instances});
+});
+
 // accepts user information in form of {"title": title, "body": body, "username": username, "token": token}
 // return true if the value has been added to the data base
 router.post('/', async (req: Request, res: Response) => {
