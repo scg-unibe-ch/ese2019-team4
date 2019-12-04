@@ -31,7 +31,6 @@ export class HomePage implements OnInit {
   }
   // A terrible search method that only searches users
   searchPosts() {
-    //please reimplement
-    return;
+    // call search posts in post.service.ts
   }
 }

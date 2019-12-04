@@ -22,8 +22,8 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
   res.send({instances});
 });
 
-// returns the table for a user
-router.get('/name/:title',  async (req: Request, res: Response) => {
+// returns search result
+router.get('/:title',  async (req: Request, res: Response) => {
   const instances = await Post.findAll({
     where: {title: req.params.title},
     order: [['id', 'DESC']]
