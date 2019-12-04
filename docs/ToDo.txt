@@ -1,7 +1,0 @@
-ToDo List:
-
-	- Seite, um Posts zu machen (soll nicht in Profile sein)
-	- Preview vom Post, bevor man ihn postet
-	- Nach posten soll Meldung oder so kommen
-	- Most Recent Post auf Homepage ganz oben
-	- Besserer Logout Button

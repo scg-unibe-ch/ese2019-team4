@@ -2,17 +2,14 @@
   <ion-toolbar color="primary">
     <ion-title [hidden]=!bool>Event Management</ion-title>
     <ion-menu-button autoHide="false" slot="start"></ion-menu-button>
-    <ion-input
+    <ion-input slot="end" id="search" placeholder="Search"
       (ionChange)="searchPosts()"
-      slot="end"
-      id="search"
-      placeholder="Search"
       #input
       [(ngModel)]="myInput"
       [hidden]=bool
     ></ion-input>
     <ion-item slot="end" color="transparent" lines="none" (click)="searchVisibility(input)">
-      <ion-icon name="search"></ion-icon>
+        <ion-icon name="search"></ion-icon>
     </ion-item>
     <ion-button *ngIf="!session.isLoggedIn()" routerLink="/login-user" color="danger" slot="end" id="log">
       <ion-icon name="log-in"></ion-icon>

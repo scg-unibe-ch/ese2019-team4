@@ -24,12 +24,6 @@
         <ion-thumbnail *ngFor="let pic of pictures" (click)="setImage(pic.id)"><img src={{pic.img}} /></ion-thumbnail>
       </ion-row>
       <ion-row>
-        <ion-input placeholder="Picture"
-        #content
-        [(ngModel)]="post.image">
-        </ion-input>
-      </ion-row>
-      <ion-row>
         {{error}}
       </ion-row>
       <ion-row>
