@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PostservicePage } from './postservice.page';
 import {ComponentsModule} from '../../components/components.module';
+import {Autosize} from '../../components/autosize';
 
 const routes: Routes = [
   {
@@ -23,6 +24,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ComponentsModule
   ],
-  declarations: [PostservicePage]
+  declarations: [PostservicePage, Autosize]
 })
 export class PostservicePageModule {}

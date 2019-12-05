@@ -8,19 +8,19 @@
 <ion-content>
   <ion-list *ngIf="session.isProvider()">
     <ion-card>
-      <ion-row>
-        <ion-input placeholder="Title"
-        [(ngModel)]="post.title"
-        (keyup.enter)="setNextFocus(content)"
-        ></ion-input>
-      </ion-row>
-      <ion-row>
-        <ion-input placeholder="Description"
-        #content
-        [(ngModel)]="post.content">
-        </ion-input>
-      </ion-row>
-      <ion-row>
+      <ion-item>
+        <ion-textarea rows="1" id="title" autosize placeholder="Title"
+          [(ngModel)]="post.title"
+          (keyup.enter)="setNextFocus(content)">
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea rows="1" id="description" autosize placeholder="Description"
+          #content
+          [(ngModel)]="post.content">
+        </ion-textarea>
+      </ion-item>
+      <ion-row margin>
         <ion-thumbnail *ngFor="let pic of pictures" (click)="setImage(pic.id)"><img src={{pic.img}} /></ion-thumbnail>
       </ion-row>
       <ion-row>

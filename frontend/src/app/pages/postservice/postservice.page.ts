@@ -23,6 +23,7 @@ export class PostservicePage implements OnInit {
     content: undefined
   };
   bool = true;
+  dummyText: string = `Type a longer text to see how this expands!`;
   pictures: any[] = [
     {
       id: 0,
@@ -31,6 +32,18 @@ export class PostservicePage implements OnInit {
     {
       id: 1,
       img: 'assets/images/1.jpg'
+    },
+    {
+      id: 2,
+      img: 'assets/images/2.jpg'
+    },
+    {
+      id: 3,
+      img: 'assets/images/3.jpg'
+    },
+    {
+      id: 4,
+      img: 'assets/images/4.jpg'
     }
   ];
 
@@ -53,10 +66,6 @@ export class PostservicePage implements OnInit {
     }
     if (whiteSpaceCheck(body)) {
       this.error = 'Don\'t leave the content empty';
-      return false;
-    }
-    if (image != 1 && image != 0) {
-      this.error = 'Only images are 0 and 1';
       return false;
     }
     return true;
