@@ -12,6 +12,7 @@ import { SessionService } from '../../services/session.service';
 export class HomePage implements OnInit {
   bool = true;
   myInput: any;
+  search: "";
 
   constructor(private http: HttpClient, public session: SessionService) {
   }
@@ -30,7 +31,9 @@ export class HomePage implements OnInit {
     }
   }
   // A terrible search method that only searches users
-  searchPosts() {
+  searchPosts(post) {
+    var re = new RegExp(this.search+"+")
+    return (re.test(post.body) || re.test(post.title) || re.test(post.author) || (this.search == null));
     // call search posts in post.service.ts
   }
 }

@@ -5,7 +5,7 @@
     <ion-input slot="end" id="search" placeholder="Search"
       (ionChange)="searchPosts()"
       #input
-      [(ngModel)]="myInput"
+      [(ngModel)]="search"
       [hidden]=bool
     ></ion-input>
     <ion-item slot="end" color="transparent" lines="none" (click)="searchVisibility(input)">
@@ -25,7 +25,7 @@
     <ion-row>
       <ion-col sizeMd="3">
             <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id">
-              <app-post-card [post]="post"></app-post-card>
+              <app-post-card [post]="post" *ngIf="searchPosts(post)"></app-post-card>
             </ion-card>
       </ion-col>
     </ion-row>
