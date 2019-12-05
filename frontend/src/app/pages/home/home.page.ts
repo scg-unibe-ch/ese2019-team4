@@ -33,7 +33,8 @@ export class HomePage implements OnInit {
   // A terrible search method that only searches users
   searchPosts(post) {
     var re = new RegExp(this.search+"+")
-    return (re.test(post.body) || re.test(post.title) || re.test(post.author) || (this.search == null));
+    console.log(this.search)
+    return (re.test(post.body) || re.test(post.title) || re.test(post.author) || (this.search === null) || (this.search == ""));
     // call search posts in post.service.ts
   }
 }
