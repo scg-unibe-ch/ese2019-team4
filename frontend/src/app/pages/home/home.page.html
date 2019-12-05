@@ -2,15 +2,17 @@
   <ion-toolbar color="primary">
     <ion-title [hidden]=!bool>Event Management</ion-title>
     <ion-menu-button autoHide="false" slot="start"></ion-menu-button>
-    <ion-input slot="end" id="search" placeholder="Search"
-      (ionChange)="searchPosts()"
+    <ion-input slot="end" id="search" placeholder="Search" type="text"
       #input
-      [(ngModel)]="myInput"
+      [(ngModel)]="search"
       [hidden]=bool
     ></ion-input>
     <ion-item slot="end" color="transparent" lines="none" (click)="searchVisibility(input)">
         <ion-icon name="search"></ion-icon>
     </ion-item>
+    <ion-button slot="end" (click)="search=null;" *ngIf="(search!=null && search!=undefined)">
+      <ion-icon name="refresh"></ion-icon>
+    </ion-button>
     <ion-button *ngIf="!session.isLoggedIn()" routerLink="/login-user" color="danger" slot="end" id="log">
       <ion-icon name="log-in"></ion-icon>
       Login
@@ -25,7 +27,7 @@
     <ion-row>
       <ion-col sizeMd="3">
             <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id">
-              <app-post-card [post]="post"></app-post-card>
+              <app-post-card [post]="post" *ngIf="(searchPosts(post) || !search)"></app-post-card>
             </ion-card>
       </ion-col>
     </ion-row>

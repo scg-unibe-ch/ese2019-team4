@@ -1,10 +1,9 @@
 // import everything from express and assign it to the express variable
 import express from 'express';
-import * as fs from "fs";
-// import all the controllers. If you add a new controller, make sure to import it here as well.
 import {Sequelize} from 'sequelize-typescript';
 var cors = require('cors')
 
+// import all the controllers. If you add a new controller, make sure to import it here as well.
 import {Customer} from './models/customer.model';
 import {CustomerController} from './controllers/customer.controller';
 import {Provider} from './models/provider.model';

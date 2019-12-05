@@ -1,6 +1,7 @@
 // model for post data base
 import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
 import { Subscription } from './subscription.model';
+import { Provider } from './provider.model';
 
 @Table
 export class Post extends Model<Post> {
@@ -23,14 +24,14 @@ export class Post extends Model<Post> {
   image!: number;
 
   async toSimplification(): Promise<Object> {
-    console.log(await Subscription.get_customers(this.id));
     return {
       'id': this.id,
       'title': this.title,
       'author': this.author,
       'body': this.body,
       'image': this.image,
-      'subscriptions': await Subscription.get_customers(this.id)
+      'subscriptions': await Subscription.get_customers(this.id),
+      'email': await Provider.getEmail(this.author)
     };
   }
 
@@ -38,7 +39,7 @@ export class Post extends Model<Post> {
     this.title = simplification['title'];
     this.body = simplification['body'];
     this.image = simplification['image']
-    this.author = simplification['username']; // should be read from jwt token
+    this.author = simplification['username'];
   }
 
 }

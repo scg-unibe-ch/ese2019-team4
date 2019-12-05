@@ -21,12 +21,12 @@ export class RegisterComponent implements OnInit {
   DATABASE_URL: string;
   database = null;
   error = null;
-  customer = {};
+  customer = {"email": ""};
   entryField: string = 'password';
   iconType: string = 'eye';
   // created a subfunction for input validation, added redirect
-  register(name: string, password: string, PASSWORD_VERIFY: string) {
-    if (this.dataCheck(name, password, PASSWORD_VERIFY)) {
+  register(name: string, password: string, PASSWORD_VERIFY: string, email: string) {
+    if (this.dataCheck(name, password, PASSWORD_VERIFY, email)) {
       var func = function(success) {
         if (success) {
           this.error = 'Registration successful!';
@@ -46,7 +46,8 @@ export class RegisterComponent implements OnInit {
           this.error = 'User already exists';
         }
       }.bind(this)
-      this.database.post({"username": name, "password": password}, func);
+      console.log("sending "+{"username": name, "password": password, "email": email})
+      this.database.post({"username": name, "password": password, "email": email}, func);
     }
 
   }
@@ -62,8 +63,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  dataCheck(name: string, password: string, PASSWORD_VERIFY: string) {
+  dataCheck(name: string, password: string, PASSWORD_VERIFY: string, email: string) {
     const elem = document.documentElement.style;
+    //regular expression for valid emails
+    const validEmail = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
     const colorMedium = '#989aa2';
     const colorDanger = '#f04141';
     const colorSuccess = '#2fdf75';
@@ -99,6 +102,11 @@ export class RegisterComponent implements OnInit {
       bool = false;
     } else if ( bool !== false ) {
       elem.setProperty('--confirmPassword-color', colorSuccess );
+    }
+    //checks if the email is valid
+    if (this.isProvider && !validEmail.test(email)){
+      this.error = 'Invalid email';
+      bool = false;
     }
     return bool;
   }
