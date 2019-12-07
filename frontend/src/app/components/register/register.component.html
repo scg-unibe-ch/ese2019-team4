@@ -30,6 +30,18 @@
         minlength ="6"
         #confirmPassword
         [(ngModel)]="customer.password_verify"
+        (keyup.enter)="focusOrRegister(email, customer.name, customer.password, customer.password_verify, customer.email)">
+      </ion-input></ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row [hidden]="!isProvider">
+    <ion-col>
+      <ion-item id="email"><ion-input
+        clearOnEdit="false"
+        placeholder="Email"
+        minlength ="5"
+        #email
+        [(ngModel)]="customer.email"
         (keyup.enter)="url(); register(customer.name, customer.password, customer.password_verify, customer.email)">
       </ion-input></ion-item>
     </ion-col>
@@ -39,21 +51,10 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-checkbox margin-horizontal="5" [(ngModel)]="isProvider" (ionChange)="url()"></ion-checkbox> I would like to register as a provider.
+      <ion-checkbox ion-checkbox class="ion-margin-horizontal" [(ngModel)]="isProvider" (ionChange)="url()"></ion-checkbox> I would like to register as a provider.
     </ion-col>
   </ion-row>
-  <ion-row *ngIf="isProvider">
-    <ion-col>
-      <ion-item id="email"><ion-input
-        clearOnEdit="false"
-        placeholder="email"
-        minlength ="5"
-        [(ngModel)]="customer.email"
-        (keyup.enter)="url(); register(customer.name, customer.password, customer.password_verify, customer.email)">
-      </ion-input></ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row margin-bottom="12">
+  <ion-row ion-row class="ion-margin-bottom">
     <ion-col>
       <ion-button (click)="url(); register(customer.name, customer.password, customer.password_verify, customer.email)">
         <ion-icon name="return-right"></ion-icon>Register</ion-button>

@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
   }
   dataCheck(name: string, password: string, PASSWORD_VERIFY: string, email: string) {
     const elem = document.documentElement.style;
-    //regular expression for valid emails
+    // regular expression for valid emails
     const validEmail = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
     const colorMedium = '#989aa2';
     const colorDanger = '#f04141';
@@ -103,16 +103,28 @@ export class RegisterComponent implements OnInit {
     } else if ( bool !== false ) {
       elem.setProperty('--confirmPassword-color', colorSuccess );
     }
-    //checks if the email is valid
-    if (this.isProvider && !validEmail.test(email)){
-      this.error = 'Invalid email';
-      bool = false;
-    }
+    // checks if the email is valid and changes the color accordingly
+    if (this.isProvider) {
+      if (!validEmail.test(email)) {
+        this.error = 'Invalid email';
+        bool = false;
+        elem.setProperty('--email-color', colorDanger );
+      } else { elem.setProperty('--email-color', colorSuccess ); }
+    } else { elem.setProperty('--email-color', colorDanger ); }
     return bool;
   }
 
-  nextSetFocus(password) {
-    password.setFocus();
+  nextSetFocus(focus) {
+    focus.setFocus();
+  }
+  // Once on confirm password you can either register right away or go to email if you're a provider
+  focusOrRegister(focus, name, password, passwordVerify, email) {
+    if (this.isProvider) {
+      focus.setFocus();
+    } else {
+      this.url();
+      this.register(name, password, passwordVerify, email);
+    }
   }
 
   // makes the password visible or not and adapts the icon
