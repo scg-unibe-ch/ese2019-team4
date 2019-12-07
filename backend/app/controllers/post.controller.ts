@@ -1,3 +1,7 @@
+/**
+ * The post.controller is responsible for handling the addition of new posts, as well as subscriptions
+ */
+
 import {Router, Request, Response} from 'express';
 import {Post} from '../models/post.model';
 import {Subscription} from '../models/subscription.model';
@@ -5,14 +9,18 @@ import {verify} from '../services/session'
 
 const router: Router = Router();
 
-// returns the table
+/**
+ * This method returns a table of all posts
+ */
 router.get('/',  async (req: Request, res: Response) => {
   const instances = await Post.findAll({ order: [['id', 'DESC']]});
   res.statusCode = 200;
   res.send({instances});
 });
 
-// returns the table for a user
+/**
+ * This method returns a table of all posts of a specific user
+ */
 router.get('/profile/:author',  async (req: Request, res: Response) => {
   const instances = await Post.findAll({
     where: {author: req.params.author},
@@ -22,8 +30,12 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
   res.send({instances});
 });
 
-// accepts user information in form of {"title": title, "body": body, "username": username, "token": token}
-// return true if the value has been added to the data base
+/**
+ * This method handles the addition of new posts
+ * It accepts information in form of
+ * {"title": title, "body": body, "username": username, "token": token}
+ * @return true, if the post has been added to the database
+ */
 router.post('/', async (req: Request, res: Response) => {
     if (verify(req.body)){
 

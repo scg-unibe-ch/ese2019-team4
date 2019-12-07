@@ -1,3 +1,7 @@
+/**
+ * The customer.controller is responsible for handling the registration and login of customers
+ */
+
 import {Router, Request, Response} from 'express';
 import {Customer} from '../models/customer.model';
 import {Provider} from '../models/provider.model';
@@ -6,15 +10,20 @@ const bodyParser = require('body-parser');
 
 const router: Router = Router();
 
-//returns the table
+/**
+ * This method returns a table of all customers
+ */
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Customer.findAll();
   res.statusCode = 200;
   res.send({"columns": Object.keys(Customer.rawAttributes), "values": instances.map(e => e.toSimplification())});
 });
 
-// accepts user information in form of {"username": $username, "password": $password}
-// return true if the value has been added to the data base
+/**
+ * This method handles the registration. It accepts user information in form of
+ * {"username": $username, "password": $password}
+ * @return true, if the value has been added to the database
+ */
 router.post('/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];
@@ -31,6 +40,11 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
+/**
+ * This method handles the login. It accepts user information in form of
+ * {"username": $username, "password": $password}
+ * @return true, if the login is successful
+ */
 router.post('/login/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];

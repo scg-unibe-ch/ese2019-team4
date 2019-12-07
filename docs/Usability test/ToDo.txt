@@ -1,7 +1,27 @@
 ToDo List:
 
-	- Seite, um Posts zu machen (soll nicht in Profile sein)
-	- Preview vom Post, bevor man ihn postet
-	- Nach posten soll Meldung oder so kommen
+High Priority!!!!
+
 	- Most Recent Post auf Homepage ganz oben
+	- Provider wird bei neuen Posts nicht mehr angezeigt
+	- Subscriptions? läuft das?
+	- Wie kann man einen Service buchen? - Mailadresse muss zwingend angegeben werden beim erstellen eines Services
+	  --> Anpassen, alle Services löschen und dann nur noch mit Mailadresse erstellbar
+	- Kann man einen Post löschen?
+	- Laufen alle karma tests?
+	- Karma tests für Services?
+	- End to Ende Tests - Protractor
+	- About us Page --> Bild von allen, mit Name
+	- Dokumentation Frontend
+	- Dokumentation Backend (nur noch unterer Teil von post.controller, aber bitte Rest noch überprüfen)
+
+	Low Priority
+	- Bilder werden nicht richtig angezeigt (Zumidnest bei mir - Dominik)
 	- Besserer Logout Button
+	- account, customer, regsiter controller --> sidn zwingend alle so nötig, oder hat es überflüssigen Code?
+  - Überflüssiger Code vom Versuch searchPost
+
+	erledigt:
+	- Preview vom Post, bevor man ihn postet
+	- Seite, um Posts zu machen (soll nicht in Profile sein)
+	- Nach posten soll Meldung oder so kommen

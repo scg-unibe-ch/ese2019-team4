@@ -1,18 +1,27 @@
+/**
+ * The provider.controller is responsible for handling the registration of providers
+ */
+
 import {Router, Request, Response} from 'express';
 import {Provider} from '../models/provider.model';
 import {Customer} from '../models/customer.model';
 
 const router: Router = Router();
 
-//returns the table
+/**
+ * This method returns a table of all providers
+ */
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Provider.findAll();
   res.statusCode = 200;
   res.send({"columns": Object.keys(Provider.rawAttributes), "values": instances.map(e => e.toSimplification())});
 });
 
-// accepts user information in form of {"username": $username, "password": $password}
-// return true if the value has been added to the data base
+/**
+ * This method handles the registration. It accepts user information in form of
+ * {"username": $username, "password": $password}
+ * @return true, if the value has been added to the database
+ */
 router.post('/', async (req: Request, res: Response) => {
   const username = req.body["username"];
   const password = req.body["password"];

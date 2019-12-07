@@ -45,7 +45,8 @@ title or description.
 On our Home page all the offered services are listed just waiting to be booked
 by one of our customers. You can search through the list with the 
 search window at the top on the right. To see all the available
-services again after you've searched something just hit the refresh button
+services again after you've searched something just hit the refresh button.
+The search is case sensitive!
 
 ####Post Detail Page
 By clicking on one of the posts you can get more information about it!
@@ -56,6 +57,10 @@ Coming soon!!
 ####About us
 Visit our About us Page for more information about our team and the
 app.
+
+####Dark Mode
+Our whole app can be used in darkmode. You can find a switch in
+the menu where you're able to switch between normal and dark mode
 
 ##Testing
 ####Unit Testing
