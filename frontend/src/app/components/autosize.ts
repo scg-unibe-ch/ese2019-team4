@@ -10,15 +10,14 @@ import { ElementRef, HostListener, Directive, OnInit } from '@angular/core';
  */
 export class Autosize implements OnInit {
   @HostListener('input', ['$event.target'])
-  onInput(textArea:HTMLTextAreaElement) {
+  onInput(textArea: HTMLTextAreaElement) {
     this.adjust();
   }
 
-  constructor(public element:ElementRef) {
+  constructor(public element: ElementRef) {
   }
 
   ngOnInit() {
-    setTimeout(() => this.adjust(), 0);
   }
 
   // expands the text area once it overflows

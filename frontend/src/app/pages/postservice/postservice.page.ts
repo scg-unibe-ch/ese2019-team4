@@ -22,8 +22,7 @@ export class PostservicePage implements OnInit {
     title: undefined,
     content: undefined
   };
-  bool = true;
-  dummyText: string = `Type a longer text to see how this expands!`;
+  previousImg = 0;
   pictures: any[] = [
     {
       id: 0,
@@ -74,29 +73,25 @@ export class PostservicePage implements OnInit {
 
   submitPost(title: string, body: string, image: number) {
     if ( this.dataCheck(title, body, image) ) {
-      let con = this.db.connect('http://localhost:3001/posts/', this.session);
-      let func = function(success) {
+      const con = this.db.connect('http://localhost:3001/posts/', this.session);
+      const func = function(success) {
         if (success) {
           this.session.updatePosts();
           this.error = 'post successful';
         } else {this.error = 'Your session has expired, please log out.'; }
       }.bind(this);
-      con.post({title: title, body: body, image: image}, func);
+      con.post({title, body, image}, func);
     }
   }
 
   ngOnInit() {
-    this.session.updatePosts();
+    this.post.image = 0;
   }
 
-  setNextFocus(content) {
-    content.setFocus();
-  }
-
-  changeBool() {
-    this.bool = (this.bool === false);
-  }
   setImage(int) {
+    document.getElementById(String(this.previousImg)).style.opacity = '1';
+    document.getElementById(int).style.opacity = '0.5';
+    this.previousImg = int;
     this.post.image = int;
   }
 }
