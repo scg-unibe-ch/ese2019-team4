@@ -7,6 +7,7 @@ import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescr
 @Table
 export class Account extends Model<Account> {
 
+  //indexing is automatic
   @PrimaryKey
   @AutoIncrement
   @Column
@@ -19,7 +20,7 @@ export class Account extends Model<Account> {
   password!: string;
 
   /**
-   * checks if a user actually exists
+   * checks if a user exists
    * @param name
    */
   static async user_exists(name: String): Promise<Boolean> {
@@ -45,7 +46,7 @@ export class Account extends Model<Account> {
 
   /**
    * checks if a registration is valid
-   * password and username have to be valid, the username can't exist yet
+   * password and username have to be valid, the username can't yet exist
    * @param username
    * @param password
    * @return true, if the registration is valid
@@ -69,6 +70,9 @@ export class Account extends Model<Account> {
     return false;
   }
 
+  /**
+  * converts a tuple into an object
+  */
   toSimplification(): any {
     return {
       'id': this.id,
@@ -76,6 +80,10 @@ export class Account extends Model<Account> {
       'password': this.password
     };
   }
+
+  /**
+  * converts an object into a tuple of this model
+  */
   fromSimplification(simplification: any): void {
     this.username = simplification['username'];
     this.password = simplification['password'];

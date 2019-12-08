@@ -1,5 +1,5 @@
 /**
- * The Provider Model extends the account Model, adding a new column to save an email address for the providers
+ * The Provider Model extends the account Model, adding a new column to save an email address to contact the providers
  */
 
 import {Table, Column} from 'sequelize-typescript';
@@ -21,6 +21,9 @@ export class Provider extends Account {
     return (await this.findAll({ where: { username: String(username)}, attributes: ["email"], raw: true})).map((event) => event.email)[0];
   }
 
+  /**
+  * converts a tuple into an object
+  */
   toSimplification(): any {
     return {
       'id': this.id,
@@ -30,6 +33,9 @@ export class Provider extends Account {
     };
   }
 
+  /**
+  * converts an object into a tuple of this model
+  */
   fromSimplification(simplification: any): void {
     this.username = simplification['username'];
     this.password = simplification['password'];

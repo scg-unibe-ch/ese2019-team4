@@ -1,4 +1,3 @@
-// import everything from express and assign it to the express variable
 import express from 'express';
 import {Sequelize} from 'sequelize-typescript';
 var cors = require('cors')

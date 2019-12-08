@@ -1,5 +1,5 @@
 /**
- * The subscription model is a database that keeps track of who has subscribed to which services
+ * The subscription model is a table that keeps track of who has subscribed what services
  */
 import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
 
@@ -24,6 +24,10 @@ export class Subscription extends Model<Subscription> {
   static async get_customers(service: number): Promise<Object> {
     return (await this.findAll({ where: { post: Number(service)}, attributes: ['customer'], raw: true})).map((event) => event.customer);
   }
+  
+  /**
+  * converts a tuple into an object
+  */
   toSimplification(): any {
     return {
       'id': this.id,
@@ -32,6 +36,9 @@ export class Subscription extends Model<Subscription> {
     };
   }
 
+  /**
+  * converts an object into a tuple of this model
+  */
   fromSimplification(simplification: any): void {
     this.customer = simplification['customer'];
     this.post = simplification['post'];
