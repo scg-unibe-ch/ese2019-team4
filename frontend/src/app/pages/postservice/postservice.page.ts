@@ -26,10 +26,6 @@ export class PostservicePage implements OnInit {
   previousImg = 0;
   pictures: any[] = [
     {
-      id: 0,
-      img: 'assets/images/0.jpg'
-    },
-    {
       id: 1,
       img: 'assets/images/1.jpg'
     },
