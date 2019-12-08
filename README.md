@@ -7,6 +7,7 @@ and run: 'ng serve'
 Then open your Browser on the designated localhost.
 
 ##Our features
+
 ####Registration
 We offer a feature where you can register yourself to our service.
 To register, hit the menu on the top left corner and choose Register.
@@ -43,7 +44,7 @@ title or description.
 
 ####Home - List of services
 On our Home page all the offered services are listed just waiting to be booked
-by one of our customers. You can search through the list with the 
+by one of our customers. You can search through the list with the
 search window at the top on the right. To see all the available
 services again after you've searched something just hit the refresh button.
 The search is case sensitive!
@@ -63,6 +64,7 @@ Our whole app can be used in darkmode. You can find a switch in
 the menu where you're able to switch between normal and dark mode
 
 ##Testing
+
 ####Unit Testing
 We have implemented Karma Unit Tests to make sure things are
 working as expected

@@ -3,9 +3,9 @@
 ## Initial Setup
 
  + run `npm install` in the this (backend) directory
- + use `node build/server.js` to start the server. The server will run on port *3001*
+ + use `node build/server.js` to start the server. The server will run on port **3001**
 
-While using the frontend *keep this backend server running*!
+While using the frontend **keep this backend server running**!
 
 ## server.ts
 
