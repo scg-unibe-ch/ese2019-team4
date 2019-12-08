@@ -1,5 +1,7 @@
 /**
  * The account.controller is responsible for handling the registration and login
+ * It serves as template is is NOT used.
+ * Both customer and provider.controller extend it.
  */
 
 import {Router, Request, Response} from 'express';

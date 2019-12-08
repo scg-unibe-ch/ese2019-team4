@@ -50,8 +50,12 @@ router.post('/', async (req: Request, res: Response) => {
     }
 });
 
+/**
+ * This method deletes posts
+ * It requires the authentication of the provider who had posted it and the post id.
+ * @return success
+ */
 router.post('/delete', async (req: Request, res: Response) => {
-  // adds a subscription
   if (verify(req.body)) {
     var id = req.body['id'];
     await Post.destroy({ where: { id: Number(id)}})
@@ -63,12 +67,16 @@ router.post('/delete', async (req: Request, res: Response) => {
   }
 });
 
+/**
+ * Subscribes customer to a post
+ * It requires the authentication of the customer who subscribes it and the post id.
+ * @return success
+ */
 router.post('/subscribe', async (req: Request, res: Response) => {
   // adds a subscription
   if (verify(req.body)) {
     var customer = req.body['customer'];
     var post = req.body['post'];
-    // validate?
     if ((await Subscription.findOne({ where: { post: Number(post), customer: String(customer)}}))!==null){
       // subscription already exists
       res.send(false);
@@ -84,6 +92,12 @@ router.post('/subscribe', async (req: Request, res: Response) => {
   }
 });
 
+
+/**
+ * Unsubscribes customer from a post
+ * It requires the authentication of the customer who had subscribed it and the post id.
+ * @return success
+ */
 router.post('/unsubscribe', async (req: Request, res: Response) => {
   // removes a subscription
   if (verify(req.body)) {
@@ -99,6 +113,7 @@ router.post('/unsubscribe', async (req: Request, res: Response) => {
   }
 });
 
+// returns a post by its id
 router.get('/:id', async (req, res) =>{
   console.log(req.params.id)
   if (req.params.id == 'subscriptions') {
@@ -115,37 +130,5 @@ router.get('/:id', async (req, res) =>{
   }
 });
 });
-
-router.delete('/:id', async (req, res) => {
-  const found = await Post.findOne({
-    where: {id: req.params.id}
-  });
-  if (found) {
-    await Post.destroy({
-      where: {id: req.params.id}
-    }).then(() => {
-      res.json(`Post with id: ${req.params.id} deleted`);
-    })
-      .catch(error => {
-        res.json('Could not delete');
-      });
-  } else {
-    res.json(`Post with id: ${req.params.id} not found`);
-  }});
-
-router.delete('/', async (req, res) => {
-  const found = await Post.findOne({
-    where: {author: req.body.author}
-  });
-  if (found) {
-    await Post.destroy({
-      where: {Author: req.body.author}
-    }).then(() => {res.json(`All of ${req.body.author}'s posts deleted`); })
-      .catch(error => {
-        res.json('Could not delete');
-      });
-  } else {
-    res.json('No such user found');
-  }});
 
 export const PostController: Router = router;

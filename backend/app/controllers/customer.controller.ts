@@ -42,6 +42,8 @@ router.post('/', async (req: Request, res: Response) => {
 /**
  * This method handles the login. It accepts user information in form of
  * {"username": $username, "password": $password}
+ *
+ * Note that also providers login through this function.
  * @return true, if the login is successful
  */
 router.post('/login/', async (req: Request, res: Response) => {
