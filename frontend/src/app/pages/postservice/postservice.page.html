@@ -15,6 +15,9 @@
         <ion-textarea rows="1" id="description" autosize placeholder="Description" [(ngModel)]="post.content"></ion-textarea>
       </ion-item>
       <ion-row class="ion-margin">
+        <ion-thumbnail (click)="setImage(0)">
+          <img src='assets/images/0.jpg' id="0" style="opacity: 0.5"/>
+        </ion-thumbnail>
         <ion-thumbnail *ngFor="let pic of pictures" (click)="setImage(pic.id)">
           <img src={{pic.img}} id="{{pic.id}}"/>
         </ion-thumbnail>
