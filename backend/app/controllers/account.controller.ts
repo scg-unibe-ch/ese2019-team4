@@ -13,7 +13,7 @@ const router: Router = Router();
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Account.findAll();
   res.statusCode = 200;
-  res.send({"columns": Object.keys(Account.rawAttributes), "values": instances.map(e => e.toSimplification())});
+  res.send({'columns': Object.keys(Account.rawAttributes), 'values': instances.map(e => e.toSimplification())});
 });
 
 
@@ -23,8 +23,8 @@ router.get('/', async (req: Request, res: Response) => {
  * @return true, if the value has been added to the database
  */
 router.post('/', async (req: Request, res: Response) => {
-  const username = req.body["username"];
-  const password = req.body["password"];
+  const username = req.body['username'];
+  const password = req.body['password'];
   if (await Account.valid_register(username, password)) {
       const instance = new Account();
       instance.fromSimplification(req.body);
@@ -43,9 +43,8 @@ router.post('/', async (req: Request, res: Response) => {
  * @return true, if the login is successful
  */
 router.post('/login/', async (req: Request, res: Response) => {
-  const username = req.body["username"];
-  const password = req.body["password"];
-  console.log(username+password)
+  const username = req.body['username'];
+  const password = req.body['password'];
   if (await Account.login(username, password)) {
       res.send(true);
   } else {

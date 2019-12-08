@@ -5,7 +5,7 @@
 import {Router, Request, Response} from 'express';
 import {Post} from '../models/post.model';
 import {Subscription} from '../models/subscription.model';
-import {verify} from '../services/session'
+import {verify} from '../services/session';
 
 const router: Router = Router();
 
@@ -45,60 +45,67 @@ router.post('/', async (req: Request, res: Response) => {
       });
       res.statusCode = 201;
       res.send(true);
-    }
-    else {
+    } else {
       res.send(false);
     }
 });
 
 router.post('/delete', async (req: Request, res: Response) => {
-  //adds a subscription
-  if (verify(req.body)){
-    var id = req.body["id"];
+  // adds a subscription
+  if (verify(req.body)) {
+    var id = req.body['id'];
     await Post.destroy({ where: { id: Number(id)}})
     await Subscription.destroy({ where: { post: Number(id)}})
     res.statusCode = 201;
-    res.send(true);} else {res.send(false);}
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 router.post('/subscribe', async (req: Request, res: Response) => {
-  //adds a subscription
-  if (verify(req.body)){
-    var customer = req.body["customer"];
-    var post = req.body["post"];
-    //validate?
+  // adds a subscription
+  if (verify(req.body)) {
+    var customer = req.body['customer'];
+    var post = req.body['post'];
+    // validate?
     if ((await Subscription.findOne({ where: { post: Number(post), customer: String(customer)}}))!==null){
-      //subscription already exists
+      // subscription already exists
       res.send(false);
-      console.log("false");
       return;
     }
     const instance = new Subscription();
     instance.fromSimplification(req.body);
     await instance.save();
     res.statusCode = 201;
-    res.send(true);} else {res.send(false);}
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 router.post('/unsubscribe', async (req: Request, res: Response) => {
-  //removes a subscription
-  if (verify(req.body)){
-    var customer = req.body["customer"];
-    var post = req.body["post"];
-    //validate?
+  // removes a subscription
+  if (verify(req.body)) {
+    var customer = req.body['customer'];
+    var post = req.body['post'];
+    // validate?
     await Subscription.destroy({ where: { post: Number(post), customer: String(customer)}})
-    console.log("deleted")
+    console.log('deleted')
     res.statusCode = 201;
-    res.send(true);} else {res.send(false);}
+    res.send(true);
+  } else {
+    res.send(false);
+  }
 });
 
 router.get('/:id', async (req, res) =>{
   console.log(req.params.id)
-  if (req.params.id == "subscriptions") {
-    console.log("here")
+  if (req.params.id == 'subscriptions') {
+    console.log('here')
     const instances = await Subscription.findAll();
     res.statusCode = 200;
-    res.send({"columns": Object.keys(Subscription.rawAttributes), "values": instances.map(e => e.toSimplification())});
+    res.send({'columns': Object.keys(Subscription.rawAttributes), 'values': instances.map(e => e.toSimplification())});
     return;
   }
   await Post.findOne({
@@ -108,8 +115,6 @@ router.get('/:id', async (req, res) =>{
   }
 });
 });
-
-
 
 router.delete('/:id', async (req, res) => {
   const found = await Post.findOne({

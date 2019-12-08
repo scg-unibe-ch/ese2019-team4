@@ -14,7 +14,7 @@ const router: Router = Router();
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Provider.findAll();
   res.statusCode = 200;
-  res.send({"columns": Object.keys(Provider.rawAttributes), "values": instances.map(e => e.toSimplification())});
+  res.send({'columns': Object.keys(Provider.rawAttributes), 'values': instances.map(e => e.toSimplification())});
 });
 
 /**
@@ -23,8 +23,8 @@ router.get('/', async (req: Request, res: Response) => {
  * @return true, if the value has been added to the database
  */
 router.post('/', async (req: Request, res: Response) => {
-  const username = req.body["username"];
-  const password = req.body["password"];
+  const username = req.body['username'];
+  const password = req.body['password'];
   if (await Provider.valid_register(username, password) && await Customer.valid_register(username, password)) {
       const instance = new Provider();
       instance.fromSimplification(req.body);
