@@ -24,6 +24,9 @@ export class PostService implements OnInit {
   public getPost(id: number): Observable<Object> {
     return this.http.get(this.REST_API_SERVER + id);
   }
+  public getSubscribedPosts(USER: string): Observable<Object> {
+    return this.http.get(this.REST_API_SERVER + 'subscriptions/'+USER);
+  }
   public getUserPosts(USER: string): Observable<Object> {
     return this.http.get(this.REST_API_SERVER + 'profile/' + USER);
   }

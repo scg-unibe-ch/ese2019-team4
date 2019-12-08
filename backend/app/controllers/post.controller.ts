@@ -31,6 +31,21 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
 });
 
 /**
+* Retuns all subscribed posts
+*/
+router.get('/subscriptions/:customer',  async (req: Request, res: Response) => {
+  var customer = req.params.customer
+  var posts = await Subscription.get_posts(customer)
+  const instances = await Post.findAll({
+    where: {id: posts},
+    order: [['id', 'DESC']]
+  });
+  res.statusCode = 200;
+  res.send({instances});
+});
+
+
+/**
  * This method handles the addition of new posts
  * It accepts information in form of
  * {"title": title, "body": body, "username": username, "token": token}

@@ -29,9 +29,15 @@ export class SessionService {
     this.postService.getPosts().subscribe(data => {
       this.posts = data['instances'];
     });
-    this.postService.getUserPosts(this.username).subscribe(data => {
-      this.myPosts = data['instances'];
-    });
+    if (this.isProvider()){
+      this.postService.getUserPosts(this.username).subscribe(data => {
+        this.myPosts = data['instances'];
+      });
+    } else {
+      this.postService.getSubscribedPosts(this.username).subscribe(data => {
+        this.myPosts = data['instances'];
+      });
+    }
   }
 
   authenticate(success: any){

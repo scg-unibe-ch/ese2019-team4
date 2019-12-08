@@ -9,8 +9,7 @@
   <ion-list>
     <ion-item>Username: {{session.username}}</ion-item>
     <ion-item>Type of User: {{session.type}}</ion-item>
-    <ion-grid *ngIf="session.isProvider()">
-      <ion-item>E-Mail: </ion-item>
+    <ion-grid>
       <ion-row>
         <ion-col sizeMd="3">
           <ion-card *ngFor="let post of session.myPosts" [routerLink]= "post.id">

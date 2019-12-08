@@ -35,6 +35,7 @@ export class PostDetailPage implements OnInit {
     subscribe() {
         var func = function(success) {
           this.ngOnInit();
+          this.session.updatePosts();
         }.bind(this)
         this.database.post({"customer": this.session.username, "post": this.postId}, func, "subscribe")
     }
@@ -42,6 +43,7 @@ export class PostDetailPage implements OnInit {
     unsubscribe() {
         var func = function(success) {
           this.ngOnInit();
+          this.session.updatePosts();
         }.bind(this)
         this.database.post({"customer": this.session.username, "post": this.postId}, func, "unsubscribe");
     }
