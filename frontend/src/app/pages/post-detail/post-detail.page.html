@@ -12,16 +12,16 @@
         {{ loadedPost?.title }}
       </ion-card-title>
       <ion-card-subtitle>
-        This service is provided by {{ loadedPost?.author }}
+        This service is provided by <b>{{ loadedPost?.author }}</b>
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
           <b>Description:</b> <br>
           {{ loadedPost?.body }} <br>
-          <b>Contact:</b> <br>
+          <b>Contact: </b>
           <a href = "mailto: {{loadedPost?.email}}">{{loadedPost?.email }}</a><br>
           <b>Image:</b> <br>
-          <img src="assets/images/{{loadedPost?.image}}.jpg" style="width: 20%;"> <br>
+          <img src="assets/images/{{loadedPost?.image}}.jpg" style="width: 30ch;"> <br>
           <b>Subscribed by:</b> <br>
           <tr *ngFor="let customer of loadedPost?.subscriptions">
             <td>{{customer}}</td>

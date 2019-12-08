@@ -16,8 +16,9 @@ export class Autosize implements OnInit {
 
   constructor(public element: ElementRef) {
   }
-
+  // timeout only after 500 since the textareas only load after some time
   ngOnInit() {
+    setTimeout(() => this.adjust(), 500);
   }
 
   // expands the text area once it overflows
