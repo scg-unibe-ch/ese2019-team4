@@ -37,15 +37,18 @@ router.get('/profile/:author',  async (req: Request, res: Response) => {
  * @return true, if the post has been added to the database
  */
 router.post('/', async (req: Request, res: Response) => {
-    if (verify(req.body)){
-
-    const instance = new Post();
-    instance.fromSimplification(req.body);
-    await instance.save().catch(error => {
+    if (verify(req.body)) {
+      const instance = new Post();
+      instance.fromSimplification(req.body);
+      await instance.save().catch(error => {
+        res.send(false);
+      });
+      res.statusCode = 201;
+      res.send(true);
+    }
+    else {
       res.send(false);
-    });
-    res.statusCode = 201;
-    res.send(true);} else {res.send(false);}
+    }
 });
 
 router.post('/delete', async (req: Request, res: Response) => {

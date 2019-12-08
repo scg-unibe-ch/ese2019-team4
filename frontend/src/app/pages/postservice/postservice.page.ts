@@ -20,7 +20,8 @@ export class PostservicePage implements OnInit {
   post = {
     image: undefined,
     title: undefined,
-    content: undefined
+    content: undefined,
+    username: this.session.username
   };
   previousImg = 0;
   pictures: any[] = [
@@ -71,7 +72,7 @@ export class PostservicePage implements OnInit {
   }
 
 
-  submitPost(title: string, body: string, image: number) {
+  submitPost(title: string, body: string, username: string, image: number) {
     if ( this.dataCheck(title, body, image) ) {
       const con = this.db.connect('http://localhost:3001/posts/', this.session);
       const func = function(success) {
@@ -80,7 +81,7 @@ export class PostservicePage implements OnInit {
           this.error = 'post successful';
         } else {this.error = 'Your session has expired, please log out.'; }
       }.bind(this);
-      con.post({title, body, image}, func);
+      con.post({title, body, username, image}, func);
     }
   }
 
