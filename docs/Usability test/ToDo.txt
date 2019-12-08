@@ -2,19 +2,15 @@ ToDo List:
 
 High Priority!!!!
 
-	- Subscriptions, subscripted posts sollten in profile page sichtabr sein
-	- Laufen alle karma tests?
 	- Karma tests für Services?
 	- End to Ende Tests - Protractor
 	- About us Page --> Bild von allen, mit Name
 	- Dokumentation Frontend
-	- Dokumentation Backend (nur noch unterer Teil von post.controller, aber bitte Rest noch überprüfen)
 
 	Low Priority
 
 	- Besserer Logout Button
-	- account, customer, regsiter controller --> sidn zwingend alle so nötig, oder hat es überflüssigen Code?
-  -
+
 	erledigt:
 	- Preview vom Post, bevor man ihn postet
 	- Seite, um Posts zu machen (soll nicht in Profile sein)
@@ -26,3 +22,7 @@ High Priority!!!!
   - Bilder werden nicht richtig angezeigt (Zumidnest bei mir - Dominik)
   - Überflüssiger Code vom Versuch searchPost
   - Kann man einen Post löschen?
+  - Subscriptions, subscripted posts sollten in profile page sichtabr sein
+  - Laufen alle karma tests?
+  - Dokumentation Backend (nur noch unterer Teil von post.controller, aber bitte Rest noch überprüfen)
+  - account, customer, regsiter controller --> sidn zwingend alle so nötig, oder hat es überflüssigen Code?
