@@ -27,18 +27,18 @@
       <ion-icon name="add" slot="start"></ion-icon>
         Share Your Service
       </ion-item>
-    </ion-content>
-    <ion-footer no-border>
-        <ion-item routerLink="/aboutus" (click)="toggleMenu()" lines="full">
-          <ion-icon name="information-circle-outline" slot="start"></ion-icon>
-          About us
-        </ion-item>
+      <ion-list style="background: none" id="footer" no-margin no-padding>
+      <ion-item routerLink="/aboutus" (click)="toggleMenu()" lines="full">
+        <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+        About us
+      </ion-item>
       <ion-item>
         <ion-icon slot="start" name="moon"></ion-icon>
         Toggle Dark Theme
         <ion-toggle id="themeToggle" slot="end" (click)="toggleDark()"></ion-toggle>
       </ion-item>
-    </ion-footer>
+      </ion-list>
+    </ion-content>
   </ion-menu>
   <ion-router-outlet id="first" main></ion-router-outlet>
 </ion-app>
