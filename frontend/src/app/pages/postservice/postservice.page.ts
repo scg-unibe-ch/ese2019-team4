@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../../services/database/database.service';
 import {Router} from '@angular/router';
 import {PostService} from '../../services/post/post.service';
-import {Post} from '../../services/post/post.model';
 import { SessionService } from '../../services/session.service';
-import {IonInput} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-postservice',
