@@ -2,8 +2,7 @@ ToDo List:
 
 High Priority!!!!
 
-	- Subscriptions? läuft das?
-	- Kann man einen Post löschen?
+	- Subscriptions, subscripted posts sollten in profile page sichtabr sein
 	- Laufen alle karma tests?
 	- Karma tests für Services?
 	- End to Ende Tests - Protractor
@@ -15,8 +14,7 @@ High Priority!!!!
 
 	- Besserer Logout Button
 	- account, customer, regsiter controller --> sidn zwingend alle so nötig, oder hat es überflüssigen Code?
-  - Überflüssiger Code vom Versuch searchPost
-
+  -
 	erledigt:
 	- Preview vom Post, bevor man ihn postet
 	- Seite, um Posts zu machen (soll nicht in Profile sein)
@@ -26,3 +24,5 @@ High Priority!!!!
   - Wie kann man einen Service buchen? - Mailadresse muss zwingend angegeben werden beim erstellen eines Services
   	  --> Anpassen, alle Services löschen und dann nur noch mit Mailadresse erstellbar
   - Bilder werden nicht richtig angezeigt (Zumidnest bei mir - Dominik)
+  - Überflüssiger Code vom Versuch searchPost
+  - Kann man einen Post löschen?

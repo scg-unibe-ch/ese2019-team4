@@ -1,4 +1,6 @@
-// model for post data base
+/**
+ * The Post Model contains the posts on our app
+ */
 import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
 import { Subscription } from './subscription.model';
 import { Provider } from './provider.model';
@@ -38,7 +40,7 @@ export class Post extends Model<Post> {
   fromSimplification(simplification: any): void {
     this.title = simplification['title'];
     this.body = simplification['body'];
-    this.image = simplification['image']
+    this.image = simplification['image'];
     this.author = simplification['username'];
   }
 
