@@ -1,10 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegisterComponent } from './register.component';
+import {RegisterComponent} from './register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AlertController} from '@ionic/angular';
-import {Router} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('RegisterComponent', () => {

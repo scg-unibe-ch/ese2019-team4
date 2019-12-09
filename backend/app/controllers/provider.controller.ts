@@ -2,7 +2,7 @@
  * The provider.controller is responsible for handling the registration of providers
  */
 
-import {Router, Request, Response} from 'express';
+import {Request, Response, Router} from 'express';
 import {Provider} from '../models/provider.model';
 import {Customer} from '../models/customer.model';
 

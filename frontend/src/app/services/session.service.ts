@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
-import { DatabaseService } from './database/database.service'
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {DatabaseService} from './database/database.service'
+import {HttpClient} from '@angular/common/http';
 import {PostService} from './post/post.service';
-
 
 
 /**

@@ -2,10 +2,11 @@
  * The customer.controller is responsible for handling the registration and login of customers
  */
 
-import {Router, Request, Response} from 'express';
+import {Request, Response, Router} from 'express';
 import {Customer} from '../models/customer.model';
 import {Provider} from '../models/provider.model';
 import {sign} from '../services/session';
+
 const bodyParser = require('body-parser');
 
 const router: Router = Router();

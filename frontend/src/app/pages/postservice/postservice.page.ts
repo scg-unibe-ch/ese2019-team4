@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DatabaseService } from '../../services/database/database.service';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {DatabaseService} from '../../services/database/database.service';
 import {Router} from '@angular/router';
 import {PostService} from '../../services/post/post.service';
-import { SessionService } from '../../services/session.service';
+import {SessionService} from '../../services/session.service';
 
-
+/**
+ * The post service page, which allows a provider to post services.
+ * holds a preview of how the post would look depending on the users inputs data.
+ * The dataCheck method checks whether the input data is valid or not
+ * and once the data is checked, the submitPost Method passes on the data
+ * to the database. The pictures array, contains the image url's and id's that users can choose to go with their posts.
+ */
 @Component({
   selector: 'app-postservice',
   templateUrl: './postservice.page.html',
@@ -49,24 +55,20 @@ export class PostservicePage implements OnInit {
               private session: SessionService,
               private db: DatabaseService) { }
 
+  // checks if the input fields are empty
   dataCheck(title: string, body: string, image: number) {
-    function whiteSpaceCheck(anything: string) {
-      if (anything == null || anything === '' ) {
-        return true;
-      } else { return false; }
-    }
-    if (whiteSpaceCheck(title)) {
+    if ( title == null || title === '') {
       this.error = 'Don\'t leave the Title empty';
       return false;
     }
-    if (whiteSpaceCheck(body)) {
+    if ( body == null || body === '') {
       this.error = 'Don\'t leave the content empty';
       return false;
     }
     return true;
   }
 
-
+  // passes on the post data to the database
   submitPost(title: string, body: string, username: string, image: number) {
     if ( this.dataCheck(title, body, image) ) {
       const con = this.db.connect('http://localhost:3001/posts/', this.session);
@@ -81,10 +83,12 @@ export class PostservicePage implements OnInit {
     }
   }
 
+  // sets the default image to 0
   ngOnInit() {
     this.post.image = 0;
   }
 
+  // chooses the image depending on which one you click
   setImage(int) {
     document.getElementById(String(this.previousImg)).style.opacity = '1';
     document.getElementById(int).style.opacity = '0.5';

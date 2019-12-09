@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
+/**
+ * The registration page that simply hold the registration component.
+ */
 @Component({
   selector: 'app-register-page',
   templateUrl: './register.page.html',

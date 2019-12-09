@@ -1,12 +1,12 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {async, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {Platform} from '@ionic/angular';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
 

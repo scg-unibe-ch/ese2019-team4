@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,7 +29,8 @@ const routes: Routes = [
         loadChildren: './pages/post-detail/post-detail.module#PostDetailPageModule'
       }
     ]
-  },  { path: 'aboutus', loadChildren: './pages/aboutus/aboutus.module#AboutusPageModule' },
+  },
+  { path: 'aboutus', loadChildren: './pages/aboutus/aboutus.module#AboutusPageModule' },
   { path: 'postservice', loadChildren: './pages/postservice/postservice.module#PostservicePageModule' },
 
   ];

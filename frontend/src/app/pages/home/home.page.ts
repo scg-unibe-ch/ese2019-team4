@@ -1,9 +1,13 @@
-import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { SessionService } from '../../services/session.service';
+import {SessionService} from '../../services/session.service';
 
-
-
+/**
+ * The home page is our main page that people get routed to by default.
+ * It holds all the post cards made by users sorted by most recent,
+ * the menu button on the left, a login or account button on the right
+ * and there is a There is a search button as well, to search through all the posts.
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -30,7 +34,7 @@ export class HomePage implements OnInit {
       this.bool = true;
     }
   }
-  //checks if a post matches the current search
+  // checks if a post matches the current search
   searchPosts(post) {
     var re = new RegExp(this.search+"+")
     return (re.test(post.body) || re.test(post.title) || re.test(post.author) || (this.search === null) || (this.search == ""));

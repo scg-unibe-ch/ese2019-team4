@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { SessionService } from '../session.service';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {SessionService} from '../session.service';
 
 
 @Injectable({

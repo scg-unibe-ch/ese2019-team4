@@ -2,7 +2,7 @@
  * The Provider Model extends the account Model, adding a new column to save an email address to contact the providers
  */
 
-import {Table, Column} from 'sequelize-typescript';
+import {Column, Table} from 'sequelize-typescript';
 import {Account} from './account.model';
 
 @Table

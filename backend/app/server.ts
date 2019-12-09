@@ -1,7 +1,5 @@
 import express from 'express';
 import {Sequelize} from 'sequelize-typescript';
-var cors = require('cors')
-
 // import all the controllers. If you add a new controller, make sure to import it here as well.
 import {Customer} from './models/customer.model';
 import {CustomerController} from './controllers/customer.controller';
@@ -10,6 +8,8 @@ import {ProviderController} from './controllers/provider.controller';
 import {Post} from './models/post.model';
 import {Subscription} from './models/subscription.model';
 import {PostController} from './controllers/post.controller';
+
+var cors = require('cors')
 
 const sequelize =  new Sequelize({
   database: 'development',

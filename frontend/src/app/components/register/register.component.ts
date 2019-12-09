@@ -1,9 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DatabaseService} from '../../services/database/database.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
 
+/**
+ * The register component which has 3 to 4 input fields, the username,
+ * the password, the confirmation password and the email, which only providers
+ * have to provide. Whether you register as a consumer or provider depends on the checkbox.
+ * The component checks all of the inputs, depending on their correctness and if
+ * all of them are correct, then the inputs are passed on to the backend.
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

@@ -1,12 +1,8 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {MenuController} from '@ionic/angular';
-import { SessionService } from './services/session.service';
-
-
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {Component, OnInit} from '@angular/core';
+import {MenuController, Platform} from '@ionic/angular';
+import {SessionService} from './services/session.service';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {HttpClient} from '@angular/common/http';
 
 @Component({

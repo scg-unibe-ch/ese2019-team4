@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DatabaseService } from '../../services/database/database.service';
-import { SessionService } from '../../services/session.service';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {DatabaseService} from '../../services/database/database.service';
+import {SessionService} from '../../services/session.service';
 
 import {Router} from '@angular/router';
 

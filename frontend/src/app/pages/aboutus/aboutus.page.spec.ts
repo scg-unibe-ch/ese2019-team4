@@ -1,7 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AboutusPage } from './aboutus.page';
+import {AboutusPage} from './aboutus.page';
 
 describe('AboutusPage', () => {
   let component: AboutusPage;

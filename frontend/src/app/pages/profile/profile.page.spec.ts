@@ -1,10 +1,9 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProfilePage } from './profile.page';
+import {ProfilePage} from './profile.page';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
-import {SessionService} from '../../services/session.service';
 
 describe('ProfilePage', () => {
   let component: ProfilePage;

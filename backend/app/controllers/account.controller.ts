@@ -4,7 +4,7 @@
  * Both customer and provider.controller extend it.
  */
 
-import {Router, Request, Response} from 'express';
+import {Request, Response, Router} from 'express';
 import {Account} from '../models/account.model';
 
 const router: Router = Router();

@@ -2,7 +2,7 @@
  * The post.controller is responsible for handling the addition of new posts, as well as subscriptions
  */
 
-import {Router, Request, Response} from 'express';
+import {Request, Response, Router} from 'express';
 import {Post} from '../models/post.model';
 import {Subscription} from '../models/subscription.model';
 import {verify} from '../services/session';

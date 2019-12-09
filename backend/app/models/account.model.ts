@@ -2,7 +2,7 @@
  * The account model is a basic model for a customer and provider database. It contains methods to validate login and
  * registration
  */
-import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
+import {AutoIncrement, Column, Model, PrimaryKey, Table} from 'sequelize-typescript';
 
 @Table
 export class Account extends Model<Account> {

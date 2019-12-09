@@ -1,6 +1,7 @@
 // provides services to authenticate users with jwt tokens
-import * as fs from "fs";
+import * as fs from 'fs';
 import * as jwt from 'jsonwebtoken';
+
 const RSA_PUBLIC_KEY = fs.readFileSync('./app/services/public.key');
 const RSA_PRIVATE_KEY = fs.readFileSync('./app/services/private.key');
 

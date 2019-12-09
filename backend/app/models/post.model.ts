@@ -7,9 +7,9 @@
  * - image (the id of an image)
  * and a unique id.
  */
-import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
-import { Subscription } from './subscription.model';
-import { Provider } from './provider.model';
+import {AutoIncrement, Column, Model, PrimaryKey, Table} from 'sequelize-typescript';
+import {Subscription} from './subscription.model';
+import {Provider} from './provider.model';
 
 @Table
 export class Post extends Model<Post> {

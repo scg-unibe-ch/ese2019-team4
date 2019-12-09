@@ -1,7 +1,7 @@
 /**
  * The subscription model is a table that keeps track of who has subscribed what services
  */
-import {Table, Column, Model, PrimaryKey, AutoIncrement} from 'sequelize-typescript';
+import {AutoIncrement, Column, Model, PrimaryKey, Table} from 'sequelize-typescript';
 
 @Table
 export class Subscription extends Model<Subscription> {
