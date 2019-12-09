@@ -3,9 +3,23 @@
 
 /** Ionic CSS Variables **/
 :root {
+  ion-card-title{
+    --background: none;
+  }
+  #footer {
+    position: absolute;
+    bottom: 0%;
+    height: auto;
+    ion-item{
+      color: White;
+    }
+    ion-icon{
+      color: White;
+    }
+  }
   ion-content{
     --background: none;
-    background-image: url("../assets/images/g3_1.jpg");
+    background-image: url("../assets/images/backgrounds/lightMode.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -115,11 +129,6 @@
   ion-toolbar{
     --min-height:62px!important;
   }
-
-  // supposed to hide scrollbar
-  ::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 /*
@@ -128,6 +137,24 @@
  */
 
 body.dark {
+  #footer {
+    ion-item{
+      color: black;
+    }
+    ion-icon{
+      color: black;
+    }
+  }
+  ion-content{
+    --background: none;
+    background-image: url("../assets/images/backgrounds/darkMode.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  ion-card{
+    background: none;
+  }
   --ion-color-primary: #222428;
   --ion-color-primary-rgb: 34, 34, 34;
   --ion-color-primary-contrast: #ffffff;
