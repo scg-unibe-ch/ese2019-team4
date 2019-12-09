@@ -28,11 +28,11 @@
         Share Your Service
       </ion-item>
       <ion-list style="background: none" id="footer" no-margin no-padding>
-      <ion-item routerLink="/aboutus" (click)="toggleMenu()" lines="full">
+      <ion-item routerLink="/aboutus" (click)="toggleMenu()" lines="none">
         <ion-icon name="information-circle-outline" slot="start"></ion-icon>
         About us
       </ion-item>
-      <ion-item>
+      <ion-item lines="none">
         <ion-icon slot="start" name="moon"></ion-icon>
         Toggle Dark Theme
         <ion-toggle id="themeToggle" slot="end" (click)="toggleDark()"></ion-toggle>

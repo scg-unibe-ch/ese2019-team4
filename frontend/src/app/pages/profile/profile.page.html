@@ -6,8 +6,6 @@
 </ion-header>
 <ion-content>
   <ion-card>
-    <ion-grid>
-      <ion-col>
   <ion-card-header>
     <ion-card-title>
       My Profile
@@ -15,31 +13,25 @@
   </ion-card-header>
 
     <ion-card-content>
-  <ion-list style="background: none" no-border lines="none">
-    <ion-item>
-        <b>Username: </b> {{session.username}}
-    </ion-item>
+  <ion-list style="background: none" no-border lines="full">
+     <ion-item>
+       <b>Username: </b>{{session.username}}
+     </ion-item>
     <ion-item>
       <b>Type of User: </b> {{session.type}}
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="session.isProvider()">
       <b>Email:</b>
     </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col sizeMd="3">
-          <ion-card *ngFor="let post of session.myPosts" [routerLink]= "post.id">
-            <app-post-card [post]="post"></app-post-card>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-item>
+    <ion-item lines="none" margin-top>
       <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
     </ion-item>
   </ion-list>
     </ion-card-content>
-      </ion-col>
-    </ion-grid>
   </ion-card>
+  <ion-col sizeMd="3">
+    <ion-card *ngFor="let post of session.myPosts" [routerLink]= "post.id">
+      <app-post-card [post]="post"></app-post-card>
+    </ion-card>
+  </ion-col>
 </ion-content>
