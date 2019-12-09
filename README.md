@@ -9,14 +9,15 @@ Then open your Browser on the designated localhost.
 ##Our features
 
 ####Registration
-We offer a feature where you can register yourself to our service.
+We offer a feature where you can register yourself to our App.
 To register, hit the menu on the top left corner and choose Register.
 You can choose any username that's not yet used and any password. You have
 to confirm your password by typing it again.
 If a user with the same name already exists, or your passwords don't match
 you won't be able to register.
 By checking the box below you can register as a provider in order
-to be able to provide services later.
+to be able to provide services later. If you register as a Provider
+you have to enter an e-mail address as well.
 
 ####Login
 If you already have an account you can hit the login button on the top
@@ -25,11 +26,12 @@ right corner, enter your username and password and log in.
 ####Profile Page
 Registered users can access there profile page, where they see some
 information to their account.
-A customer sees his name as well as the typ of his account which is customer.
-There is a logout button below as well
+A customer sees his name as well as the type of his account which is customer.
+They also see a list of all the subscribed posts.
+There is a logout button below as well.
 
-A provider gets the same information plus a list of all the services
-he has offered.
+A provider gets the same information abut his account plus a list of his
+services instead of the subscriptions
 
 ####Posting a service
 A logged in provider can post a new service by hitting the menu button
@@ -44,8 +46,8 @@ title or description.
 
 ####Home - List of services
 On our Home page all the offered services are listed just waiting to be booked
-by one of our customers. You can search through the list with the
-search window at the top on the right. To see all the available
+by one of our customers. You can search through the list using the
+search field at the top on the right. To see all the available
 services again after you've searched something just hit the refresh button.
 The search is case sensitive!
 
@@ -53,11 +55,11 @@ The search is case sensitive!
 By clicking on one of the posts you can get more information about it!
 
 ####Subscriptions
-Coming soon!!
+Customer can subscribe to posts. They get a list of all their subscribed
+posts in the Profile Page.
 
 ####About us
-Visit our About us Page for more information about our team and the
-app.
+Visit our About us Page for more information about our team.
 
 ####Dark Mode
 Our whole app can be used in darkmode. You can find a switch in
@@ -66,5 +68,5 @@ the menu where you're able to switch between normal and dark mode
 ##Testing
 
 ####Unit Testing
-We have implemented Karma Unit Tests to make sure things are
+We have implemented some Karma Unit Tests to make sure things are
 working as expected

@@ -4,8 +4,9 @@ High Priority!!!!
 
 	- Karma tests für Services?
 	- End to Ende Tests - Protractor
-	- About us Page --> Bild von allen, mit Name
 	- Dokumentation Frontend
+	- Bildanzeige bei zu langem Description Text (CSS)
+	- E-Mial Feld in Profile Page
 
 	Low Priority
 
@@ -26,3 +27,4 @@ High Priority!!!!
   - Laufen alle karma tests?
   - Dokumentation Backend (nur noch unterer Teil von post.controller, aber bitte Rest noch überprüfen)
   - account, customer, regsiter controller --> sidn zwingend alle so nötig, oder hat es überflüssigen Code?
+  - About us Page --> Bild von allen, mit Name
