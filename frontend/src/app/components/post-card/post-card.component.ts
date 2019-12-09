@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+/**
+ * The post component as seen on the home page.
+ * it doesn't have any methods, since all it does is display data
+ * and link the user to the actual post
+ */
 @Component({
   selector: 'app-post-card',
   templateUrl: './post-card.component.html',

@@ -14,8 +14,7 @@
       <ion-icon name="refresh"></ion-icon>
     </ion-button>
     <ion-button *ngIf="!session.isLoggedIn()" routerLink="/login-user" color="danger" slot="end" id="log">
-      <ion-icon name="log-in"></ion-icon>
-      Login
+      <ion-icon name="log-in"></ion-icon>Login
     </ion-button>
     <ion-button *ngIf="session.isLoggedIn()" routerLink="/profile" slot="end" id="acc" color="primary">
       <ion-icon name="contact"></ion-icon>
@@ -23,11 +22,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <p align="center" style="font-size: 3ch; margin-bottom: 0" >Welcome to our App!</p>
-  <p align="center" margin-horizontal style="margin-bottom: 4px">We offer the best services. Look through the offers or sign up as a provider to offer your own!</p>
-  <ion-grid>
-    <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id" style="margin: 0 10px 15px;">
-      <app-post-card [post]="post" *ngIf="(searchPosts(post) || !search)"></app-post-card>
-    </ion-card>
-  </ion-grid>
+  <p align="center" style="font-size: 3ch; margin-bottom: 0; margin-top: 10px" >Welcome to our App!</p>
+  <p align="center" margin-horizontal style="margin-bottom: 4px; margin-top: 5px">We offer the best services. Look through the offers or sign up as a provider to offer your own!</p>
+  <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id" style="margin: 0 10px 15px;">
+    <app-post-card [post]="post" *ngIf="(searchPosts(post) || !search)"></app-post-card>
+  </ion-card>
 </ion-content>

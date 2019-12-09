@@ -21,13 +21,13 @@ export class RegisterComponent implements OnInit {
   DATABASE_URL: string;
   database = null;
   error = null;
-  customer = {"email": ""};
-  entryField: string = 'password';
-  iconType: string = 'eye';
+  customer = {email: ''};
+  entryField = 'password';
+  iconType = 'eye';
   // created a subfunction for input validation, added redirect
   register(name: string, password: string, PASSWORD_VERIFY: string, email: string) {
     if (this.dataCheck(name, password, PASSWORD_VERIFY, email)) {
-      var func = function(success) {
+      const func = function(success) {
         if (success) {
           this.error = 'Registration successful!';
           this.alertController.create({header: 'Registration successful!',
@@ -40,14 +40,13 @@ export class RegisterComponent implements OnInit {
           ).then(alertEl => {
             alertEl.present();
           });
-        }
-        else {
+        } else {
           document.documentElement.style.setProperty('--name-color', '#f04141' );
           this.error = 'User already exists';
         }
-      }.bind(this)
-      console.log("sending "+{"username": name, "password": password, "email": email})
-      this.database.post({"username": name, "password": password, "email": email}, func);
+      }.bind(this);
+      console.log('sending ' + {username: name, password, email});
+      this.database.post({username: name, password, email}, func);
     }
 
   }
@@ -63,14 +62,26 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  /**
+   * A very long method to makes sure that nothing goes wrong in the registration.
+   * If wrong data is entered an according error is thrown and the color of the input field changes
+   * if everything is correct you get a pop up stating registration successful and get routed to the login
+   * @param name The Username, which the user desires
+   * @param password The password to match the username
+   * @param PASSWORD_VERIFY A repetition of the password, to make sure that the user didn't mistype
+   * @param email An email address, which is only required from the providers
+   */
   dataCheck(name: string, password: string, PASSWORD_VERIFY: string, email: string) {
     const elem = document.documentElement.style;
     // regular expression for valid emails
     const validEmail = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
+    // variables to show the user, which data is wrong
     const colorMedium = '#989aa2';
     const colorDanger = '#f04141';
     const colorSuccess = '#2fdf75';
     let bool = true;
+    // a simple function that checks for empty fields
     function whiteSpaceCheck(anything: string) {
       if (anything == null || anything === '' ) {
         return true;
@@ -113,11 +124,11 @@ export class RegisterComponent implements OnInit {
     } else { elem.setProperty('--email-color', colorDanger ); }
     return bool;
   }
-
+  // sets the focus for to the next entry field
   nextSetFocus(focus) {
     focus.setFocus();
   }
-  // Once on confirm password you can either register right away or go to email if you're a provider
+  // On confirm password field you can either register right away or go to email if you're a provider
   focusOrRegister(focus, name, password, passwordVerify, email) {
     if (this.isProvider) {
       focus.setFocus();
@@ -127,7 +138,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  // makes the password visible or not and adapts the icon
+  // makes the password visible or not and adapts the icon once clicked on
   entryFieldChange() {
     if (this.entryField === 'password') {
       this.entryField = '';

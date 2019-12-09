@@ -1,11 +1,21 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
-/** Ionic CSS Variables **/
 :root {
+  //** Styling changes to accommodate background **/
+  ion-content{
+    --background: none;
+    background-image: url("../assets/images/backgrounds/lightMode.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   ion-card{
     border-radius: 6px;
     background: rgba(255,255,255,0.8);
+  }
+  ion-item{
+    --background: none;
   }
   #footer {
     position: absolute;
@@ -18,16 +28,28 @@
       color: var(--ion-color-primary-contrast);;
     }
   }
-  ion-content{
-    --background: none;
-    background-image: url("../assets/images/backgrounds/lightMode.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  #aboutUsCard{
+    ion-card{
+      background: rgba(255,255,255,0.8);
+    }
   }
-  ion-item{
-    --background: none;
+
+  // makes items visible on ios
+  ion-menu-button{
+    color: var(--ion-color-primary-contrast);
+    display: inline-block;
   }
+  ion-back-button{
+    color: var(--ion-color-primary-contrast);
+  }
+
+  //makes sure that a toolbar doesn't shrink in ios
+  ion-toolbar{
+    --min-height:62px!important;
+  }
+
+  /** Ionic CSS Variables **/
+
   /** background color **/
   --ion-background-color: #efefef;
 
@@ -116,20 +138,6 @@
   --password-color: var(--ion-color-medium);
   --confirmPassword-color: var(--ion-color-medium);
   --email-color: var(--ion-color-medium);
-
-  // are invisible on ios otherwise
-  ion-menu-button{
-    color: var(--ion-color-primary-contrast);
-    display: inline-block;
-  }
-  ion-back-button{
-    color: var(--ion-color-primary-contrast);
-  }
-
-  //makes sure that a toolbar doesn't shrink in ios
-  ion-toolbar{
-    --min-height:62px!important;
-  }
 }
 
 /*
@@ -138,12 +146,19 @@
  */
 
 body.dark {
+  //** Background changes for Dark Mode **/
+  ion-content{
+    --background: none;
+    background-image: url("../assets/images/backgrounds/darkMode.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   ion-card{
     border-radius: 6px;
     --background: none;
     background: rgba(75, 75, 75, 0.5);
     color: var(--ion-color-primary-contrast);
-
   }
   #footer {
     ion-item{
@@ -153,13 +168,15 @@ body.dark {
       color: var(--ion-color-primary-contrast);
     }
   }
-  ion-content{
-    --background: none;
-    background-image: url("../assets/images/backgrounds/darkMode.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  //** makes the about us page readable by decreasing it's transparency **/
+  #aboutUsCard{
+    ion-card{
+      background: rgba(75, 75, 75, 0.8);
+    }
   }
+
+  /** Ionic CSS Variables for Dark Mode**/
+
   --ion-color-primary: #222428;
   --ion-color-primary-rgb: 34, 34, 34;
   --ion-color-primary-contrast: #ffffff;

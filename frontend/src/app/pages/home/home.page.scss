@@ -1,4 +1,5 @@
+//** makes the search icon contrast to the header **/
 #search{
   --placeholder-opacity: 100%;
-  --color: white;
+  --color: var(--ion-color-primary-contrast);
 }

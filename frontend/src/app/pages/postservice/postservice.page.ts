@@ -74,6 +74,7 @@ export class PostservicePage implements OnInit {
         if (success) {
           this.session.updatePosts();
           this.error = 'post successful';
+          this.router.navigate(['./home']);
         } else {this.error = 'Your session has expired, please log out.'; }
       }.bind(this);
       con.post({title, body, username, image}, func);
