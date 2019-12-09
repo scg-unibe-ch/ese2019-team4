@@ -3,18 +3,19 @@
 
 /** Ionic CSS Variables **/
 :root {
-  ion-card-title{
-    --background: none;
+  ion-card{
+    border-radius: 5px;
+    background: rgba(255,255,255,0.5);
   }
   #footer {
     position: absolute;
     bottom: 0%;
     height: auto;
     ion-item{
-      color: White;
+      color: var(--ion-color-primary-contrast);
     }
     ion-icon{
-      color: White;
+      color: var(--ion-color-primary-contrast);;
     }
   }
   ion-content{
@@ -137,12 +138,18 @@
  */
 
 body.dark {
+  ion-card{
+    border-radius: 5px;
+    --background: none;
+    background: rgba(75, 75, 75, 0.5);
+    color: var(--ion-color-primary-contrast);
+  }
   #footer {
     ion-item{
-      color: black;
+      color: var(--ion-color-primary-contrast);
     }
     ion-icon{
-      color: black;
+      color: var(--ion-color-primary-contrast);
     }
   }
   ion-content{
@@ -151,9 +158,6 @@ body.dark {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  ion-card{
-    background: none;
   }
   --ion-color-primary: #222428;
   --ion-color-primary-rgb: 34, 34, 34;
