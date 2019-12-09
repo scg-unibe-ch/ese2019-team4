@@ -5,9 +5,26 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list style="background: none" no-border>
-    <ion-item>Username: {{session.username}}</ion-item>
-    <ion-item>Type of User: {{session.type}}</ion-item>
+  <ion-card>
+    <ion-grid>
+      <ion-col>
+  <ion-card-header>
+    <ion-card-title>
+      My Profile
+    </ion-card-title>
+  </ion-card-header>
+
+    <ion-card-content>
+  <ion-list style="background: none" no-border lines="none">
+    <ion-item>
+        <b>Username: </b> {{session.username}}
+    </ion-item>
+    <ion-item>
+      <b>Type of User: </b> {{session.type}}
+    </ion-item>
+    <ion-item>
+      <b>Email:</b>
+    </ion-item>
     <ion-grid>
       <ion-row>
         <ion-col sizeMd="3">
@@ -21,4 +38,8 @@
       <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
     </ion-item>
   </ion-list>
+    </ion-card-content>
+      </ion-col>
+    </ion-grid>
+  </ion-card>
 </ion-content>
