@@ -6,32 +6,32 @@
 </ion-header>
 <ion-content>
   <ion-card>
-  <ion-card-header>
-    <ion-card-title>
-      My Profile
-    </ion-card-title>
-  </ion-card-header>
-
-    <ion-card-content>
-  <ion-list style="background: none" no-border lines="full">
-     <ion-item>
-       <b>Username: </b>{{session.username}}
-     </ion-item>
-    <ion-item>
-      <b>Type of User: </b> {{session.type}}
-    </ion-item>
-    <ion-item *ngIf="session.isProvider()">
-      <b>Email:</b>
-    </ion-item>
-    <ion-item lines="none" margin-top>
-      <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
-    </ion-item>
-  </ion-list>
+    <ion-card-header>
+      <ion-card-title style="padding-bottom: 0">
+        My Profile
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="padding-top: 0">
+      <ion-list style="background: none" no-border lines="full">
+        <ion-item no-padding>
+          <ion-item class="bold" lines="none" no-margin>Username: </ion-item>
+          {{session.username}}
+        </ion-item>
+        <ion-item no-padding>
+          <ion-item class="bold" lines="none">Type of User: </ion-item>
+          {{session.type}}
+        </ion-item>
+        <ion-item *ngIf="session.isProvider()" no-padding>
+          <ion-item class="bold" lines="none">Email: </ion-item>
+        </ion-item>
+        <ion-item lines="none" margin-top>
+          <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-col sizeMd="3">
-    <ion-card *ngFor="let post of session.myPosts" [routerLink]= "post.id">
-      <app-post-card [post]="post"></app-post-card>
-    </ion-card>
-  </ion-col>
+
+  <ion-card *ngFor="let post of session.myPosts" [routerLink]= "post.id" style="margin: 0 10px 15px;">
+    <app-post-card [post]="post"></app-post-card>
+  </ion-card>
 </ion-content>

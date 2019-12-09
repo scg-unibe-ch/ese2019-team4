@@ -26,7 +26,7 @@
   <p align="center" style="font-size: 3ch; margin-bottom: 0" >Welcome to our App!</p>
   <p align="center" margin-horizontal style="margin-bottom: 4px">We offer the best services. Look through the offers or sign up as a provider to offer your own!</p>
   <ion-grid>
-    <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id" style="margin: 0 7px 13px;">
+    <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id" style="margin: 0 10px 15px;">
       <app-post-card [post]="post" *ngIf="(searchPosts(post) || !search)"></app-post-card>
     </ion-card>
   </ion-grid>

@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   ion-card{
-    border-radius: 5px;
+    border-radius: 6px;
     background: rgba(255,255,255,0.8);
   }
   #footer {
@@ -139,10 +139,11 @@
 
 body.dark {
   ion-card{
-    border-radius: 5px;
+    border-radius: 6px;
     --background: none;
     background: rgba(75, 75, 75, 0.5);
     color: var(--ion-color-primary-contrast);
+
   }
   #footer {
     ion-item{
