@@ -5,14 +5,32 @@
 .item-interactive.ion-valid {
   --highlight-background: none;
 }
-ion-card-header{
-  margin: 0;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 2px;
+#postPreview{
+  ion-card-header{
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 2px;
+  }
+  ion-card-content{
+    margin: 0;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-bottom: 0;
+  }
 }
-ion-card-content{
-  margin: 0;
-  padding-top: 4px;
-  padding-left: 10px;
+#cardPreview{
+  img{
+    border-radius: 6px;
+    width: 20ch;
+    clear:left;
+    float: left;
+    padding-right: 3px;
+  }
+  ion-card-content{
+    padding: 2px;
+  }
+  ion-card-title{
+    padding: 5px;
+  }
 }

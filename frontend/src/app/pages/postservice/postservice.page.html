@@ -6,8 +6,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngIf="session.isProvider()">
-    <ion-card>
+    <ion-card *ngIf="session.isProvider()">
       <ion-item>
         <ion-textarea rows="1" id="title" autosize placeholder="Title" [(ngModel)]="post.title"></ion-textarea>
       </ion-item>
@@ -29,21 +28,25 @@
         <ion-button size="fill" (click)="submitPost(post.title, post.content, post.username, post.image)">Post Service</ion-button>
       </ion-row>
     </ion-card>
-    <ion-card>
+    <ion-card *ngIf="session.isProvider()" class="postPreview">
       <ion-card-header>
-        <ion-card-title>{{ post.title }}</ion-card-title>
+        <ion-card-title>{{post.title}}</ion-card-title>
         <ion-card-subtitle>
           This service is provided by <b>{{session.username}}</b>
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <b>Description:</b> <br>
-          {{ post.content }} <br>
+          {{post.content}} <br>
         <b>Provider-Profile:</b> <br>
           {{session.username}}<br>
         <b>Image:</b> <br>
-        <img src="assets/images/{{post.image}}.jpg" style="width: 30ch;"> <br>
+        <img src="assets/images/{{post.image}}.jpg" style="width: 30ch; margin-bottom: 0"> <br>
       </ion-card-content>
     </ion-card>
-  </ion-list>
+    <ion-card *ngIf="session.isProvider()" id="cardPreview">
+      <img src="assets/images/{{post.image}}.jpg">
+      <ion-card-title class="post-title">{{post.title}}</ion-card-title>
+      <ion-card-content class="post-content"><p>{{post.content}}</p></ion-card-content>
+    </ion-card>
 </ion-content>

@@ -23,10 +23,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <h1 align="center" style="font-size:50px;">Welcome to our App!</h1>
-  <h3 align="center">We offer the best services. Look through the offers or sign up as a provider to offer your own!</h3>
+  <p align="center" style="font-size: 3ch; margin-bottom: 0" >Welcome to our App!</p>
+  <p align="center" margin-horizontal style="margin-bottom: 4px">We offer the best services. Look through the offers or sign up as a provider to offer your own!</p>
   <ion-grid>
-    <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id">
+    <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id" style="margin: 0 7px 13px;">
       <app-post-card [post]="post" *ngIf="(searchPosts(post) || !search)"></app-post-card>
     </ion-card>
   </ion-grid>
