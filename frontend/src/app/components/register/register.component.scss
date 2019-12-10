@@ -1,12 +1,3 @@
-//** disables valid or invalid input item colors **/
-.item-interactive.ion-invalid {
-  --highlight-background: none;
-}
-
-.item-interactive.ion-valid {
-  --highlight-background: none;
-}
-
 //** variables to change the border line depending on the input manually **/
 #username{
   --border-color: var(--name-color);

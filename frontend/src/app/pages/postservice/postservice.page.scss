@@ -1,11 +1,3 @@
-//** makes sure that the ion items don't light up when entering the title, or content **/
-.item-interactive.ion-invalid {
-  --highlight-background: none;
-}
-
-.item-interactive.ion-valid {
-  --highlight-background: none;
-}
 //** Makes the card preview look like the actual posts detail card **/
 #postPreview{
   ion-card-header{
