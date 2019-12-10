@@ -5,7 +5,8 @@ To run our app you first need to install it, there are 2 ways of doing that.<br>
 The easy way:<br>
 We shared our configuration through VCS so you can simply use that configuration. 
 For that you need to open webstorm and run compound "Step 1: Installing the application", in the top right corner under configurations.
-Once that's finished, run the next compound: "Afterwards: running the application".
+Once that's finished, run the next compound: "Step 2: run tsc" This compiles the typescript to javascript for your application to work.
+Once that is done run the final compound "Afterwards: running the application".
 After everything compiles you should be able to view the site on localhost:4200/.<br>
 From now on you'll only need to run "Afterwards: running the application" To start our application.
 
@@ -17,7 +18,7 @@ then cd ../backend into the backend and run:
 "npm install"
 then still inside the backend run:
 "npm tsc build"<br>
-These three steps are inside Step one above, so you only have to do them once.
+These three steps are inside Step one  and two above, so you only have to do them once.
 Now every time you want to view the website, open a terminal and
 cd into the backend and run:
 "node build/server.js"
