@@ -1,3 +1,14 @@
+//** disables valid or invalid input item colors **/
+.item-interactive.ion-invalid {
+  --highlight-background: none;
+}
+
+.item-interactive.ion-valid {
+  --highlight-background: none;
+}
+.info{
+  color: var(--ion-color-primary-contrast)
+}
 //** Makes the card preview look like the actual posts detail card **/
 #postPreview{
   ion-card-header{

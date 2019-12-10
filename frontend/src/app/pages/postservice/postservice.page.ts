@@ -99,6 +99,8 @@ export class PostservicePage implements OnInit {
    */
   ngOnInit() {
     this.post.image = 0;
+    this.post.title = '';
+    this.post.content = '';
   }
 
   /**
