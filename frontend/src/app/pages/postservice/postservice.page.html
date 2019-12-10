@@ -30,7 +30,7 @@
   </ion-card>
   <ion-item lines="none" class="info">This is how your post will look:</ion-item>
   <ion-card *ngIf="session.isProvider()" class="postPreview">
-    <ion-card-header>
+    <ion-card-header class="headContent">
       <ion-card-title>
         <ion-text [hidden]="(!(post.title===''))">Title</ion-text>
         {{post.title}}
@@ -39,7 +39,7 @@
         This service is provided by <b>{{session.username}}</b>
       </ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="bodyContent">
       <b>Description:</b> <br>
       <ion-text [hidden]="(!(post.content===''))">Description</ion-text>
         {{post.content}} <br>

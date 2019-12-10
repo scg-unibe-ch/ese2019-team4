@@ -7,23 +7,21 @@
   --highlight-background: none;
 }
 .info{
-  color: var(--ion-color-primary-contrast)
+  color: var(--ion-color-primary-rgb)
 }
 //** Makes the card preview look like the actual posts detail card **/
-#postPreview{
-  ion-card-header{
+  .headContent{
     margin: 0;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 2px;
   }
-  ion-card-content{
+  .bodyContent{
     margin: 0;
     padding-top: 4px;
     padding-left: 10px;
     padding-bottom: 0;
   }
-}
 //** A smaller preview of the post-card instead of the post details **/
 #cardPreview{
   img{
