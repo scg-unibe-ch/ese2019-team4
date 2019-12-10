@@ -1,10 +1,31 @@
 <h1>ESE Project 2019 Team 4</h1>
 
-<h2>Running our app</h2>
-To run our app, cd into the backend folder and run: 'node build/server.js'
-Let the server run in the background and use another terminal to cd into the frontend  folder
-and run: 'ng serve'
-Then open your Browser on the designated localhost.
+<h2>Running our app for the (First time)</h2>
+To run our app you first need to install it, there are 2 ways of doing that.<br>
+The easy way:<br>
+We shared our configuration through VCS so you can simply use that configuration. 
+For that you need to open webstorm and run compound "Step 1: Installing the application", in the top right corner under configurations.
+Once that's finished, run the next compound: "Afterwards: running the application".
+After everything compiles you should be able to view the site on localhost:4200/.<br>
+From now on you'll only need to run "Afterwards: running the application" To start our application.
+
+The hard way:<br>
+If you don't have webstorm you can enter all comands manually.
+First you have to cd into the frontend and run:
+"npm install"
+then cd ../backend into the backend and run:
+"npm install"
+then still inside the backend run:
+"npm tsc build"<br>
+These three steps are inside Step one above, so you only have to do them once.
+Now every time you want to view the website, open a terminal and
+cd into the backend and run:
+"node build/server.js"
+Open another terminal, cd into the frontend and run:
+"ng serve"
+Once both are done, you can view the website at localhost:4200/<br>
+
+this might take around 5 minutes the first time and afterwards around a minute.
 
 <h2>Our features</h2>
 
