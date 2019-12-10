@@ -25,17 +25,6 @@ export class AppComponent implements OnInit {
   }
   navigate: any;
 
-  /* Trying to route some stuff in the frontend - dominik
-  @NgModule({
-        RouterModule.forRoot([
-          { path: '', component: LoginComponent },
-          { path: 'register', component: RegisterComponent },
-        ])
-    ,
-  })
-   */
-
-
   url = 'http://localhost:4200/account/';
   username = localStorage.getItem('username');
 
@@ -45,7 +34,10 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
     });
   }
-  // array of pages for sidemenu, would like to move it to the sidemenu component
+
+  /**
+   * array of pages for sidemenu, would like to move it to the sidemenu component
+   */
   sideMenu() {
     this.navigate =
       [
@@ -70,7 +62,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
   }
-  // toggles the dark tag on the body
+
+  /**
+   *  toggles the dark tag on the body
+    */
   toggleDark() {
     this.session.toggleDark();
   }

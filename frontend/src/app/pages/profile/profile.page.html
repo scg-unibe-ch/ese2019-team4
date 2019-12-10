@@ -21,9 +21,6 @@
           <ion-item class="bold" lines="none">Type of User: </ion-item>
           {{session.type}}
         </ion-item>
-        <ion-item *ngIf="session.isProvider()" no-padding>
-          <ion-item class="bold" lines="none">Email: </ion-item>
-        </ion-item>
         <ion-item lines="none" margin-top>
           <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
         </ion-item>
