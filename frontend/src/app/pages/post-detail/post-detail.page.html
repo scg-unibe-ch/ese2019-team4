@@ -19,7 +19,10 @@
           <b>Description:</b> <br>
           {{ loadedPost?.body }} <br>
           <b>Contact: </b>
-          <a href = "mailto: {{loadedPost?.email}}" id="mail">{{loadedPost?.email }}</a><br>
+          <ion-item *ngIf="!session.isLoggedIn()" routerLink="/login-user">
+              Login to contact provider about this service
+           </ion-item>
+          <ion-item *ngIf="session.isLoggedIn()"><a href = "mailto: {{loadedPost?.email}}" id="mail">{{loadedPost?.email }}</a></ion-item><br>
           <b>Image:</b> <br>
           <img src="assets/images/{{loadedPost?.image}}.jpg" style="width: 30ch;"> <br>
           <b>Subscribed by:</b> <br>
