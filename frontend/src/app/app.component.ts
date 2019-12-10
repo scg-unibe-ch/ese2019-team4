@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
   navigate: any;
+  Dark: boolean;
 
   url = 'http://localhost:4200/account/';
   username = localStorage.getItem('username');
@@ -60,14 +61,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.isDark();
   }
 
   /**
    *  toggles the dark tag on the body
-    */
+   */
   toggleDark() {
     this.session.toggleDark();
+  }
+  isDark() {
+    if ( localStorage.getItem('theme') === null ) {
+      this.Dark = false;
+    } else { this.Dark = true; }
   }
   toggleMenu() {
       this.menuCtrl.toggle();
