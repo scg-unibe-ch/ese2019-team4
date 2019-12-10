@@ -6,47 +6,61 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngIf="session.isProvider()">
-      <ion-item>
-        <ion-textarea rows="1" id="title" autosize placeholder="Title" [(ngModel)]="post.title"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-textarea rows="1" id="description" autosize placeholder="Description" [(ngModel)]="post.content"></ion-textarea>
-      </ion-item>
-      <ion-row class="ion-margin">
-        <ion-thumbnail (click)="setImage(0)">
-          <img src='assets/images/0.jpg' id="0" style="opacity: 0.5"/>
-        </ion-thumbnail>
-        <ion-thumbnail *ngFor="let pic of pictures" (click)="setImage(pic.id)">
-          <img src={{pic.img}} id="{{pic.id}}"/>
-        </ion-thumbnail>
-      </ion-row>
-      <ion-row>
-        {{error}}
-      </ion-row>
-      <ion-row>
-        <ion-button size="fill" (click)="submitPost(post.title, post.content, post.username, post.image)">Post Service</ion-button>
-      </ion-row>
-    </ion-card>
-    <ion-card *ngIf="session.isProvider()" class="postPreview">
-      <ion-card-header>
-        <ion-card-title>{{post.title}}</ion-card-title>
-        <ion-card-subtitle>
-          This service is provided by <b>{{session.username}}</b>
-        </ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <b>Description:</b> <br>
-          {{post.content}} <br>
-        <b>Provider-Profile:</b> <br>
-          {{session.username}}<br>
-        <b>Image:</b> <br>
-        <img src="assets/images/{{post.image}}.jpg" style="width: 30ch; margin-bottom: 0"> <br>
-      </ion-card-content>
-    </ion-card>
-    <ion-card *ngIf="session.isProvider()" id="cardPreview">
-      <img src="assets/images/{{post.image}}.jpg">
-      <ion-card-title class="post-title">{{post.title}}</ion-card-title>
-      <ion-card-content class="post-content"><p>{{post.content}}</p></ion-card-content>
-    </ion-card>
+  <ion-card *ngIf="session.isProvider()">
+    <ion-item>
+      <ion-textarea rows="1" id="title" autosize placeholder="Title" [(ngModel)]="post.title"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-textarea rows="1" id="description" autosize placeholder="Description" [(ngModel)]="post.content"></ion-textarea>
+    </ion-item>
+    <ion-row class="ion-margin">
+      <ion-thumbnail (click)="setImage(0)">
+        <img src='assets/images/0.jpg' id="0" style="opacity: 0.5"/>
+      </ion-thumbnail>
+      <ion-thumbnail *ngFor="let pic of pictures" (click)="setImage(pic.id)">
+        <img src={{pic.img}} id="{{pic.id}}"/>
+      </ion-thumbnail>
+    </ion-row>
+    <ion-row>
+      {{error}}
+    </ion-row>
+    <ion-row>
+      <ion-button size="fill" (click)="submitPost(post.title, post.content, post.username, post.image)">Post Service</ion-button>
+    </ion-row>
+  </ion-card>
+  <ion-item lines="none" class="info">This is how your post will look:</ion-item>
+  <ion-card *ngIf="session.isProvider()" class="postPreview">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-text [hidden]="(!(post.title===''))">Placeholder Title</ion-text>
+        {{post.title}}
+      </ion-card-title>
+      <ion-card-subtitle>
+        This service is provided by <b>{{session.username}}</b>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <b>Description:</b> <br>
+      <ion-text [hidden]="(!(post.content===''))">Placeholder Description</ion-text>
+        {{post.content}} <br>
+      <b>Provider-Profile:</b> <br>
+        {{session.username}}<br>
+      <b>Image:</b> <br>
+      <img src="assets/images/{{post.image}}.jpg" style="width: 30ch; margin-bottom: 0"> <br>
+    </ion-card-content>
+  </ion-card>
+  <ion-item lines="none" class="info">This is how the post card will look:</ion-item>
+  <ion-card *ngIf="session.isProvider()" id="cardPreview">
+    <img src="assets/images/{{post.image}}.jpg">
+    <ion-card-title class="post-title">
+      <ion-text [hidden]="(!(post.title===''))">Placeholder Title</ion-text>
+      {{post.title}}
+    </ion-card-title>
+    <ion-card-content class="post-content">
+      <p>
+        <ion-text [hidden]="(!(post.content===''))">Placeholder Description</ion-text>
+        {{post.content}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
