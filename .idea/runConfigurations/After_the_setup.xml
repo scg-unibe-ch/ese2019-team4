@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Afterwards: running the application" type="CompoundRunConfigurationType">
+  <configuration default="false" name="After the setup" type="CompoundRunConfigurationType">
     <toRun name="Server" type="NodeJSConfigurationType" />
     <toRun name="ng serve" type="js.build_tools.npm" />
     <method v="2" />
