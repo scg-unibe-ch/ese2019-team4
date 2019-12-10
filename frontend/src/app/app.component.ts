@@ -5,6 +5,10 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {HttpClient} from '@angular/common/http';
 
+/**
+ * The app component is the main component of the website, yet it only contains
+ * an ion-app opening and closing tag + the menu.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
