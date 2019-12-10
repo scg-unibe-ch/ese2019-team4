@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title [hidden]=!bool>Event Management</ion-title>
+    <ion-title
+      [hidden]=!bool>
+      Event Management
+    </ion-title>
     <ion-menu-button autoHide="false" slot="start"></ion-menu-button>
     <ion-input slot="end" id="search" placeholder="Search" type="text"
       #input
       [(ngModel)]="search"
-      [hidden]=bool
-    ></ion-input>
+      [hidden]=bool>
+    </ion-input>
     <ion-item slot="end" color="transparent" lines="none" (click)="searchVisibility(input)">
         <ion-icon name="search"></ion-icon>
     </ion-item>
@@ -22,9 +25,19 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <p align="center" style="font-size: 3ch; margin-bottom: 0; margin-top: 10px" >Welcome to our App!</p>
-  <p align="center" margin-horizontal style="margin-bottom: 4px; margin-top: 5px">We offer the best services. Look through the offers or sign up as a provider to offer your own!</p>
-  <ion-card *ngFor="let post of session.posts" [routerLink]= "post.id" style="margin: 0 10px 15px;">
-    <app-post-card [post]="post" *ngIf="(searchPosts(post) || !search)"></app-post-card>
+  <p align="center" style="font-size: 3ch; margin-bottom: 0; margin-top: 10px" >
+    Welcome to our App!
+  </p>
+  <p align="center" margin-horizontal style="margin-bottom: 4px; margin-top: 5px">
+    We offer the best services. Look through the offers or sign up as a provider to offer your own!
+  </p>
+  <ion-card
+    *ngFor="let post of session.posts"
+    [routerLink]= "post.id"
+    style="margin: 0 10px 15px;">
+    <app-post-card
+      [post]="post"
+      *ngIf="(searchPosts(post) || !search)">
+    </app-post-card>
   </ion-card>
 </ion-content>

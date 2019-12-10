@@ -8,8 +8,8 @@
           <ion-input
             placeholder="Username"
             [(ngModel)]="customer.name"
-            (keyup.enter)="nextSetPassword(Password)"
-          ></ion-input>
+            (keyup.enter)="nextSetPassword(Password)">
+          </ion-input>
         </ion-row>
         <ion-row>
           <ion-input
@@ -17,15 +17,16 @@
             type={{inputType}}
             #Password
             [(ngModel)]="customer.password"
-            (keyup.enter)="login(customer.name, customer.password)"
-          ></ion-input>
+            (keyup.enter)="login(customer.name, customer.password)">
+          </ion-input>
         </ion-row>
         <ion-row>
           {{error}}
         </ion-row>
         <ion-row>
           <ion-button (click)="login(customer.name, customer.password)">
-            <ion-icon name="return-right"></ion-icon>enter
+            <ion-icon name="return-right"></ion-icon>
+            enter
           </ion-button>
           <ion-item lines="none" (click)="changeInputType()">
               <ion-icon name={{iconType}}></ion-icon>

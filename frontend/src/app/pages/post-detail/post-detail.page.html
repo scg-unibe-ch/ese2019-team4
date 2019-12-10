@@ -27,10 +27,26 @@
             <td>{{customer}}</td>
           </tr>
     </ion-card-content>
-    <ion-button size="fill" (click)="subscribe()" *ngIf="canSubscribe">Subscribe</ion-button>
-    <ion-button color="danger" size="fill" (click)="unsubscribe()" *ngIf="subscribed">Unsubscribe</ion-button>
-    <ion-button color="danger" size="fill" (click)="delete()" *ngIf="isOwner">Delete</ion-button>
-
+    <ion-button
+      size="fill"
+      (click)="subscribe()"
+      *ngIf="canSubscribe">
+      Subscribe
+    </ion-button>
+    <ion-button
+      color="danger"
+      size="fill"
+      (click)="unsubscribe()"
+      *ngIf="subscribed">
+      Unsubscribe
+    </ion-button>
+    <ion-button
+      color="danger"
+      size="fill"
+      (click)="delete()"
+      *ngIf="isOwner">
+      Delete
+    </ion-button>
 
   </ion-card>
 </ion-content>
