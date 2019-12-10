@@ -3,3 +3,8 @@
   --placeholder-opacity: 100%;
   --color: var(--ion-color-primary-contrast);
 }
+//** so that the title wouldn't be cut off once in mobile view **/
+ion-title{
+  padding: 0;
+  margin: 0;
+}

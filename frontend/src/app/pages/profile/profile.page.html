@@ -13,15 +13,15 @@
     </ion-card-header>
     <ion-card-content style="padding-top: 0">
       <ion-list style="background: none" no-border lines="full">
-        <ion-item no-padding>
-          <ion-item class="bold" lines="none" no-margin>Username: </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-item lines="none" class="bold">Username: </ion-item>
           {{session.username}}
         </ion-item>
-        <ion-item no-padding>
+        <ion-item class="ion-no-padding">
           <ion-item class="bold" lines="none">Type of User: </ion-item>
           {{session.type}}
         </ion-item>
-        <ion-item lines="none" margin-top>
+        <ion-item lines="none" class="ion-margin-top">
           <ion-button size="fill" color="danger" (click)="logout()" routerLink="/home">Logout</ion-button>
         </ion-item>
       </ion-list>
