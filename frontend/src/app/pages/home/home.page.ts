@@ -25,7 +25,10 @@ export class HomePage implements OnInit {
     this.session.updatePosts();
   }
 
-  // Makes the search bar visible or invisible
+  /**
+   * Makes the search bar visible or invisible
+   * @param input, search input
+   */
   searchVisibility(input) {
     if ( this.bool === true ) {
       this.bool = false;
@@ -34,9 +37,13 @@ export class HomePage implements OnInit {
       this.bool = true;
     }
   }
-  // checks if a post matches the current search
+
+  /**
+   * checks wheter a post matches the search
+   * @param post, post that should be tested
+   */
   searchPosts(post) {
-    var re = new RegExp(this.search+"+")
-    return (re.test(post.body) || re.test(post.title) || re.test(post.author) || (this.search === null) || (this.search == ""));
+    var re = new RegExp(this.search + '+')
+    return (re.test(post.body) || re.test(post.title) || re.test(post.author) || (this.search === null) || (this.search == ''));
   }
 }

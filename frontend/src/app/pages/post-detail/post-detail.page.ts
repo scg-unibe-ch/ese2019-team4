@@ -37,7 +37,9 @@ export class PostDetailPage implements OnInit {
     private session: SessionService,
     private db: DatabaseService) { }
 
-  // A method to save the customer in the subscribed to list.
+  /**
+   * A method to save the customer in the subscribed to list.
+   */
   subscribe() {
       var func = function(success) {
         this.ngOnInit();
@@ -46,7 +48,9 @@ export class PostDetailPage implements OnInit {
       this.database.post({customer: this.session.username, post: this.postId}, func, 'subscribe');
   }
 
-  // A method to remove a customer from the subscribed to list
+  /**
+   * A method to remove a customer from the subscribed to list
+   */
   unsubscribe() {
     var func = function(success) {
       this.ngOnInit();
@@ -55,7 +59,9 @@ export class PostDetailPage implements OnInit {
     this.database.post({customer: this.session.username, post: this.postId}, func, 'unsubscribe');
   }
 
-  // A Method to delete a post, depending on whether you made it
+  /**
+   * A Method to delete a post, depending on whether you made it
+   */
   delete() {
     var func = function(success) {
       this.router.navigate(['/profile']);

@@ -2,15 +2,9 @@ ToDo List:
 
 High Priority!!!!
 
-	- Karma tests für Services?
-	- End to Ende Tests - Protractor
-	- Dokumentation Frontend
-	- Bildanzeige bei zu langem Description Text (CSS)
 	- E-Mial Feld in Profile Page
 
 	Low Priority
-
-	- Besserer Logout Button
 
 	erledigt:
 	- Preview vom Post, bevor man ihn postet
@@ -28,3 +22,7 @@ High Priority!!!!
   - Dokumentation Backend (nur noch unterer Teil von post.controller, aber bitte Rest noch überprüfen)
   - account, customer, regsiter controller --> sidn zwingend alle so nötig, oder hat es überflüssigen Code?
   - About us Page --> Bild von allen, mit Name
+	- Dokumentation Frontend
+	- End to Ende Tests - Protractor
+	- Besserer Logout Button
+	- Bildanzeige bei zu langem Description Text (CSS)

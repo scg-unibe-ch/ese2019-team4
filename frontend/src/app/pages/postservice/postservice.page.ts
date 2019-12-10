@@ -55,7 +55,12 @@ export class PostservicePage implements OnInit {
               private session: SessionService,
               private db: DatabaseService) { }
 
-  // checks if the input fields are empty
+  /**
+   * checks if the input fields are empty
+   * @param title, input title
+   * @param body, input body
+   * @param image, input image
+   */
   dataCheck(title: string, body: string, image: number) {
     if ( title == null || title === '') {
       this.error = 'Don\'t leave the Title empty';
@@ -68,7 +73,13 @@ export class PostservicePage implements OnInit {
     return true;
   }
 
-  // passes on the post data to the database
+  /**
+   * passes on the post data to the database
+   * @param title, input title
+   * @param body, input body
+   * @param username, author name
+   * @param image, input image
+   */
   submitPost(title: string, body: string, username: string, image: number) {
     if ( this.dataCheck(title, body, image) ) {
       const con = this.db.connect('http://localhost:3001/posts/', this.session);
@@ -83,12 +94,17 @@ export class PostservicePage implements OnInit {
     }
   }
 
-  // sets the default image to 0
+  /**
+   * sets the default image to 0
+   */
   ngOnInit() {
     this.post.image = 0;
   }
 
-  // chooses the image depending on which one you click
+  /**
+   * chooses the image depending on which one you click
+   * @param int, number of the desired image
+   */
   setImage(int) {
     document.getElementById(String(this.previousImg)).style.opacity = '1';
     document.getElementById(int).style.opacity = '0.5';

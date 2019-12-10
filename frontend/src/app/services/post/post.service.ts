@@ -3,6 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Post} from './post.model';
 import {Observable} from 'rxjs';
 
+/**
+ * The post service handles different kind of requests regarding posts
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +17,11 @@ export class PostService implements OnInit {
     return this.http
       .get(this.REST_API_SERVER);
   }
+
+  /**
+   * Return the post with a specific id
+   * @param postId, id of the post that should be found
+   */
   getPostLocal(postId: number) {
     return {
       ...this.posts.find(post => {

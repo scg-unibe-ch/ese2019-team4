@@ -131,11 +131,17 @@ export class RegisterComponent implements OnInit {
     } else { elem.setProperty('--email-color', colorDanger ); }
     return bool;
   }
-  // sets the focus for to the next entry field
+
+  /**
+   * sets the focus for to the next entry field
+   */
   nextSetFocus(focus) {
     focus.setFocus();
   }
-  // On confirm password field you can either register right away or go to email if you're a provider
+
+  /**
+   * On confirm password field you can either register right away or go to email if you're a provider
+   */
   focusOrRegister(focus, name, password, passwordVerify, email) {
     if (this.isProvider) {
       focus.setFocus();
@@ -145,7 +151,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  // makes the password visible or not and adapts the icon once clicked on
+  /**
+   * makes the password visible or not and adapts the icon once clicked on
+   */
   entryFieldChange() {
     if (this.entryField === 'password') {
       this.entryField = '';

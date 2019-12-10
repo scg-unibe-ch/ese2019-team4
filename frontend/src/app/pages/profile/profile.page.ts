@@ -29,12 +29,16 @@ export class ProfilePage implements OnInit {
               private session: SessionService,
               private db: DatabaseService) { }
 
-  // a method to log out from the account. destroys the session token.
+  /**
+   * a method to log out from the account. destroys the session token.
+   */
   logout() {
     this.session.logout();
   }
 
-  // updates to see if any new posts have been added
+  /**
+   * updates to see if any new posts have been added
+   */
   ngOnInit() {
     this.session.updatePosts();
   }

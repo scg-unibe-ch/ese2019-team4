@@ -23,7 +23,11 @@ export class LoginComponent implements OnInit {
   inputType = 'password';
   iconType = 'eye';
 
-  // checks if username and password match
+  /**
+   * checks if username and password match
+   * @param name, username input
+   * @param password, password input
+   */
   login(name: string, password: string, ) {
       let func = function(success) {
         if (success == false) {
@@ -47,7 +51,9 @@ export class LoginComponent implements OnInit {
     Password.setFocus();
   }
 
-  // makes the password visible and changes the icon once clicked on
+  /**
+   * makes the password visible and changes the icon once clicked on
+   */
   changeInputType() {
     if ( this.inputType === 'password') {
       this.inputType = '';
